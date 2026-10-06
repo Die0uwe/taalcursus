@@ -44,7 +44,7 @@ VOORBEELDEN = [("Kachó", "Hond"), ("Ruman muhé", "Zus"), ("`kacho.mp3`", "`hon
                ("kacho.webp", "hond.webp"), ("solo.svg", "zon.svg"), ("img/welo.webp", "img/opa.webp"),
                ("img/welo.png", "img/opa.png"), ("--only kacho", "--only hond"), ("kacho.mp3", "hond.mp3")]
 
-KOPIEER_MAPPEN = ["css", "js", "tools"]   # icons: zie hieronder (eigen iconen blijven staan)
+KOPIEER_MAPPEN = ["css", "js", "tools", "ui"]   # icons: zie hieronder (eigen iconen blijven staan)
 KOPIEER_BESTANDEN = ["index.html", "manifest.webmanifest", "sw.js"]
 LEES_ALLEEN_TEKST = {"index.html", "manifest.webmanifest", "sw.js"}
 
@@ -120,13 +120,13 @@ def vervang_tekst(pad: Path, t: dict) -> None:
                       '<p class="credit">Geluid: de computerstem van je eigen apparaat.</p>')
         s = s.replace("Leer Papiamentu spelenderwijs: woorden", f"Leer {t['naam']} spelenderwijs: woorden")
         s = s.replace("Aprende Papiamentu", t["titel"]).replace("🌸", t["vlag"]).replace("Papiamentu", t["merk"])
-        s = re.sub(r"v0\.6\.0", f"v{VERSIE}", s)
+        s = re.sub(r"v0\.7\.0", f"v{VERSIE}", s)
     elif naam == "manifest.webmanifest":
         s = s.replace("Aprende Papiamentu!", f"{t['titel']}!").replace('"Papiamentu"', f'"{t["merk"]}"')
         s = s.replace("Leer Papiamentu spelenderwijs", f"Leer {t['naam']} spelenderwijs")
     elif naam == "sw.js":
-        s = s.replace("Aprende Papiamentu", t["titel"]).replace("'pap-v0.6.0'", f"'{t['prefix']}-v{VERSIE}'")
-        s = s.replace("v0.6.0", f"v{VERSIE}")
+        s = s.replace("Aprende Papiamentu", t["titel"]).replace("'pap-v0.7.0'", f"'{t['prefix']}-v{VERSIE}'")
+        s = s.replace("v0.7.0", f"v{VERSIE}")
     elif naam == "pwa.js":
         s = s.replace("Aprende Papiamentu", t["titel"]).replace("Papiamentu", t["merk"])
     elif naam.endswith((".js", ".css", ".py", ".html", ".md", ".bat")) or naam == "Dockerfile":

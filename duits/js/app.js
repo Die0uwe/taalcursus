@@ -65,6 +65,34 @@
     el('muteBtn').textContent = m ? '🔇' : '🔊';
   }
 
+  function updateSfx() {
+    var s = G.state();
+    A.setSfx(s.sfxAan, s.sfxVol);
+    el('sfxAan').checked = s.sfxAan;
+    el('sfxVol').value = Math.round(s.sfxVol * 100);
+    el('sfxVol').disabled = !s.sfxAan;
+    el('sfxBtn').textContent = s.sfxAan && s.sfxVol > 0 ? '🎚️' : '🔕';
+  }
+
+  /* ---------- poppetje na een antwoord (klein en rustig) ---------- */
+  var mascotTimer = null;
+  function mascot(goed) {
+    var m = el('mascot');
+    clearTimeout(mascotTimer);
+    m.src = goed ? 'ui/mascotte-goed.webp' : 'ui/mascotte-fout.webp';
+    m.classList.remove('toon');
+    m.hidden = false;
+    void m.offsetWidth;
+    m.classList.add('toon');
+    mascotTimer = setTimeout(verbergMascot, 2200);
+  }
+  function verbergMascot() {
+    clearTimeout(mascotTimer);
+    var m = el('mascot');
+    m.classList.remove('toon');
+    m.hidden = true;
+  }
+
   /* ---------- confetti en badge-popups ---------- */
   var KLEUREN = ['#ff5c8a', '#ffd93d', '#7cc4ff', '#8ed86c', '#b28dff', '#ffa94d'];
 
@@ -323,12 +351,14 @@
       if (res.bonus) tekst += '  🔥 Reeks-bonus!';
       fb.textContent = tekst;
       A.sfx('goed');
+      mascot(true);
       var r = knop.getBoundingClientRect();
       confetti(r.left + r.width / 2, r.top + r.height / 2, 30);
     } else {
       knop.classList.add('wrong');
       fb.textContent = '😊 Bijna! Het is: ' + v.woord.icon + ' ' + G.pap(v.woord);
       A.sfx('fout');
+      mascot(false);
     }
     var info = G.rondeInfo();
     el('qStreak').textContent = info.streak > 0 ? '🔥 ' + info.streak + ' op rij' : '';
@@ -375,6 +405,7 @@
 
   function volgendeVraag() {
     A.stop();
+    verbergMascot();
     if (G.volgende()) toonVraag();
     else toonResultaat();
   }
@@ -442,6 +473,7 @@
   G.on(function (gebeurtenis, state, data) {
     if (gebeurtenis === 'stars') updateSterren(true);
     if (gebeurtenis === 'muted') updateMute();
+    if (gebeurtenis === 'sfx') updateSfx();
     if (gebeurtenis === 'badge') badgePopup(data);
     if (gebeurtenis === 'dialect') {
       bouwDialectBalk();
@@ -449,6 +481,13 @@
     }
   });
 
+  el('sfxBtn').addEventListener('click', function () { el('sfxPanel').hidden = false; el('sfxAan').focus(); });
+  el('sfxSluit').addEventListener('click', function () { el('sfxPanel').hidden = true; });
+  el('sfxPanel').addEventListener('click', function (e) { if (e.target === el('sfxPanel')) el('sfxPanel').hidden = true; });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') el('sfxPanel').hidden = true; });
+  el('sfxAan').addEventListener('change', function () { G.setSfx(el('sfxAan').checked); if (el('sfxAan').checked) A.sfx('goed'); });
+  el('sfxVol').addEventListener('input', function () { G.setSfx(true, el('sfxVol').value / 100); });
+  el('sfxVol').addEventListener('change', function () { A.sfx('goed'); });   // laat even horen hoe hard het is
   el('muteBtn').addEventListener('click', function () { G.setMuted(!G.state().muted); });
   el('nextBtn').addEventListener('click', volgende);
   el('prevBtn').addEventListener('click', vorige);
@@ -469,6 +508,7 @@
 
   updateSterren(false);
   updateMute();
+  updateSfx();
   bouwDialectBalk();
   bouwMenu();
 })();

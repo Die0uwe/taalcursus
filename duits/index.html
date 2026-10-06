@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- Leer Duits - index.html - v0.5.0 - Created by DieOuwe · www.dieouwe.nl -->
+<!-- Leer Duits - index.html - v0.2.0 - Created by DieOuwe · www.dieouwe.nl -->
 <html lang="nl">
 <head>
 <meta charset="UTF-8">
@@ -33,6 +33,7 @@
     <button class="top-btn install-btn" id="installBtn" type="button" title="Installeer als app" aria-label="Installeer als app">
       <span aria-hidden="true">📲</span><span class="lbl">App</span>
     </button>
+    <button class="top-btn sfx-btn" id="sfxBtn" type="button" title="Geluidjes: aan/uit en volume" aria-label="Geluidjes en volume">🎚️</button>
     <button class="top-btn mute-btn" id="muteBtn" type="button" title="Geluid aan/uit" aria-label="Geluid aan of uit">🔊</button>
   </div>
 </header>
@@ -111,6 +112,23 @@
     <button type="button" class="sheet-close" id="hulpSluit">Sluiten</button>
   </div>
 </div>
+
+<!-- Geluidjes: aan/uit en volume -->
+<div class="overlay" id="sfxPanel" hidden>
+  <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="sfxTitel">
+    <h2 id="sfxTitel">🎚️ Geluidjes</h2>
+    <p>De kleine geluidjes bij goed, fout en badges.</p>
+    <label class="sfx-rij"><input type="checkbox" id="sfxAan"> <span>Geluidjes aan</span></label>
+    <label class="sfx-rij sfx-vol"><span aria-hidden="true">🔈</span>
+      <input type="range" id="sfxVol" min="0" max="100" step="5" value="50" aria-label="Volume van de geluidjes">
+      <span aria-hidden="true">🔊</span></label>
+    <p class="sfx-tip">Het knopje 🔊 bovenin zet alle geluid uit, ook de stem.</p>
+    <button type="button" class="sheet-close" id="sfxSluit">Klaar</button>
+  </div>
+</div>
+
+<!-- Poppetje dat even verschijnt na een antwoord -->
+<img class="mascot" id="mascot" alt="" width="80" height="80" hidden>
 
 <noscript><p class="noscript">Zet JavaScript aan om te spelen.</p></noscript>
 

@@ -46,6 +46,7 @@ CURSUS_MAPPEN = {
     "js": {".js"},
     "icons": {".png", ".svg", ".ico"},
     "mp3": {".mp3"},
+    "ui": {".webp", ".png"},
     "img": {".webp", ".png", ".jpg", ".jpeg", ".svg"},
 }
 

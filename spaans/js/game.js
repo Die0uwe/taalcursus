@@ -12,7 +12,7 @@
   var KEY = (D.meta && D.meta.opslag) || 'papiweb.v1';
   var RONDE_LENGTE = 10;
   var state = {
-    stars: 0, seen: {}, muted: false, dialect: D.meta.standaardDialect,
+    stars: 0, seen: {}, muted: false, sfxAan: true, sfxVol: 0.5, dialect: D.meta.standaardDialect,
     badges: [], bestStreak: 0, rondes: 0, perfect: 0
   };
   var luisteraars = [];
@@ -27,6 +27,8 @@
         if (typeof p.stars === 'number') state.stars = p.stars;
         if (p.seen && typeof p.seen === 'object') state.seen = p.seen;
         if (typeof p.muted === 'boolean') state.muted = p.muted;
+        if (typeof p.sfxAan === 'boolean') state.sfxAan = p.sfxAan;
+        if (typeof p.sfxVol === 'number' && p.sfxVol >= 0 && p.sfxVol <= 1) state.sfxVol = p.sfxVol;
         if (typeof p.dialect === 'string') state.dialect = p.dialect;
         if (Array.isArray(p.badges)) state.badges = p.badges;
         if (typeof p.bestStreak === 'number') state.bestStreak = p.bestStreak;
@@ -192,6 +194,11 @@
       state.dialect = id; bewaar(); meld('dialect');
     },
     setMuted: function (b) { state.muted = !!b; bewaar(); meld('muted'); },
+    setSfx: function (aan, vol) {
+      state.sfxAan = !!aan;
+      if (typeof vol === 'number' && vol >= 0 && vol <= 1) state.sfxVol = vol;
+      bewaar(); meld('sfx');
+    },
     addStars: function (n) { state.stars += n; bewaar(); meld('stars'); checkBadges(); },
     // Eén ster per woord, één keer in totaal. Zo kun je niet eindeloos "volgende" klikken.
     markeerGezien: function (id) {

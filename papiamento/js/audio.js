@@ -21,6 +21,8 @@
   var current = null;       // huidig <audio>-element
   var token = 0;            // om oude, trage aanroepen te negeren
   var muted = false;
+  var sfxAan = true;     // geluidjes (goed/fout/badge) los aan of uit te zetten
+  var sfxVol = 0.5;      // 0 ... 1
   var voices = [];
 
   function laadStemmen() {
@@ -169,7 +171,7 @@
   };
 
   function sfx(naam) {
-    if (muted || !SFX[naam]) return;
+    if (muted || !sfxAan || sfxVol <= 0 || !SFX[naam]) return;
     try {
       var AC = window.AudioContext || window.webkitAudioContext;
       if (!AC) return;
@@ -182,7 +184,7 @@
         osc.type = 'sine';
         osc.frequency.value = n[0];
         gain.gain.setValueAtTime(0.0001, t0);
-        gain.gain.exponentialRampToValueAtTime(0.25, t0 + 0.02);
+        gain.gain.exponentialRampToValueAtTime(Math.max(0.0002, 0.32 * sfxVol), t0 + 0.03);
         gain.gain.exponentialRampToValueAtTime(0.0001, t0 + 0.22);
         osc.connect(gain);
         gain.connect(ctx.destination);
@@ -198,6 +200,7 @@
     scan: scan,
     sfx: sfx,
     setMuted: function (b) { muted = !!b; if (muted) stopAlles(); },
+    setSfx: function (aan, vol) { sfxAan = !!aan; if (typeof vol === 'number') sfxVol = Math.min(1, Math.max(0, vol)); },
     isMuted: function () { return muted; }
   };
 })();

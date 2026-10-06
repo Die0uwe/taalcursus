@@ -12,6 +12,7 @@ const SCHIL = [
   './', 'index.html', 'manifest.webmanifest',
   'css/style.css',
   'js/words.js', 'js/game.js', 'js/audio.js', 'js/beeld.js', 'js/app.js', 'js/pwa.js',
+  'ui/mascotte-goed.webp', 'ui/mascotte-fout.webp',
   'icons/icon-192.png', 'icons/icon-512.png', 'icons/apple-touch-icon.png'
 ];
 

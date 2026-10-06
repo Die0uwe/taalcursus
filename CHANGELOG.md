@@ -4,6 +4,24 @@ Created by DieOuwe · www.dieouwe.nl
 
 Nieuwste bovenaan. De wijzigingen van de cursus zelf staan in `papiamento/CHANGELOG.md`.
 
+## [2026-10-06 22:58] — Poppetje bij goed/fout en geluidjes-knop met volume
+
+**Type:** Feature
+**Skill:** webapp-dev (via wow-bigboss-orchestrator)
+**Bestanden:** `papiamento/ui/`, `papiamento/js/{app,audio,game}.js`, `papiamento/index.html`, `papiamento/css/style.css`, `papiamento/sw.js`, `tools/maak_cursus.py`, `tools/maak_deploy.py`
+**Versie:** papiamento v0.7.0, overige cursussen v0.3.0 (generator)
+
+### Wijzigingen
+- Na elk quizantwoord verschijnt kort (2,2 s) een klein poppetje linksonder: `ui/mascotte-goed.webp` bij goed, `ui/mascotte-fout.webp` bij fout. Het verdwijnt bij de volgende vraag en blokkeert niets.
+- Nieuwe knop 🎚️ in de bovenbalk: geluidjes aan/uit en een volumeslider. Instelling blijft bewaard (localStorage). Bij het schuiven klinkt een proefgeluidje. 🔊 bovenin blijft alle geluid (ook de stem) uitzetten.
+- Geluidjes zijn zachter dan eerst (standaard 50%).
+- Nieuwe map `ui/` in elke cursus (offline in de service worker); generator en deploy-script nemen die mee.
+
+### Gecontroleerd
+- cursustest 72/72, paneel/volume/opslag/poppetje getest in Papiamentu en Oekraïens, geen CSP-fouten, geen horizontale scroll.
+
+---
+
 ## [2026-10-06 22:35] — Alle cursussen in de merkstijl, maar rustiger
 
 **Type:** UI Polish
