@@ -1,0 +1,13 @@
+# Taalcursus - Created by DieOuwe · www.dieouwe.nl
+# Draait de taalcursus in een nginx-container op poort 8080. Zet daar je eigen reverse proxy (met https) voor,
+# bijvoorbeeld Nginx Proxy Manager, Caddy of Traefik, met taal.dieouwe.nl als adres.
+# Eerst bouwen:  python tools/maak_deploy.py     Dan starten:  docker compose -f deploy/docker-compose.yml up -d
+services:
+  taal:
+    image: nginx:alpine
+    container_name: taalcursus
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    volumes:
+      - ../_site:/usr/share/nginx/html:ro

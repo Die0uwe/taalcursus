@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<!-- Taalcursus - index.html (hoofdpagina) - v0.1.0 - Created by DieOuwe · www.dieouwe.nl -->
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="description" content="Taalcursus: leer talen spelenderwijs met woorden, quiz, sterren en badges.">
+<meta name="theme-color" content="#ffffff">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Taalcursus">
+<title>🌍 Taalcursus</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ctext y=%22.9em%22 font-size=%2290%22%3E🌍%3C/text%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="stylesheet" href="hub.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="brand" aria-label="Taalcursus">
+      <span class="brand-logo" aria-hidden="true">🌍</span>
+      <span class="brand-name">Taal<b>cursus</b></span>
+    </div>
+    <div class="stars-bar" id="totaalSterren" title="Al je sterren samen" hidden>
+      <span aria-hidden="true">⭐</span>
+      <span class="count" id="totaalCount">0</span>
+      <span class="label">sterren</span>
+    </div>
+    <button class="top-btn install-btn" id="installBtn" type="button" title="Installeer als app" aria-label="Installeer als app">
+      <span aria-hidden="true">📲</span><span class="lbl">App</span>
+    </button>
+  </div>
+</header>
+
+<main class="container">
+  <div class="hero">
+    <h1>Welke taal wil je leren? <span aria-hidden="true">🎓</span></h1>
+    <p>Kies een cursus. Je sterren en voortgang blijven per taal bewaard.</p>
+  </div>
+
+  <section class="taal-grid" id="taalGrid" aria-label="Alle cursussen"></section>
+</main>
+
+<footer>
+  <p class="foot-main">Samen talen leren 🌺</p>
+  <p class="credit">Created by DieOuwe · <a href="https://www.dieouwe.nl" target="_blank" rel="noopener">www.dieouwe.nl</a></p>
+</footer>
+
+<div class="overlay" id="hulp" hidden>
+  <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="hulpTitel">
+    <h2 id="hulpTitel">📲 Zet Taalcursus als app op je scherm</h2>
+    <div id="hulpTekst"></div>
+    <button type="button" class="sheet-close" id="hulpSluit">Sluiten</button>
+  </div>
+</div>
+
+<noscript><p class="noscript">Zet JavaScript aan om een cursus te kiezen.</p></noscript>
+
+<script src="cursussen.js"></script>
+<script src="hub.js"></script>
+<script src="pwa.js"></script>
+</body>
+</html>

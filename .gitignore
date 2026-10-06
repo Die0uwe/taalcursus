@@ -1,0 +1,18 @@
+# Taalcursus - Created by DieOuwe · www.dieouwe.nl
+# Ruwe opnames blijven op je eigen pc (alleen de mp3's in mp3/vrouw/ gaan mee)
+**/opnames/*
+!**/opnames/LEESMIJ.md
+
+# tijdelijk en systeem
+__pycache__/
+*.pyc
+*.wav
+Thumbs.db
+desktop.ini
+.DS_Store
+.vscode/
+.idea/
+node_modules/
+_site/
+taalcursus-site-*.zip
+*.log

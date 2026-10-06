@@ -1,0 +1,43 @@
+# Taalcursus - nginx-voorbeeld - v0.5.0 - Created by DieOuwe · www.dieouwe.nl
+# Vervang taal.dieouwe.nl en de paden. Zet dit in /etc/nginx/conf.d/taal.conf (of sites-available).
+# Zonder .htaccess werkt Apache-config niet in nginx, dus dit bestand doet hetzelfde.
+
+server {
+    listen 80;
+    server_name taal.dieouwe.nl;
+    return 301 https://$host$request_uri;
+}
+
+server {
+    listen 443 ssl http2;
+    server_name taal.dieouwe.nl;
+
+    ssl_certificate     /etc/letsencrypt/live/taal.dieouwe.nl/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/taal.dieouwe.nl/privkey.pem;
+
+    root /var/www/taal;            # de inhoud van _site/ (zie tools/maak_deploy.py)
+    index index.html;
+
+    include mime.types;
+    types { application/manifest+json webmanifest; }
+    charset utf-8;
+
+    # Beveiligingsheaders (blijven gelden, want de locaties hieronder gebruiken geen eigen add_header)
+    add_header Content-Security-Policy "default-src 'self'; img-src 'self' data:; media-src 'self' blob:; style-src 'self'; script-src 'self'; connect-src 'self'; manifest-src 'self'; worker-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'" always;
+    add_header X-Content-Type-Options "nosniff" always;
+    add_header Referrer-Policy "strict-origin-when-cross-origin" always;
+    add_header Permissions-Policy "camera=(), microphone=(), geolocation=()" always;
+
+    # Nooit publiek, ook niet als je per ongeluk de hele map uploadt
+    location ~ /\.                         { return 404; }
+    location ~ ^/(?:.*/)?(opnames|tools|deploy|docs|_site)(/|$) { return 404; }
+    location ~* \.(py|bat|yml|yaml|ps1|conf|zip)$ { return 404; }
+    location ~* ^/(?:.*/)?(?!NOTICE\.md$)[^/]*\.md$ { return 404; }
+    location ~* /Dockerfile$                 { return 404; }
+    location ~* /prompts\.txt$              { return 404; }
+
+    # Cache: pagina en service worker nooit lang, geluid en plaatjes 30 dagen
+    location ~* /(sw\.js|index\.html|manifest\.webmanifest)$ { expires -1; }
+    location ~* \.(mp3|png|webp|jpe?g|svg)$ { expires 30d; }
+    location / { try_files $uri $uri/ =404; expires -1; }
+}

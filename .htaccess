@@ -1,0 +1,46 @@
+# Taalcursus - .htaccess (Apache / LiteSpeed) - v0.5.0 - Created by DieOuwe · www.dieouwe.nl
+# Zet dit bestand in de hoofdmap van het subdomein (bijv. taal.dieouwe.nl). Het geldt ook voor alle cursus-mappen daaronder.
+# Het doet drie dingen: privé-mappen afschermen, juiste bestandstypes en cache, en beveiligingsheaders.
+
+# 1. Nooit publiek: git, ruwe opnames, gereedschap, deploy-bestanden, scripts en werkdocumenten
+RedirectMatch 404 (?i)/\.git
+RedirectMatch 404 ^/(?:.*/)?(opnames|tools|deploy|docs|_site)(/|$)
+<FilesMatch "^(?!NOTICE\.md$).*\.(md|py|bat|yml|yaml|ps1|conf|zip)$|^Dockerfile$|^prompts\.txt$">
+  Require all denied
+</FilesMatch>
+Options -Indexes
+
+# 2. Bestandstypes en cache
+<IfModule mod_mime.c>
+  AddType application/manifest+json .webmanifest
+  AddType audio/mpeg .mp3
+  AddType image/webp .webp
+  AddType application/javascript .js
+  AddDefaultCharset UTF-8
+</IfModule>
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault "access plus 0 seconds"
+  ExpiresByType audio/mpeg "access plus 30 days"
+  ExpiresByType image/png "access plus 30 days"
+  ExpiresByType image/webp "access plus 30 days"
+  ExpiresByType image/jpeg "access plus 30 days"
+  ExpiresByType image/svg+xml "access plus 30 days"
+</IfModule>
+<IfModule mod_headers.c>
+  # De service worker en de pagina zelf mogen nooit lang in de cache staan, anders komen updates niet aan
+  <FilesMatch "^(sw\.js|index\.html|manifest\.webmanifest)$">
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
+
+  # 3. Beveiligingsheaders
+  Header always set Content-Security-Policy "default-src 'self'; img-src 'self' data:; media-src 'self' blob:; style-src 'self'; script-src 'self'; connect-src 'self'; manifest-src 'self'; worker-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'"
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+</IfModule>
+
+# Optioneel: altijd https. Haal de # weg als je server NIET achter een proxy/Cloudflare zit.
+# RewriteEngine On
+# RewriteCond %{HTTPS} off
+# RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]

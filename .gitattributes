@@ -1,0 +1,8 @@
+# Tekst altijd met LF in de repo, .bat met CRLF voor Windows
+* text=auto eol=lf
+*.bat text eol=crlf
+*.mp3 binary
+*.png binary
+*.webp binary
+*.jpg binary
+*.jpeg binary
