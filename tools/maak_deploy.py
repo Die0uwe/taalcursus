@@ -19,6 +19,7 @@ de nieuwe bestanden krijgen (je hoeft VERSIE niet zelf te verhogen).
 Gebruik:
     python tools/maak_deploy.py            # maakt _site/
     python tools/maak_deploy.py --zip      # maakt ook taalcursus-site-<tijdstempel>.zip
+    python tools/maak_deploy.py --zip --live   # zonder onderhoud.html (site is al live)
 Zonder Python op je pc:
     docker run --rm -v "${PWD}:/work" -w /work python:3.11-slim python tools/maak_deploy.py --zip
 """
@@ -100,6 +101,7 @@ def stempel_sw(sw: Path, stempel: str) -> str | None:
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--zip", action="store_true", help="maak ook een zipbestand")
+    ap.add_argument("--live", action="store_true", help="laat onderhoud.html weg (site staat live; upload zet het onderhoud niet terug aan)")
     args = ap.parse_args()
 
     if UIT.exists():
@@ -107,6 +109,9 @@ def main() -> int:
     UIT.mkdir()
 
     n, b = kopieer_set(ROOT, UIT, ROOT_BESTANDEN, ROOT_MAPPEN)
+    if args.live:
+        (UIT / "onderhoud.html").unlink(missing_ok=True)
+        print("  --live: onderhoud.html niet meegenomen")
     cursussen = vind_cursussen()
     for c in cursussen:
         cn, cb = kopieer_set(c, UIT / c.name, CURSUS_BESTANDEN, CURSUS_MAPPEN)
@@ -128,7 +133,7 @@ def main() -> int:
     print("cache-versies: " + ", ".join(versies))
 
     if args.zip:
-        zip_pad = ROOT / f"taalcursus-site-{stempel}.zip"
+        zip_pad = ROOT / f"taalcursus-site-{stempel}{'-live' if args.live else ''}.zip"
         with zipfile.ZipFile(zip_pad, "w", zipfile.ZIP_DEFLATED) as z:
             for f in sorted(UIT.rglob("*")):
                 if f.is_file():

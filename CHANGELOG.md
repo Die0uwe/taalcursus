@@ -16,6 +16,7 @@ Nieuwste bovenaan. De wijzigingen van de cursus zelf staan in `papiamento/CHANGE
 - Nu: `/` komt altijd eerst van het netwerk; de bewaarde `index.html` dient alleen offline. `/` staat niet meer in de voorraad.
 - `.htaccess`: `onderhoud.html` krijgt ook `no-cache`.
 - Getest: onderhoud aan, uit, weer aan: wisselt direct.
+- `tools/maak_deploy.py --zip --live` laat `onderhoud.html` weg, zodat een nieuwe upload het onderhoud niet terugzet.
 
 ## [2026-10-07 02:20] — Huisjes zichtbaar op de hoofdpagina (voet viel er overheen)
 
