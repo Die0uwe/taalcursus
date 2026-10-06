@@ -76,7 +76,14 @@
 @keyframes vlagWiggle { 0%, 100% { transform: rotate(-6deg) scale(1); } 50% { transform: rotate(6deg) scale(1.08); } }
 @keyframes regenboog { 0% { background-position: 0% 50%; } 100% { background-position: 300% 50%; } }
 
+/* huisjes en bomen langs de weg */
+.straat-deco { position: fixed; bottom: 58px; z-index: 1; pointer-events: none; line-height: 1; filter: drop-shadow(0 4px 4px rgba(0, 0, 0, .15)); }
+.straat-deco.huis { font-size: 3rem; }
+.straat-deco.boom { font-size: 3.6rem; bottom: 56px; }
+
 @media (max-width: 480px) {
+  .straat-deco.huis { font-size: 2.2rem; bottom: 50px; }
+  .straat-deco.boom { font-size: 2.6rem; bottom: 48px; }
   .sun { width: 70px; height: 70px; right: 12px; }
   .sun .eye { width: 8px; height: 10px; }
   .sun .mouth { width: 22px; height: 12px; border-width: 2px; }

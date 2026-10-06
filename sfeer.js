@@ -51,6 +51,15 @@
   }
 
   if (vol) {
+    // huisjes en bomen langs de weg (staan stil)
+    var dorp = ['🏠', '🌳', '🏡', '🌲', '🏘️', '🌳', '🏠', '🌲', '🏡', '🌳', '🏘️', '🌲'];
+    var n = window.innerWidth < 600 ? 7 : dorp.length;
+    for (var d = 0; d < n; d++) {
+      var teken = dorp[d % dorp.length];
+      var boom = teken === '🌳' || teken === '🌲';
+      var item = maak('straat-deco ' + (boom ? 'boom' : 'huis'), teken);
+      item.style.left = (3 + d * (92 / n) + (d % 2 ? 1.5 : 0)) + '%';
+    }
     maak('road');
     var p = maak('vehicle police'); p.appendChild(document.createElement('span')).className = 'light'; p.appendChild(document.createTextNode('🚓'));
     var f = maak('vehicle fire'); f.appendChild(document.createElement('span')).className = 'light'; f.appendChild(document.createTextNode('🚒'));

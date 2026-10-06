@@ -4,6 +4,19 @@ Created by DieOuwe · www.dieouwe.nl
 
 Nieuwste bovenaan. De wijzigingen van de cursus zelf staan in `papiamento/CHANGELOG.md`.
 
+## [2026-10-07 01:40] — Huisjes en bomen langs de weg
+
+**Type:** Feature / UI Polish
+**Skill:** design-architect (via wow-bigboss-orchestrator)
+**Bestanden:** `sfeer.js`, `sfeer.css`, `sw.js`
+**Versie:** hoofdpagina v0.7.0
+
+### Wijzigingen
+- Langs de weg onderaan staan nu huisjes (🏠 🏡 🏘️) en bomen (🌳 🌲), verspreid over de breedte. Ze staan stil, achter de auto's en achter de kaarten, en zijn niet klikbaar. Op een telefoon zijn het er minder en kleiner.
+- Alleen op de hoofdpagina en de onderhoudspagina (waar ook de auto's rijden); bij "minder beweging" blijft de sfeerlaag uit, zoals eerder.
+
+---
+
 ## [2026-10-07 01:25] — Meisje-bestand hernoemd (oude plaatje bleef in de cache hangen)
 
 **Type:** Bugfix
