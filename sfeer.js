@@ -26,6 +26,34 @@
     var d = document.createElement('div'); d.className = k; zon.appendChild(d);
   });
   maak('cloud cloud1'); maak('cloud cloud2'); maak('cloud cloud3');
+  // huisjes, bomen en weg staan stil: ook zichtbaar als animaties uit staan (Windows: 'minder beweging')
+  if (vol) {
+    // huisjes en bomen langs de weg (staan stil)
+    var dorp = ['🏠', '🌳', '🏡', '🌲', '🏘️', '🌳', '🏠', '🌲', '🏡', '🌳', '🏘️', '🌲'];
+    var breed = window.innerWidth;
+    var plaats = [];                       // posities in px vanaf links
+    if (breed >= 1100) {
+      // brede schermen: huisjes en bomen in de marges naast de kaarten (anders staan ze erachter)
+      var marge = Math.max(0, (breed - 960) / 2);   // vrije ruimte links en rechts van de inhoud
+      var perKant = Math.max(1, Math.min(6, Math.floor(marge / 58)));
+      for (var k = 0; k < perKant; k++) {
+        var stap = (marge - 64) / perKant;
+        plaats.push(10 + k * stap + (k % 2 ? 8 : 0));
+        plaats.push(breed - 70 - k * stap - (k % 2 ? 8 : 0));
+      }
+    } else {
+      var n = breed < 600 ? 7 : dorp.length;
+      for (var m = 0; m < n; m++) plaats.push((3 + m * (92 / n) + (m % 2 ? 1.5 : 0)) / 100 * breed);
+    }
+    plaats.sort(function (x, y) { return x - y; });
+    plaats.forEach(function (x, d) {
+      var teken = dorp[d % dorp.length];
+      var boom = teken === '🌳' || teken === '🌲';
+      var item = maak('straat-deco ' + (boom ? 'boom' : 'huis'), teken);
+      item.style.left = Math.round(x) + 'px';
+    });
+    maak('road');
+  }
   if (stil) return;
 
   var kleuren = ['#ff5252', '#ff4081', '#ffb300', '#ffee58', '#66bb6a', '#42a5f5', '#ab47bc', '#26c6da', '#ff7043'];
@@ -51,16 +79,6 @@
   }
 
   if (vol) {
-    // huisjes en bomen langs de weg (staan stil)
-    var dorp = ['🏠', '🌳', '🏡', '🌲', '🏘️', '🌳', '🏠', '🌲', '🏡', '🌳', '🏘️', '🌲'];
-    var n = window.innerWidth < 600 ? 7 : dorp.length;
-    for (var d = 0; d < n; d++) {
-      var teken = dorp[d % dorp.length];
-      var boom = teken === '🌳' || teken === '🌲';
-      var item = maak('straat-deco ' + (boom ? 'boom' : 'huis'), teken);
-      item.style.left = (3 + d * (92 / n) + (d % 2 ? 1.5 : 0)) + '%';
-    }
-    maak('road');
     var p = maak('vehicle police'); p.appendChild(document.createElement('span')).className = 'light'; p.appendChild(document.createTextNode('🚓'));
     var f = maak('vehicle fire'); f.appendChild(document.createElement('span')).className = 'light'; f.appendChild(document.createTextNode('🚒'));
   }

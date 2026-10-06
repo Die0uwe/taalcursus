@@ -4,6 +4,20 @@ Created by DieOuwe · www.dieouwe.nl
 
 Nieuwste bovenaan. De wijzigingen van de cursus zelf staan in `papiamento/CHANGELOG.md`.
 
+## [2026-10-07 03:00] — Deel-knop, huisjes en bomen goed zichtbaar in browsers
+
+**Type:** Feature + Bugfix
+**Skill:** design-architect (via wow-bigboss-orchestrator)
+**Bestanden:** `delen.js` (nieuw), `kleuren.css`, `sfeer.js`, `index.html`, `sw.js`, `papiamento/*`, `tools/maak_cursus.py`, `tools/maak_deploy.py`, `README.md`
+**Versie:** hoofdpagina v0.10.0, papiamento v0.14.0, overige cursussen v0.10.0
+
+### Wijzigingen
+- Deel-knop 📤 in de bovenbalk van de hoofdpagina en alle cursussen: op telefoon het eigen deelmenu (`navigator.share`), in de browser een paneel met WhatsApp, Facebook, Telegram, X, e-mail en link kopiëren. Geen externe scripts.
+- Deelvoorbeeld: `og:`-tags op de hoofdpagina en in de cursussen (plaatje meisje-boven, titel en beschrijving).
+- Huisjes en bomen op brede schermen (vanaf 1100 px) in de marges naast de kaarten; ze stonden eerst achter de kaarten.
+- Huisjes, bomen en weg worden nu ook gebouwd als Windows "animaties uit" staat (prefers-reduced-motion); daardoor zag je in Chrome niets.
+- Getest: deelknop op hub, papiamento en engels (paneel, native delen, CSP, geen horizontale scroll), cursustest 72/72.
+
 ## [2026-10-07 02:35] — Onderhoud-uit werkt: voorpagina nooit meer uit oude cache
 
 **Type:** Bugfix

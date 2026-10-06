@@ -26,7 +26,7 @@ from talen import CATEGORIEEN, CONCEPTEN, TALEN  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 SJABLOON = ROOT / "papiamento"
-VERSIE = "0.9.0"
+VERSIE = "0.10.0"
 
 # woord-id's van het Papiamentu-sjabloon -> neutrale (Nederlandse) id's die alle andere cursussen gebruiken
 ID_MAP = {
@@ -125,8 +125,8 @@ def vervang_tekst(pad: Path, t: dict) -> None:
         s = s.replace("Aprende Papiamentu!", f"{t['titel']}!").replace('"Papiamentu"', f'"{t["merk"]}"')
         s = s.replace("Leer Papiamentu spelenderwijs", f"Leer {t['naam']} spelenderwijs")
     elif naam == "sw.js":
-        s = s.replace("Aprende Papiamentu", t["titel"]).replace("'pap-v0.13.0'", f"'{t['prefix']}-v{VERSIE}'")
-        s = s.replace("v0.13.0", f"v{VERSIE}")
+        s = s.replace("Aprende Papiamentu", t["titel"]).replace("'pap-v0.14.0'", f"'{t['prefix']}-v{VERSIE}'")
+        s = s.replace("v0.14.0", f"v{VERSIE}")
     elif naam == "pwa.js":
         s = s.replace("Aprende Papiamentu", t["titel"]).replace("Papiamentu", t["merk"])
     elif naam.endswith((".js", ".css", ".py", ".html", ".md", ".bat")) or naam == "Dockerfile":
@@ -242,6 +242,7 @@ def main() -> int:
     a = ap.parse_args()
     # één bron voor kleuren/achtergrond: de hoofdmap; het sjabloon krijgt een kopie
     shutil.copy2(ROOT / "kleuren.css", SJABLOON / "css" / "kleuren.css")
+    shutil.copy2(ROOT / "delen.js", SJABLOON / "js" / "delen.js")
     lijst = list(TALEN) if a.alle else a.talen
     if not lijst:
         ap.error("geef een taal of --alle")

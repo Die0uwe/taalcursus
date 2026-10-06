@@ -6,12 +6,12 @@
    - mp3/ en img/: worden bewaard zodra ze voor het eerst gebruikt zijn.
    - Verhoog VERSIE bij elke release, dan haalt de app de nieuwe bestanden op.
    ============================================================ */
-const VERSIE = 'deu-v0.9.0';
+const VERSIE = 'deu-v0.10.0';
 const VOORVOEGSEL = VERSIE.split('-')[0] + '-';   // elke cursus ruimt alleen zijn eigen oude caches op
 const SCHIL = [
   './', 'index.html', 'manifest.webmanifest',
   'css/style.css', 'css/kleuren.css',
-  'js/words.js', 'js/game.js', 'js/audio.js', 'js/beeld.js', 'js/app.js', 'js/pwa.js',
+  'js/words.js', 'js/game.js', 'js/audio.js', 'js/beeld.js', 'js/app.js', 'js/delen.js', 'js/pwa.js',
   'ui/meisje-boven.webp', 'ui/mascotte-goed.webp', 'ui/mascotte-fout.webp',
   'icons/icon-192.png', 'icons/icon-512.png', 'icons/apple-touch-icon.png'
 ];

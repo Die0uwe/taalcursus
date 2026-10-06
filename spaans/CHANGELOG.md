@@ -7,7 +7,7 @@ Created by DieOuwe · www.dieouwe.nl
 **Type:** Feature
 **Skill:** webapp-dev (via wow-bigboss-orchestrator)
 **Bestanden:** alles in `spaans/`, gemaakt met `tools/maak_cursus.py`
-**Versie:** v0.9.0
+**Versie:** v0.10.0
 
 ### Wijzigingen
 - 42 woorden, uitspraakgids, quiz met leerkaartjes, sterren en badges, app en offline; stem van het apparaat.

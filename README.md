@@ -3,16 +3,21 @@
 Created by DieOuwe · www.dieouwe.nl
 
 Taalcursussen voor kinderen, elk als eigen kleine webapp. De hoofdpagina laat je de taal kiezen.
-Versie **0.2.0** (hoofdpagina). Gewone HTML, CSS en JavaScript, geen bouwstap nodig. Installeerbaar als app (PWA) en offline bruikbaar.
+Versie **0.10.0** (hoofdpagina). Gewone HTML, CSS en JavaScript, geen bouwstap nodig. Installeerbaar als app (PWA) en offline bruikbaar.
+
+**Wat zit erin:** leerkaarten, quiz met sterren en badges, geluidspaneel 🎚️ (geluidjes aan/uit, volume, computerstem aan/uit),
+een **Deel-knop 📤** (op telefoon het eigen deelmenu met WhatsApp, Facebook enz.; in de browser een paneel met WhatsApp, Facebook,
+Telegram, X, e-mail en link kopiëren), een rustige kinderlook in één merkstijl (`kleuren.css`) en op de hoofdpagina en onderhoudspagina
+zon, ballonnen, autootjes, huisjes en bomen (`sfeer.js`; huisjes en bomen staan ook zichtbaar bij "minder beweging" in Windows).
 
 | Taal | Map | Status |
 |---|---|---|
-| 🇨🇼 Papiamentu | `papiamento/` | beschikbaar (v0.11.0) |
-| 🇬🇧 Engels | `engels/` | beschikbaar (v0.7.0, stem van de browser) |
-| 🇪🇸 Spaans | `spaans/` | beschikbaar (v0.7.0, stem van de browser) |
-| 🇩🇪 Duits | `duits/` | beschikbaar (v0.7.0, stem van de browser) |
-| 🇫🇷 Frans | `frans/` | beschikbaar (v0.7.0, stem van de browser) |
-| 🇺🇦 Oekraïens | `oekraiens/` | beschikbaar (v0.7.0, stem van de browser) |
+| 🇨🇼 Papiamentu | `papiamento/` | beschikbaar (v0.14.0) |
+| 🇬🇧 Engels | `engels/` | beschikbaar (v0.10.0, stem van de browser) |
+| 🇪🇸 Spaans | `spaans/` | beschikbaar (v0.10.0, stem van de browser) |
+| 🇩🇪 Duits | `duits/` | beschikbaar (v0.10.0, stem van de browser) |
+| 🇫🇷 Frans | `frans/` | beschikbaar (v0.10.0, stem van de browser) |
+| 🇺🇦 Oekraïens | `oekraiens/` | beschikbaar (v0.10.0, stem van de browser) |
 
 ## Snel starten
 
@@ -28,6 +33,10 @@ Versie **0.2.0** (hoofdpagina). Gewone HTML, CSS en JavaScript, geen bouwstap no
 taalcursus/
 ├── index.html              hoofdpagina: kies je taal
 ├── hub.css  hub.js         opmaak en logica van de hoofdpagina
+├── kleuren.css             gedeelde merkkleuren en achtergrond (ook als kopie in papiamento/css/)
+├── sfeer.css  sfeer.js     zon, wolken, ballonnen, autootjes, huisjes en bomen
+├── delen.js                Deel-knop (ook als kopie in papiamento/js/)
+├── onderhoud.html .css .js onderhoudspagina "Komt eraan"
 ├── cursussen.js            de lijst met cursussen (hier komt een nieuwe taal bij)
 ├── pwa.js  sw.js  manifest.webmanifest   app-modus en offline voor de hoofdpagina
 ├── icons/                  iconen van de hoofdpagina
@@ -54,11 +63,17 @@ Een nieuwe taal toevoegen: zie `docs/NIEUWE-CURSUS.md`.
 Kort hieronder; het volledige stappenplan voor FTP staat in [`docs/FTP-STAPPENPLAN.md`](docs/FTP-STAPPENPLAN.md).
 
 1. **DNS en https:** maak het subdomein aan en zet er een SSL-certificaat op. Https is nodig voor installeren en offline gebruik.
-2. **Bouwen:** `python tools/maak_deploy.py --zip` (of via Docker, zie bovenin dat bestand). Dit maakt `_site/` met **alleen** wat online mag: geen `.git`, geen `opnames/`, geen `tools/`, geen scripts of werkdocumenten.
+2. **Bouwen:** `python tools/maak_deploy.py --zip` (of via Docker, zie bovenin dat bestand). Staat de site al live? Gebruik dan `python tools/maak_deploy.py --zip --live`: die zip heeft geen `onderhoud.html`, zodat een nieuwe upload de onderhoudspagina niet terugzet. Dit maakt `_site/` met **alleen** wat online mag: geen `.git`, geen `opnames/`, geen `tools/`, geen scripts of werkdocumenten.
 3. **Uploaden:** zet de **inhoud** van `_site/` in de hoofdmap van het subdomein, zodat `index.html` er direct in staat.
 4. **Server instellen:** Apache/LiteSpeed: `.htaccess` zit al in `_site/`. nginx: `deploy/nginx-taal.conf.voorbeeld`. Docker: `deploy/docker-compose.yml` (poort 8080, zet je eigen proxy met https ervoor).
 5. **Controleren:** zie het kopje "Online" in `TESTLIJST.md`.
 6. **Nieuwe versie:** opnieuw bouwen en uploaden. Elke service worker krijgt automatisch een nieuwe versie.
+
+### Onderhoudspagina aan en uit
+
+Bestaat `onderhoud.html` in de hoofdmap, dan toont `/` die pagina en staat de echte site op `/index.html` (handig om te testen).
+**Live zetten:** hernoem op de server `onderhoud.html` naar `onderhoud-uit.html`. **Weer onderhoud:** hernoem terug.
+Doe daarna in Cloudflare *Purge Everything*. De service worker haalt `/` altijd eerst van de server, dus de wissel komt direct aan.
 
 Staat er Cloudflare voor je server? Zet dan de https-omleiding in `.htaccess` uit (staat standaard uit).
 

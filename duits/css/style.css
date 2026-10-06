@@ -1,5 +1,5 @@
 /* ============================================================
-   Leer Duits - stijl  (css/style.css)  v0.13.0
+   Leer Duits - stijl  (css/style.css)  v0.14.0
    Created by DieOuwe · www.dieouwe.nl
    v0.4.0: nieuwe, strakkere opmaak met design-tokens (kleuren, ronding, schaduw),
            kaarten met voortgangsbalk, ronde knoppen, eigen plaatjes (.pic), installeer-uitleg.
@@ -546,7 +546,7 @@ body {
 .fb-img { width: 44px; height: 44px; object-fit: contain; flex: none; filter: drop-shadow(0 3px 4px rgba(58, 43, 31, .25)); animation: mascotIn .3s ease-out both; }
 .fb-tekst { min-width: 0; }
 
-/* v0.13.0 geluidspaneel: uitleg over systeemstemmen */
+/* v0.14.0 geluidspaneel: uitleg over systeemstemmen */
 details.sfx-tip { margin-top: 8px; }
 details.sfx-tip summary { cursor: pointer; font-weight: 700; color: var(--pink-dark); min-height: 32px; }
 details.sfx-tip ul { margin: 6px 0 0 18px; }
