@@ -4,6 +4,24 @@ Created by DieOuwe · www.dieouwe.nl
 
 Nieuwste bovenaan. De wijzigingen van de cursus zelf staan in `papiamento/CHANGELOG.md`.
 
+## [2026-10-06 20:15] — Zesde cursus: Oekraïens, FTP-stappenplan
+
+**Type:** Feature / Docs
+**Skill:** webapp-dev, wow-git-manager (via wow-bigboss-orchestrator)
+**Bestanden:** `cursussen.js`, `oekraiens/*`, `docs/FTP-STAPPENPLAN.md`, `README.md`, `TESTLIJST.md`
+**Versie:** v0.1.0
+
+### Wijzigingen
+- Oekraïens (🇺🇦, Українська) als zesde taal: placeholdermap `oekraiens/` en kaart op de hoofdpagina.
+- `docs/FTP-STAPPENPLAN.md`: bouwen, uploaden met FileZilla naar het subdomein, controleren, problemen, bijwerken.
+
+### Open actiepunten
+- [x] Zesde cursus kiezen
+- [ ] GitHub Pages aanzetten (Settings → Pages → GitHub Actions) of subdomein uploaden
+- [ ] Licentiekeuze (MIT voor code) bevestigen
+
+---
+
 ## [2026-10-06 20:05] — Hoofdpagina en repo-opzet voor meerdere cursussen
 
 **Type:** Feature / Migratie
@@ -20,6 +38,5 @@ Nieuwste bovenaan. De wijzigingen van de cursus zelf staan in `papiamento/CHANGE
 - GitHub Pages-workflow in `.github/workflows/pages.yml`.
 
 ### Open actiepunten
-- [ ] Zesde cursus kiezen en toevoegen
 - [ ] GitHub Pages aanzetten (Settings → Pages → GitHub Actions) of subdomein uploaden
 - [ ] Licentiekeuze (MIT voor code) bevestigen

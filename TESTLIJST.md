@@ -5,7 +5,7 @@ Created by DieOuwe · www.dieouwe.nl
 Start `start-server.bat` en open http://localhost:8080. Cursus-tests staan in `papiamento/TESTLIJST.md`.
 
 ## Hoofdpagina
-- [ ] Vijf kaarten: Papiamentu, English, Español, Deutsch, Français
+- [ ] Zes kaarten: Papiamentu, Engels, Spaans, Duits, Frans, Oekraïens
 - [ ] Alleen Papiamentu is een link; de rest staat op "Binnenkort"
 - [ ] Papiamentu opent de cursus; 🌸 linksboven brengt je terug
 - [ ] Na wat spelen: sterren en aantal woorden staan op de Papiamentu-kaart en in de bovenbalk

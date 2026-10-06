@@ -19,5 +19,6 @@ window.CURSUSSEN = [
   { id: "engels",     naam: "Engels",     eigen: "English",    sub: "De wereldtaal",             vlag: "🇬🇧", kleur: "blue",   status: "binnenkort" },
   { id: "spaans",     naam: "Spaans",     eigen: "Español",    sub: "Spanje en Latijns-Amerika", vlag: "🇪🇸", kleur: "yellow", status: "binnenkort" },
   { id: "duits",      naam: "Duits",      eigen: "Deutsch",    sub: "Duitsland, Oostenrijk, Zwitserland", vlag: "🇩🇪", kleur: "orange", status: "binnenkort" },
-  { id: "frans",      naam: "Frans",      eigen: "Français",   sub: "Frankrijk en ver daarbuiten", vlag: "🇫🇷", kleur: "purple", status: "binnenkort" }
+  { id: "frans",      naam: "Frans",      eigen: "Français",   sub: "Frankrijk en ver daarbuiten", vlag: "🇫🇷", kleur: "purple", status: "binnenkort" },
+  { id: "oekraiens",  naam: "Oekraïens",  eigen: "Українська", sub: "Oekraïne",                  vlag: "🇺🇦", kleur: "green",  status: "binnenkort" }
 ];

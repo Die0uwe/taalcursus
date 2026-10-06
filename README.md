@@ -12,7 +12,7 @@ Versie **0.1.0** (hoofdpagina). Gewone HTML, CSS en JavaScript, geen bouwstap no
 | 🇪🇸 Spaans | `spaans/` | binnenkort |
 | 🇩🇪 Duits | `duits/` | binnenkort |
 | 🇫🇷 Frans | `frans/` | binnenkort |
-| ? | | de zesde cursus volgt |
+| 🇺🇦 Oekraïens | `oekraiens/` | binnenkort |
 
 ## Snel starten
 
@@ -32,7 +32,7 @@ taalcursus/
 ├── pwa.js  sw.js  manifest.webmanifest   app-modus en offline voor de hoofdpagina
 ├── icons/                  iconen van de hoofdpagina
 ├── papiamento/             complete cursus (eigen README, woorden, audio, plaatjes, tools)
-├── engels/ spaans/ duits/ frans/   placeholders ("komt eraan")
+├── engels/ spaans/ duits/ frans/ oekraiens/   placeholders ("komt eraan")
 ├── docs/NIEUWE-CURSUS.md   hoe voeg je een taal toe
 ├── tools/maak_deploy.py    bouwt _site/ met alleen wat online mag
 ├── deploy/                 nginx-voorbeeld en docker-compose
@@ -49,6 +49,8 @@ Een nieuwe taal toevoegen: zie `docs/NIEUWE-CURSUS.md`.
 ## Online zetten
 
 ### Op een subdomein (bijv. taal.dieouwe.nl)
+
+Kort hieronder; het volledige stappenplan voor FTP staat in [`docs/FTP-STAPPENPLAN.md`](docs/FTP-STAPPENPLAN.md).
 
 1. **DNS en https:** maak het subdomein aan en zet er een SSL-certificaat op. Https is nodig voor installeren en offline gebruik.
 2. **Bouwen:** `python tools/maak_deploy.py --zip` (of via Docker, zie bovenin dat bestand). Dit maakt `_site/` met **alleen** wat online mag: geen `.git`, geen `opnames/`, geen `tools/`, geen scripts of werkdocumenten.
