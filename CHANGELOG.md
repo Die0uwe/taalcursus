@@ -4,6 +4,19 @@ Created by DieOuwe · www.dieouwe.nl
 
 Nieuwste bovenaan. De wijzigingen van de cursus zelf staan in `papiamento/CHANGELOG.md`.
 
+## [2026-10-07 01:10] — Poppetje voor de antwoordtekst; auto's en ballonnen ook op de hoofdpagina
+
+**Type:** Feature / UI Polish
+**Skill:** webapp-dev, design-architect (via wow-bigboss-orchestrator)
+**Bestanden:** `papiamento/js/app.js`, `papiamento/css/style.css`, `papiamento/index.html`, `index.html`, `sw.js`
+**Versie:** hoofdpagina v0.5.0, papiamento v0.11.0, overige cursussen v0.7.0
+
+### Wijzigingen
+- Quiz: bij goed staat het goed-poppetje klein (44 px) vóór "Bon! Goed gedaan!", bij fout het fout-poppetje vóór "Bijna! Het is: …". Het poppetje in de hoek van het scherm is vervangen door deze plek. De emoji's 🎉 en 😊 in de tekst zijn weggehaald.
+- Hoofdpagina (alleen daar): `data-sfeer="vol"`, dus ook de politie- en brandweerauto, de weg, meer ballonnen en sterren en de opduikende vlaggetjes zoals op de onderhoudspagina. Alles is niet-klikbaar, dus de kaarten blijven gewoon werken. Bij "minder beweging" staat het stil. De cursussen blijven rustig.
+
+---
+
 ## [2026-10-07 00:55] — Groter meisje boven de rand (onderhoud) en boven de titel (hoofdpagina)
 
 **Type:** UI Polish

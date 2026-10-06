@@ -74,23 +74,16 @@
     el('sfxBtn').textContent = s.sfxAan && s.sfxVol > 0 ? '🎚️' : '🔕';
   }
 
-  /* ---------- poppetje na een antwoord (klein en rustig) ---------- */
-  var mascotTimer = null;
-  function mascot(goed) {
-    var m = el('mascot');
-    clearTimeout(mascotTimer);
-    m.src = goed ? 'ui/mascotte-goed.webp' : 'ui/mascotte-fout.webp';
-    m.classList.remove('toon');
-    m.hidden = false;
-    void m.offsetWidth;
-    m.classList.add('toon');
-    mascotTimer = setTimeout(verbergMascot, 2200);
-  }
-  function verbergMascot() {
-    clearTimeout(mascotTimer);
-    var m = el('mascot');
-    m.classList.remove('toon');
-    m.hidden = true;
+  /* ---------- poppetje bij het antwoord (klein, voor de tekst) ---------- */
+  function feedbackTekst(goed, tekst) {
+    var fb = el('feedback');
+    fb.textContent = '';
+    var img = maak('img', 'fb-img');
+    img.src = goed ? 'ui/mascotte-goed.webp' : 'ui/mascotte-fout.webp';
+    img.alt = '';
+    img.width = 44; img.height = 44;
+    fb.appendChild(img);
+    fb.appendChild(maak('span', 'fb-tekst', tekst));
   }
 
   /* ---------- confetti en badge-popups ---------- */
@@ -347,18 +340,16 @@
 
     var fb = el('feedback');
     if (res.goed) {
-      var tekst = '🎉 Bon! Goed gedaan! +' + res.sterren + ' ⭐';
+      var tekst = 'Bon! Goed gedaan! +' + res.sterren + ' ⭐';
       if (res.bonus) tekst += '  🔥 Reeks-bonus!';
-      fb.textContent = tekst;
+      feedbackTekst(true, tekst);
       A.sfx('goed');
-      mascot(true);
       var r = knop.getBoundingClientRect();
       confetti(r.left + r.width / 2, r.top + r.height / 2, 30);
     } else {
       knop.classList.add('wrong');
-      fb.textContent = '😊 Bijna! Het is: ' + v.woord.icon + ' ' + G.pap(v.woord);
+      feedbackTekst(false, 'Bijna! Het is: ' + v.woord.icon + ' ' + G.pap(v.woord));
       A.sfx('fout');
-      mascot(false);
     }
     var info = G.rondeInfo();
     el('qStreak').textContent = info.streak > 0 ? '🔥 ' + info.streak + ' op rij' : '';
@@ -405,7 +396,6 @@
 
   function volgendeVraag() {
     A.stop();
-    verbergMascot();
     if (G.volgende()) toonVraag();
     else toonResultaat();
   }

@@ -4,7 +4,7 @@
    Bewaart alleen de hoofdpagina zelf voor offline gebruik. De cursussen (papiamento/ ...)
    hebben elk hun eigen service worker en worden hier met rust gelaten.
    ============================================================ */
-const VERSIE = 'hub-v0.4.0';
+const VERSIE = 'hub-v0.5.0';
 const VOORVOEGSEL = VERSIE.split('-')[0] + '-';
 const SCHIL = [
   './', 'index.html', 'hub.css', 'kleuren.css', 'sfeer.css', 'sfeer.js', 'meisje.webp', 'hub.js', 'cursussen.js', 'pwa.js', 'manifest.webmanifest',

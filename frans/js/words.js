@@ -1,5 +1,5 @@
 /* ============================================================
-   Leer Frans - woordenlijst  (js/words.js)  v0.6.0
+   Leer Frans - woordenlijst  (js/words.js)  v0.7.0
    Created by DieOuwe · www.dieouwe.nl
    Gemaakt met tools/maak_cursus.py uit tools/talen.py (pas de woorden daar aan en maak de cursus opnieuw,
    of pas dit bestand direct aan).
@@ -15,7 +15,7 @@
    uitspraak: gids voor Nederlandstalige kinderen (indicatief)
    ============================================================ */
 window.PAP_DATA = {
-  "meta": {"versie": "0.6.0", "standaardDialect": "std", "taal": "Frans", "kampioen": "Français-kampioen!", "opslag": "frans.v1", "ttsTalen": ["fr"], "ttsFallback": "fr-FR"},
+  "meta": {"versie": "0.7.0", "standaardDialect": "std", "taal": "Frans", "kampioen": "Français-kampioen!", "opslag": "frans.v1", "ttsTalen": ["fr"], "ttsFallback": "fr-FR"},
   "dialecten": [ {"id": "std", "naam": "Frans", "vlag": "🇫🇷"} ],
   "categorieen": [
     {"id": "basis", "naam": "Basiswoorden", "sub": "Kijk & luister", "icon": "📚", "kleur": "pink"},

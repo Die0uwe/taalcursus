@@ -2,7 +2,7 @@
 
 Created by DieOuwe · www.dieouwe.nl
 
-Cursus **Duits** van de Taalcursus, versie 0.6.0. Zelfde opzet als `papiamento/`: leren, quiz, sterren en badges, app (PWA) en offline.
+Cursus **Duits** van de Taalcursus, versie 0.7.0. Zelfde opzet als `papiamento/`: leren, quiz, sterren en badges, app (PWA) en offline.
 
 - 42 woorden in 5 categorieën, elk met emoji, woord, Nederlands en uitspraakgids. Woorden aanpassen: `tools/talen.py` (en dan `python tools/maak_cursus.py duits --force`) of direct `js/words.js`.
 - **Geluid:** de stem van de browser of het apparaat (taalcode `de-DE`). Eigen mp3's gaan voor: `mp3/vrouw/<id>.mp3` (echte opname) of `mp3/mms/<id>.mp3` (computerstem).

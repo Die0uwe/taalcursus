@@ -26,7 +26,7 @@ from talen import CATEGORIEEN, CONCEPTEN, TALEN  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 SJABLOON = ROOT / "papiamento"
-VERSIE = "0.6.0"
+VERSIE = "0.7.0"
 
 # woord-id's van het Papiamentu-sjabloon -> neutrale (Nederlandse) id's die alle andere cursussen gebruiken
 ID_MAP = {
@@ -120,13 +120,13 @@ def vervang_tekst(pad: Path, t: dict) -> None:
                       '<p class="credit">Geluid: de computerstem van je eigen apparaat.</p>')
         s = s.replace("Leer Papiamentu spelenderwijs: woorden", f"Leer {t['naam']} spelenderwijs: woorden")
         s = s.replace("Aprende Papiamentu", t["titel"]).replace("🌸", t["vlag"]).replace("Papiamentu", t["merk"])
-        s = re.sub(r"v0\.10\.0", f"v{VERSIE}", s)
+        s = re.sub(r"v0\.11\.0", f"v{VERSIE}", s)
     elif naam == "manifest.webmanifest":
         s = s.replace("Aprende Papiamentu!", f"{t['titel']}!").replace('"Papiamentu"', f'"{t["merk"]}"')
         s = s.replace("Leer Papiamentu spelenderwijs", f"Leer {t['naam']} spelenderwijs")
     elif naam == "sw.js":
-        s = s.replace("Aprende Papiamentu", t["titel"]).replace("'pap-v0.10.0'", f"'{t['prefix']}-v{VERSIE}'")
-        s = s.replace("v0.10.0", f"v{VERSIE}")
+        s = s.replace("Aprende Papiamentu", t["titel"]).replace("'pap-v0.11.0'", f"'{t['prefix']}-v{VERSIE}'")
+        s = s.replace("v0.11.0", f"v{VERSIE}")
     elif naam == "pwa.js":
         s = s.replace("Aprende Papiamentu", t["titel"]).replace("Papiamentu", t["merk"])
     elif naam.endswith((".js", ".css", ".py", ".html", ".md", ".bat")) or naam == "Dockerfile":
