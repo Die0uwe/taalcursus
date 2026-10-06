@@ -4,6 +4,19 @@ Created by DieOuwe · www.dieouwe.nl
 
 Nieuwste bovenaan. De wijzigingen van de cursus zelf staan in `papiamento/CHANGELOG.md`.
 
+## [2026-10-06 23:55] — Meisje terug op de voorpagina en de onderhoudspagina
+
+**Type:** Bugfix
+**Skill:** webapp-dev (via wow-bigboss-orchestrator)
+**Bestanden:** `meisje.webp`, `meisje-denken.webp`, `index.html`, `hub.css`, `sw.js`, `onderhoud.html`, `tools/maak_deploy.py`
+**Versie:** hoofdpagina v0.3.0
+
+### Wijzigingen
+- Het oorspronkelijke meisje-plaatje (`plak-mux2b7wy-7068c1.webp`) zat nooit in de repo of zip, dus de onderhoudspagina toonde haar niet. Nu wijst die pagina (en `og:image`) naar `meisje.webp`: het meisje met de duim omhoog, dat meegaat in de zip.
+- De hoofdpagina heeft haar nu ook bovenaan, met een zachte beweging (staat stil bij "minder beweging"). Ze is offline beschikbaar via de service worker.
+
+---
+
 ## [2026-10-06 23:10] — Kinderlook: pastelkaarten met dikke randen, samen met de nieuwe lucht
 
 **Type:** UI Polish
