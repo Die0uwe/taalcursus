@@ -182,3 +182,8 @@ footer a { color: var(--brand); }
 @keyframes meisjeZacht { 0%, 100% { transform: translateY(0) rotate(-2deg); } 50% { transform: translateY(-5px) rotate(2deg); } }
 @media (max-width: 480px) { .hero-meisje { width: 190px; } }
 @media (prefers-reduced-motion: reduce) { .hero-meisje { animation: none; } }
+
+/* v0.8.0 voet vast onderaan en compact (zoals de onderhoudspagina), zodat de weg, huisjes en bomen erboven zichtbaar blijven */
+footer { position: fixed; left: 0; right: 0; bottom: 0; z-index: 3; margin: 0; padding: 8px 16px; display: flex; flex-wrap: wrap; justify-content: center; align-items: baseline; gap: 4px 12px; font-size: .8rem; }
+footer p, footer .credit { margin: 0; font-size: .8rem; }
+body { padding-bottom: 150px; }

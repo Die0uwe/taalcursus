@@ -4,6 +4,18 @@ Created by DieOuwe · www.dieouwe.nl
 
 Nieuwste bovenaan. De wijzigingen van de cursus zelf staan in `papiamento/CHANGELOG.md`.
 
+## [2026-10-07 02:20] — Huisjes zichtbaar op de hoofdpagina (voet viel er overheen)
+
+**Type:** Bugfix
+**Skill:** design-architect (via wow-bigboss-orchestrator)
+**Bestanden:** `hub.css`, `sw.js`
+**Versie:** hoofdpagina v0.8.0
+
+### Wijzigingen
+- Op de hoofdpagina lag de voet (halfdoorzichtig, 94 px hoog) over de weg, huisjes en bomen, waardoor ze op een groot scherm onder de weg leken te staan of weg waren. De voet is nu vast onderaan en compact (één regel), zoals bij de onderhoudspagina, zodat de weg met huisjes en bomen er netjes boven staat. Controle op 1920x1000 en 1000x640.
+
+---
+
 ## [2026-10-07 02:00] — Schakelaar voor de computerstem
 
 **Type:** Feature
