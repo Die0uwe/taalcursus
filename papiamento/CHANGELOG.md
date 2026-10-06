@@ -16,6 +16,7 @@ Nieuwste bovenaan.
 - Merk (🌸 Aprende Papiamentu) in de bovenbalk is nu een link terug naar alle talen (`../index.html`).
 - `sw.js` ruimt alleen eigen caches op (voorvoegsel `pap-`), zodat de hoofdpagina (`hub-`) en andere cursussen met rust gelaten worden.
 - Pages-workflow, deploy-script, `.htaccess` en nginx-voorbeeld staan nu in de root en gelden voor alle cursussen.
+- Sjabloon generiek: `meta` in `words.js` bevat taalnaam, badge-naam, opslagsleutel en browserstem; dialectbalk verdwijnt bij één dialect (voor de andere cursussen). Papiamentu werkt ongewijzigd.
 - `tools/github-pages-workflow.yml` hier verwijderd (zit nu in de root als `.github/workflows/pages.yml`).
 
 ### Open actiepunten

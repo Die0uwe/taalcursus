@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<!-- Leer Duits - tools/studio.html - v0.4.0 - Created by DieOuwe · www.dieouwe.nl -->
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🎙️ Studio · Leer Duits</title>
+<style>
+  :root { --ink:#2a2447; --muted:#7a7494; --line:rgba(42,36,71,.12); --brand:#6c4cf5; --pink:#ff4f8b; --good:#2fa84f; --bad:#e5484d; --bg:#fffaf3;
+          --font: ui-rounded,"SF Pro Rounded","Nunito","Segoe UI Variable Display","Segoe UI",system-ui,sans-serif; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: var(--font); background: var(--bg); color: var(--ink); padding: 20px 16px 60px; }
+  main { max-width: 980px; margin: 0 auto; }
+  h1 { font-size: 1.7rem; font-weight: 800; }
+  h1 small { font-size: .9rem; color: var(--muted); font-weight: 600; margin-left: 8px; }
+  .uitleg { background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 14px 18px; margin: 14px 0 18px; line-height: 1.55; }
+  .uitleg ol { margin: 6px 0 0 20px; }
+  code { background: #f1ecff; padding: 1px 6px; border-radius: 6px; font-size: .92em; }
+  .warn { background: #fff4d6; border-radius: 12px; padding: 10px 12px; margin-top: 10px; }
+  .balk { position: sticky; top: 0; z-index: 5; display: flex; flex-wrap: wrap; align-items: center; gap: 14px; padding: 10px 0; background: var(--bg); }
+  .balk label { display: inline-flex; align-items: center; gap: 6px; font-weight: 700; }
+  .teller { margin-left: auto; font-weight: 800; color: var(--muted); }
+  h2 { font-size: 1.1rem; margin: 22px 0 10px; }
+  .rooster { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; }
+  .kaart { background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 14px; display: flex; flex-direction: column; gap: 8px; }
+  .kaart.klaar { border-color: var(--good); }
+  .kop { display: flex; align-items: center; gap: 10px; }
+  .kop .em { font-size: 2.2rem; line-height: 1; }
+  .kop .pap { font-weight: 800; font-size: 1.25rem; color: var(--pink); }
+  .kop .nl { color: var(--muted); font-size: .9rem; }
+  .uitspraak { font-weight: 700; color: var(--brand); }
+  .chips { display: flex; gap: 6px; flex-wrap: wrap; }
+  .chip { font-size: .8rem; font-weight: 700; padding: 3px 9px; border-radius: 999px; background: #eee; color: #888; }
+  .chip.aan { background: #d9f6df; color: #1b7a38; }
+  .knoppen { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+  button { font: inherit; font-weight: 800; cursor: pointer; border: 0; border-radius: 999px; padding: 9px 16px; min-height: 40px; }
+  .rec { background: var(--pink); color: #fff; }
+  .rec.live { background: var(--bad); animation: puls 1s infinite; }
+  .sec { background: #f1ecff; color: var(--brand); }
+  .bewaar { background: var(--good); color: #fff; }
+  button:disabled { opacity: .45; cursor: default; }
+  @keyframes puls { 50% { opacity: .6; } }
+  audio { width: 100%; height: 36px; }
+  .fout { color: var(--bad); font-weight: 700; margin: 10px 0; }
+  a { color: var(--brand); }
+</style>
+</head>
+<body>
+<main>
+  <h1>🎙️ Studio <small>v0.4.0 · Created by DieOuwe · www.dieouwe.nl</small></h1>
+
+  <div class="uitleg">
+    <b>Zo maak je echte opnames (vrouwenstem) voor de app:</b>
+    <ol>
+      <li>Klik bij een woord op <b>⏺ Opnemen</b>, spreek het woord uit en klik op <b>⏹ Stop</b>.</li>
+      <li>Luister terug. Niet goed? Neem opnieuw op. Goed? Klik op <b>💾 Bewaar</b>.</li>
+      <li>Zet de gedownloade bestanden (bijvoorbeeld <code>hond.webm</code>) in de map <code>opnames/</code>.</li>
+      <li>Draai <code>python tools/opnames_naar_mp3.py</code> (of de Docker-variant uit de README). De mp3's komen in <code>mp3/vrouw/</code> en de app speelt ze meteen vóór de computerstem.</li>
+    </ol>
+    <div class="warn">Opnemen met de microfoon werkt in de browser alleen via een webadres. Dubbelklik op <code>start-server.bat</code> en open <code>http://localhost:8080/tools/studio.html</code>.</div>
+  </div>
+
+  <div class="fout" id="melding" hidden></div>
+
+  <div class="balk">
+    <label><input type="checkbox" id="alleenMist"> Alleen woorden zonder echte opname</label>
+    <label>Eiland:
+      <select id="dialect"><option value="std">Standaard</option></select>
+    </label>
+    <span class="teller" id="teller"></span>
+  </div>
+
+  <div id="lijst"></div>
+</main>
+
+<script src="../js/words.js"></script>
+<script>
+(function () {
+  'use strict';
+  var D = window.PAP_DATA;
+  var opnames = {};            // id -> { blob, url, ext }
+  var klaarVrouw = {};         // id -> true
+  var huidig = null;           // { id, rec, stream, stukken }
+
+  function el(t, k, x) { var e = document.createElement(t); if (k) e.className = k; if (x !== undefined) e.textContent = x; return e; }
+  function melding(t) { var m = document.getElementById('melding'); m.hidden = !t; m.textContent = t || ''; }
+
+  function dialect() { return document.getElementById('dialect').value; }
+  function veld(w, n) { var o = w.dialect && w.dialect[dialect()]; return (o && o[n]) || w[n]; }
+  function pad(stem, w) { var d = dialect(); return '../mp3/' + stem + '/' + (d !== D.meta.standaardDialect ? d + '/' : '') + w.id + '.mp3'; }
+
+  function bestaatAudio(url) {
+    return new Promise(function (ok) {
+      var a = new Audio(), klaar = false;
+      function fin(v) { if (!klaar) { klaar = true; a.removeAttribute('src'); ok(v); } }
+      a.preload = 'metadata';
+      a.addEventListener('loadedmetadata', function () { fin(true); });
+      a.addEventListener('error', function () { fin(false); });
+      setTimeout(function () { fin(false); }, 2500);
+      a.src = url; a.load();
+    });
+  }
+  function bestaatBeeld(w) {
+    var ext = ['webp', 'png', 'jpg', 'jpeg', 'svg'], i = 0;
+    return new Promise(function (ok) {
+      (function volgende() {
+        if (i >= ext.length) return ok(false);
+        var im = new Image();
+        im.onload = function () { ok(true); };
+        im.onerror = volgende;
+        im.src = '../img/' + w.id + '.' + ext[i++];
+      })();
+    });
+  }
+
+  function chip(tekst, aan) { return el('span', 'chip' + (aan ? ' aan' : ''), tekst); }
+
+  function bouwKaart(w) {
+    var k = el('div', 'kaart'); k.id = 'k_' + w.id;
+    var kop = el('div', 'kop');
+    kop.appendChild(el('span', 'em', w.icon));
+    var t = el('div');
+    t.appendChild(el('div', 'pap', veld(w, 'pap')));
+    t.appendChild(el('div', 'nl', w.nl));
+    kop.appendChild(t);
+    k.appendChild(kop);
+    k.appendChild(el('div', 'uitspraak', '[' + veld(w, 'uitspraak') + ']'));
+    var chips = el('div', 'chips'); chips.id = 'c_' + w.id;
+    k.appendChild(chips);
+
+    var knop = el('div', 'knoppen');
+    var rec = el('button', 'rec', '⏺ Opnemen'); rec.type = 'button';
+    var speel = el('button', 'sec', '▶ Terugluisteren'); speel.type = 'button'; speel.disabled = true;
+    var bewaar = el('button', 'bewaar', '💾 Bewaar'); bewaar.type = 'button'; bewaar.disabled = true;
+    knop.appendChild(rec); knop.appendChild(speel); knop.appendChild(bewaar);
+    k.appendChild(knop);
+
+    rec.addEventListener('click', function () { wissel(w, rec, speel, bewaar); });
+    speel.addEventListener('click', function () { var o = opnames[w.id]; if (o) new Audio(o.url).play(); });
+    bewaar.addEventListener('click', function () {
+      var o = opnames[w.id]; if (!o) return;
+      var a = document.createElement('a');
+      a.href = o.url; a.download = w.id + '.' + o.ext;
+      document.body.appendChild(a); a.click(); a.remove();
+    });
+    return k;
+  }
+
+  function wissel(w, rec, speel, bewaar) {
+    melding('');
+    if (huidig && huidig.id === w.id) { huidig.rec.stop(); return; }
+    if (huidig) { huidig.rec.stop(); }
+    if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+      melding('Opnemen kan hier niet: open deze pagina via http://localhost:8080/tools/studio.html (start-server.bat).');
+      return;
+    }
+    navigator.mediaDevices.getUserMedia({ audio: { echoCancellation: false, noiseSuppression: true, channelCount: 1 } }).then(function (stream) {
+      var r = new MediaRecorder(stream), stukken = [];
+      huidig = { id: w.id, rec: r };
+      r.ondataavailable = function (e) { if (e.data && e.data.size) stukken.push(e.data); };
+      r.onstop = function () {
+        stream.getTracks().forEach(function (t) { t.stop(); });
+        var type = r.mimeType || 'audio/webm';
+        var ext = /mp4|aac/.test(type) ? 'm4a' : /ogg/.test(type) ? 'ogg' : 'webm';
+        var blob = new Blob(stukken, { type: type });
+        if (opnames[w.id]) URL.revokeObjectURL(opnames[w.id].url);
+        opnames[w.id] = { blob: blob, url: URL.createObjectURL(blob), ext: ext };
+        rec.textContent = '⏺ Opnieuw opnemen'; rec.classList.remove('live');
+        speel.disabled = false; bewaar.disabled = false;
+        huidig = null;
+        new Audio(opnames[w.id].url).play();
+      };
+      r.start();
+      rec.textContent = '⏹ Stop'; rec.classList.add('live');
+    }).catch(function () {
+      melding('De microfoon is niet beschikbaar. Geef toestemming in de browser en probeer opnieuw.');
+    });
+  }
+
+  function vulChips(w) {
+    var c = document.getElementById('c_' + w.id); if (!c) return;
+    Promise.all([bestaatBeeld(w), bestaatAudio(pad('vrouw', w)), bestaatAudio(pad('mms', w))]).then(function (r) {
+      klaarVrouw[w.id] = r[1];
+      c.textContent = '';
+      c.appendChild(chip('🖼️ plaatje', r[0]));
+      c.appendChild(chip('🎙️ echte stem', r[1]));
+      c.appendChild(chip('🤖 computerstem', r[2]));
+      document.getElementById('k_' + w.id).classList.toggle('klaar', r[1]);
+      teller();
+      filter();
+    });
+  }
+
+  function teller() {
+    var n = D.woorden.filter(function (w) { return klaarVrouw[w.id]; }).length;
+    document.getElementById('teller').textContent = '🎙️ ' + n + ' / ' + D.woorden.length + ' echte opnames';
+  }
+
+  function filter() {
+    var alleen = document.getElementById('alleenMist').checked;
+    D.woorden.forEach(function (w) {
+      var k = document.getElementById('k_' + w.id);
+      if (k) k.style.display = (alleen && klaarVrouw[w.id]) ? 'none' : '';
+    });
+  }
+
+  function bouw() {
+    var l = document.getElementById('lijst'); l.textContent = '';
+    D.categorieen.forEach(function (c) {
+      l.appendChild(el('h2', '', c.icon + ' ' + c.naam));
+      var r = el('div', 'rooster');
+      D.woorden.filter(function (w) { return w.cat === c.id; }).forEach(function (w) { r.appendChild(bouwKaart(w)); });
+      l.appendChild(r);
+    });
+    klaarVrouw = {};
+    D.woorden.forEach(vulChips);
+  }
+
+  document.getElementById('alleenMist').addEventListener('change', filter);
+  document.getElementById('dialect').addEventListener('change', bouw);
+  bouw();
+})();
+</script>
+</body>
+</html>

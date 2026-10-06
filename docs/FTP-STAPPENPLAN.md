@@ -45,7 +45,7 @@ taal.dieouwe.nl/            (doelmap)
 ├── .htaccess  NOTICE.md  LICENSE
 ├── icons/
 ├── papiamento/   index.html, sw.js, manifest, css/, js/, icons/, mp3/, img/
-├── engels/  spaans/  duits/  frans/  oekraiens/   (nu elk alleen index.html)
+├── engels/  spaans/  duits/  frans/  oekraiens/   (elk een complete cursus: index.html, css/, js/, icons/, sw.js, manifest)
 ```
 
 ## 4. Controleren

@@ -9,7 +9,7 @@
   'use strict';
 
   var D = window.PAP_DATA;
-  var KEY = 'papiweb.v1';
+  var KEY = (D.meta && D.meta.opslag) || 'papiweb.v1';
   var RONDE_LENGTE = 10;
   var state = {
     stars: 0, seen: {}, muted: false, dialect: D.meta.standaardDialect,
@@ -95,7 +95,7 @@
   badgeDefs.push(
     { id: 'streak5', icon: '🔥', naam: '5 op rij!',         uitleg: 'Beantwoord 5 quizvragen achter elkaar goed', check: function () { return state.bestStreak >= 5; } },
     { id: 'perfect', icon: '🏆', naam: 'Perfecte ronde!',   uitleg: 'Alles goed in één quizronde',               check: function () { return state.perfect >= 1; } },
-    { id: 'alles',   icon: '👑', naam: 'Papiamentu-kampioen!', uitleg: 'Leer alle woorden',                      check: function () { return totaalGezien() === D.woorden.length; } }
+    { id: 'alles',   icon: '👑', naam: (D.meta && D.meta.kampioen) || 'Kampioen!', uitleg: 'Leer alle woorden',                      check: function () { return totaalGezien() === D.woorden.length; } }
   );
 
   function checkBadges(stil) {

@@ -1,5 +1,5 @@
 /* ============================================================
-   Taalcursus - lijst met cursussen  (cursussen.js)  v0.1.0
+   Taalcursus - lijst met cursussen  (cursussen.js)  v0.2.0
    Created by DieOuwe · www.dieouwe.nl
    De hoofdpagina (index.html) bouwt de taalkaarten uit deze lijst.
    Een nieuwe cursus erbij = één blok toevoegen (zie docs/NIEUWE-CURSUS.md).
@@ -16,9 +16,9 @@
    ============================================================ */
 window.CURSUSSEN = [
   { id: "papiamento", naam: "Papiamentu", eigen: "Papiamento", sub: "Curaçao, Aruba en Bonaire", vlag: "🇨🇼", kleur: "pink",   status: "beschikbaar", opslag: "papiweb.v1" },
-  { id: "engels",     naam: "Engels",     eigen: "English",    sub: "De wereldtaal",             vlag: "🇬🇧", kleur: "blue",   status: "binnenkort" },
-  { id: "spaans",     naam: "Spaans",     eigen: "Español",    sub: "Spanje en Latijns-Amerika", vlag: "🇪🇸", kleur: "yellow", status: "binnenkort" },
-  { id: "duits",      naam: "Duits",      eigen: "Deutsch",    sub: "Duitsland, Oostenrijk, Zwitserland", vlag: "🇩🇪", kleur: "orange", status: "binnenkort" },
-  { id: "frans",      naam: "Frans",      eigen: "Français",   sub: "Frankrijk en ver daarbuiten", vlag: "🇫🇷", kleur: "purple", status: "binnenkort" },
-  { id: "oekraiens",  naam: "Oekraïens",  eigen: "Українська", sub: "Oekraïne",                  vlag: "🇺🇦", kleur: "green",  status: "binnenkort" }
+  { id: "engels",     naam: "Engels",     eigen: "English",    sub: "De wereldtaal",             vlag: "🇬🇧", kleur: "blue",   status: "beschikbaar", opslag: "engels.v1" },
+  { id: "spaans",     naam: "Spaans",     eigen: "Español",    sub: "Spanje en Latijns-Amerika", vlag: "🇪🇸", kleur: "yellow", status: "beschikbaar", opslag: "spaans.v1" },
+  { id: "duits",      naam: "Duits",      eigen: "Deutsch",    sub: "Duitsland, Oostenrijk, Zwitserland", vlag: "🇩🇪", kleur: "orange", status: "beschikbaar", opslag: "duits.v1" },
+  { id: "frans",      naam: "Frans",      eigen: "Français",   sub: "Frankrijk en ver daarbuiten", vlag: "🇫🇷", kleur: "purple", status: "beschikbaar", opslag: "frans.v1" },
+  { id: "oekraiens",  naam: "Oekraïens",  eigen: "Українська", sub: "Oekraïne",                  vlag: "🇺🇦", kleur: "green",  status: "beschikbaar", opslag: "oekraiens.v1" }
 ];

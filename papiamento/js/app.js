@@ -116,6 +116,8 @@
   function bouwDialectBalk() {
     var balk = el('dialectBar');
     balk.textContent = '';
+    balk.hidden = D.dialecten.length < 2;     // één dialect (bijv. Engels): geen keuzebalk
+    if (balk.hidden) return;
     D.dialecten.forEach(function (d) {
       var b = maak('button', 'dialect-btn' + (d.id === G.dialect() ? ' on' : ''), d.vlag + ' ' + d.naam);
       b.type = 'button';

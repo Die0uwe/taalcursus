@@ -2,6 +2,10 @@
    Aprende Papiamentu - woordenlijst  (js/words.js)  v0.4.0
    Created by DieOuwe · www.dieouwe.nl
    Dialect-hoofdlijn: Curacao (cw). Aruba (aw) en Bonaire (bn) via "dialect".
+   meta: taal (naam), kampioen (naam van de laatste badge), opslag (localStorage-sleutel, uniek per cursus),
+         ttsTalen (taalcodes van de browserstem, in voorkeursvolgorde), ttsFallback (taalcode als er geen stem is gekozen).
+   Het veld "pap" is in elke cursus het woord in de DOELTAAL (de naam is historisch).
+   Met 1 dialect (zoals bij Engels) verdwijnt de dialectbalk vanzelf.
    LET OP: dit bestand bevat STRIKTE JSON na "window.PAP_DATA =".
    tools/maak_audio.py leest dit bestand ook. Dus: dubbele quotes,
    geen commentaar binnen het object, geen komma na het laatste item.
@@ -16,7 +20,7 @@
    dialect : per dialect (cw/aw/bn) overschrijfbare velden: pap, uitspraak
    ============================================================ */
 window.PAP_DATA = {
-  "meta": { "versie": "0.4.0", "standaardDialect": "cw" },
+  "meta": { "versie": "0.5.0", "standaardDialect": "cw", "taal": "Papiamentu", "kampioen": "Papiamentu-kampioen!", "opslag": "papiweb.v1", "ttsTalen": ["es", "pt"], "ttsFallback": "es-ES" },
   "dialecten": [
     { "id": "cw", "naam": "Curaçao", "vlag": "🇨🇼" },
     { "id": "aw", "naam": "Aruba", "vlag": "🇦🇼" },

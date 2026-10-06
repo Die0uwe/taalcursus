@@ -3,16 +3,16 @@
 Created by DieOuwe · www.dieouwe.nl
 
 Taalcursussen voor kinderen, elk als eigen kleine webapp. De hoofdpagina laat je de taal kiezen.
-Versie **0.1.0** (hoofdpagina). Gewone HTML, CSS en JavaScript, geen bouwstap nodig. Installeerbaar als app (PWA) en offline bruikbaar.
+Versie **0.2.0** (hoofdpagina). Gewone HTML, CSS en JavaScript, geen bouwstap nodig. Installeerbaar als app (PWA) en offline bruikbaar.
 
 | Taal | Map | Status |
 |---|---|---|
 | 🇨🇼 Papiamentu | `papiamento/` | beschikbaar (v0.5.0) |
-| 🇬🇧 Engels | `engels/` | binnenkort |
-| 🇪🇸 Spaans | `spaans/` | binnenkort |
-| 🇩🇪 Duits | `duits/` | binnenkort |
-| 🇫🇷 Frans | `frans/` | binnenkort |
-| 🇺🇦 Oekraïens | `oekraiens/` | binnenkort |
+| 🇬🇧 Engels | `engels/` | beschikbaar (v0.1.0, stem van de browser) |
+| 🇪🇸 Spaans | `spaans/` | beschikbaar (v0.1.0, stem van de browser) |
+| 🇩🇪 Duits | `duits/` | beschikbaar (v0.1.0, stem van de browser) |
+| 🇫🇷 Frans | `frans/` | beschikbaar (v0.1.0, stem van de browser) |
+| 🇺🇦 Oekraïens | `oekraiens/` | beschikbaar (v0.1.0, stem van de browser) |
 
 ## Snel starten
 
@@ -32,9 +32,10 @@ taalcursus/
 ├── pwa.js  sw.js  manifest.webmanifest   app-modus en offline voor de hoofdpagina
 ├── icons/                  iconen van de hoofdpagina
 ├── papiamento/             complete cursus (eigen README, woorden, audio, plaatjes, tools)
-├── engels/ spaans/ duits/ frans/ oekraiens/   placeholders ("komt eraan")
+├── engels/ spaans/ duits/ frans/ oekraiens/   volledige cursussen (zelfde opzet, 42 woorden elk)
 ├── docs/NIEUWE-CURSUS.md   hoe voeg je een taal toe
 ├── tools/maak_deploy.py    bouwt _site/ met alleen wat online mag
+├── tools/maak_cursus.py    maakt een cursusmap uit het sjabloon + tools/talen.py (woordenlijsten)
 ├── deploy/                 nginx-voorbeeld en docker-compose
 ├── .github/workflows/pages.yml   GitHub Pages
 ├── .htaccess               server-regels (Apache/LiteSpeed)

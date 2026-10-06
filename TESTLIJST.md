@@ -1,4 +1,4 @@
-# Testlijst: Taalcursus (hoofdpagina v0.1.0)
+# Testlijst: Taalcursus (hoofdpagina v0.2.0)
 
 Created by DieOuwe · www.dieouwe.nl
 
@@ -6,11 +6,10 @@ Start `start-server.bat` en open http://localhost:8080. Cursus-tests staan in `p
 
 ## Hoofdpagina
 - [ ] Zes kaarten: Papiamentu, Engels, Spaans, Duits, Frans, Oekraïens
-- [ ] Alleen Papiamentu is een link; de rest staat op "Binnenkort"
+- [ ] Alle zes kaarten openen hun cursus
 - [ ] Papiamentu opent de cursus; 🌸 linksboven brengt je terug
 - [ ] Na wat spelen: sterren en aantal woorden staan op de Papiamentu-kaart en in de bovenbalk
 - [ ] Kaarten onder elkaar op een telefoon, 2 en 3 kolommen op brede schermen; geen horizontale scroll
-- [ ] Een placeholder (bijv. Engels) toont "komt eraan" met een terugknop
 
 ## App en offline
 - [ ] 📲 App installeert de hoofdpagina; Papiamentu daarna apart installeren kan ook
@@ -21,3 +20,10 @@ Start `start-server.bat` en open http://localhost:8080. Cursus-tests staan in `p
 - [ ] `/.git/config`, `/papiamento/opnames/`, `/papiamento/tools/studio.html`, `/docs/` en `/README.md` geven 404/403
 - [ ] `/NOTICE.md` en `/papiamento/NOTICE.md` zijn wel te lezen
 - [ ] Na een nieuwe upload: één keer verversen en de nieuwe versie is er
+
+## Nieuwe cursussen (Engels, Spaans, Duits, Frans, Oekraïens)
+- [ ] Elke cursus: 42 woorden in 5 categorieën, uitspraakgids, quiz, sterren en badges werken
+- [ ] Geen dialectbalk (alleen Papiamentu heeft die)
+- [ ] 🔊 Zeg het: op de telefoon spreekt de browser het woord uit; zo niet, dan staat er "nog geen geluid" (geen fout)
+- [ ] Sterren per cursus apart (Engels begint op 0, ook al heb je Papiamentu gespeeld)
+- [ ] 🇺🇦 Oekraïens: letters (Cyrillisch) goed zichtbaar; stem op je telefoon aanwezig?

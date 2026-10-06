@@ -72,13 +72,14 @@
   }
 
   function kiesStem() {
-    var es = null, pt = null, i, v;
-    for (i = 0; i < voices.length; i++) {
-      v = voices[i];
-      if (!es && /^es/i.test(v.lang)) es = v;
-      if (!pt && /^pt/i.test(v.lang)) pt = v;
+    var talen = (window.PAP_DATA && window.PAP_DATA.meta && window.PAP_DATA.meta.ttsTalen) || ['es', 'pt'];
+    var t, i;
+    for (t = 0; t < talen.length; t++) {          // eerste taal in de lijst die een stem heeft wint
+      for (i = 0; i < voices.length; i++) {
+        if (voices[i].lang && voices[i].lang.toLowerCase().indexOf(talen[t].toLowerCase()) === 0) return voices[i];
+      }
     }
-    return es || pt;
+    return null;
   }
 
   function spreek(tekst) {
@@ -86,7 +87,7 @@
     var stem = kiesStem();
     if (voices.length && !stem) return 'none';   // alleen Nederlands/Engels beschikbaar: liever stil dan fout
     var u = new SpeechSynthesisUtterance(tekst);
-    u.lang = stem ? stem.lang : 'es-ES';
+    u.lang = stem ? stem.lang : ((window.PAP_DATA.meta && window.PAP_DATA.meta.ttsFallback) || 'es-ES');
     if (stem) u.voice = stem;
     u.rate = 0.8;
     u.pitch = 1.1;

@@ -1,43 +1,124 @@
 <!DOCTYPE html>
-<!-- Taalcursus - engels/index.html (placeholder) - v0.1.0 - Created by DieOuwe · www.dieouwe.nl -->
+<!-- Leer Engels - index.html - v0.1.0 - Created by DieOuwe · www.dieouwe.nl -->
 <html lang="nl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="description" content="Leer Engels spelenderwijs: woorden, quiz, sterren en badges voor kinderen.">
 <meta name="theme-color" content="#ffffff">
-<title>🇬🇧 Engels komt eraan · Taalcursus</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ctext y=%22.9em%22 font-size=%2290%22%3E🌍%3C/text%3E%3C/svg%3E">
-<link rel="stylesheet" href="../hub.css">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Engels">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<title>🇬🇧 Leer Engels! 🇬🇧</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ctext y=%22.9em%22 font-size=%2290%22%3E🇬🇧%3C/text%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
+<!-- Vaste balk: merk, sterren, app installeren en geluid blijven altijd zichtbaar -->
 <header class="topbar">
   <div class="topbar-inner">
-    <a class="brand" href="../index.html" title="Terug naar alle talen" aria-label="Taalcursus, terug naar alle talen">
-      <span class="brand-logo" aria-hidden="true">🌍</span>
-      <span class="brand-name">Taal<b>cursus</b></span>
+    <a class="brand" href="../index.html" title="Terug naar alle talen" aria-label="Leer Engels, terug naar alle talen">
+      <span class="brand-logo" aria-hidden="true">🇬🇧</span>
+      <span class="brand-name">Leer <b>Engels</b></span>
     </a>
+    <div class="stars-bar" id="starsBar" title="Je sterren">
+      <span class="star-icon" aria-hidden="true">⭐</span>
+      <span class="count" id="starCount">0</span>
+      <span class="label">sterren</span>
+    </div>
+    <button class="top-btn install-btn" id="installBtn" type="button" title="Installeer als app" aria-label="Installeer als app">
+      <span aria-hidden="true">📲</span><span class="lbl">App</span>
+    </button>
+    <button class="top-btn mute-btn" id="muteBtn" type="button" title="Geluid aan/uit" aria-label="Geluid aan of uit">🔊</button>
   </div>
 </header>
+
 <main class="container">
-  <div class="soon-page" data-color="blue">
-    <div class="soon-card">
-      <div class="stage"><span class="vlag" aria-hidden="true">🇬🇧</span></div>
-      <h1>Engels komt eraan</h1>
-      <div class="eigen">English</div>
-      <p>De wereldtaal. Deze cursus is nog in de maak. Straks leer je hier net als bij de andere talen:</p>
-      <ul>
-        <li>Woorden met plaatje en uitspraak</li>
-        <li>Een quiz met leerkaartjes</li>
-        <li>Sterren en badges verdienen</li>
-        <li>Echte stem om mee te luisteren</li>
-      </ul>
-      <br>
-      <a class="knop-terug" href="../index.html">← Terug naar alle talen</a>
+
+  <!-- HOOFDMENU -->
+  <section class="screen active" id="menuScreen">
+    <div class="hero">
+      <h1>Hello! <span aria-hidden="true">👋</span></h1>
+      <p>Leer Engels spelenderwijs. Begin maar!</p>
     </div>
-  </div>
+    <div class="dialect-bar" id="dialectBar" role="group" aria-label="Kies je variant"></div>
+    <div class="menu" id="menu"></div>
+  </section>
+
+  <!-- LEERSCHERM -->
+  <section class="screen" id="learnScreen">
+    <div class="screen-head">
+      <button class="back-btn" type="button" data-back>← Terug</button>
+      <div class="learn-title" id="learnTitle"></div>
+    </div>
+    <div class="learn-card" id="learnCard"></div>
+    <div class="audio-note" id="audioNote" aria-live="polite"></div>
+    <div class="nav-card">
+      <button type="button" id="prevBtn" class="round-btn" aria-label="Vorig woord">◀</button>
+      <button type="button" id="speakBtn" class="speak-btn">🔊 Zeg het</button>
+      <button type="button" id="nextBtn" class="round-btn" aria-label="Volgend woord">▶</button>
+    </div>
+    <div class="progress" id="progress"></div>
+  </section>
+
+  <!-- QUIZ -->
+  <section class="screen" id="quizScreen">
+    <div class="screen-head">
+      <button class="back-btn" type="button" data-back>← Terug</button>
+      <div class="learn-title">🎯 Quiz</div>
+    </div>
+    <div id="quizBody">
+      <div class="quiz-top">
+        <span id="qVoortgang"></span>
+        <span id="qStreak"></span>
+      </div>
+      <div class="meter quiz-meter" aria-hidden="true"><i id="qBar"></i></div>
+      <div class="question" id="questionBox"></div>
+      <div class="options" id="optionsBox"></div>
+      <div class="feedback" id="feedback" aria-live="polite"></div>
+      <div class="leerkaart" id="leerKaart" hidden></div>
+      <div class="quiz-next"><button type="button" id="qNext" hidden>Volgende ➡</button></div>
+    </div>
+    <div id="resultBox" hidden></div>
+  </section>
+
+  <!-- BADGES -->
+  <section class="screen" id="badgesScreen">
+    <div class="screen-head">
+      <button class="back-btn" type="button" data-back>← Terug</button>
+      <div class="learn-title">🏆 Jouw badges</div>
+    </div>
+    <div class="badges-grid" id="badgesBox"></div>
+  </section>
+
 </main>
+
 <footer>
+  <p class="foot-main">Welcome to English! 🇬🇧</p>
+  <p class="credit">Geluid: de computerstem van je eigen apparaat.</p>
   <p class="credit">Created by DieOuwe · <a href="https://www.dieouwe.nl" target="_blank" rel="noopener">www.dieouwe.nl</a></p>
 </footer>
+
+<!-- Uitleg: app installeren -->
+<div class="overlay" id="hulp" hidden>
+  <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="hulpTitel">
+    <h2 id="hulpTitel">📲 Zet Engels als app op je scherm</h2>
+    <div id="hulpTekst"></div>
+    <button type="button" class="sheet-close" id="hulpSluit">Sluiten</button>
+  </div>
+</div>
+
+<noscript><p class="noscript">Zet JavaScript aan om te spelen.</p></noscript>
+
+<script src="js/words.js"></script>
+<script src="js/game.js"></script>
+<script src="js/audio.js"></script>
+<script src="js/beeld.js"></script>
+<script src="js/app.js"></script>
+<script src="js/pwa.js"></script>
 </body>
 </html>

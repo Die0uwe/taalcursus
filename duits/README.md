@@ -1,9 +1,14 @@
-# Duits (Deutsch): placeholder
-
-Hier komt de cursus **Duits**. Nu staat er alleen een "komt eraan"-pagina (`index.html`).
-
-Een echte cursus maken: kopieer de map `papiamento/` naar deze map en volg
-[`docs/NIEUWE-CURSUS.md`](../docs/NIEUWE-CURSUS.md). Zet daarna in `cursussen.js` (hoofdmap)
-de status van deze taal op `"beschikbaar"` en vul `opslag` in.
+# Leer Duits! (Deutsch)
 
 Created by DieOuwe · www.dieouwe.nl
+
+Cursus **Duits** van de Taalcursus, versie 0.1.0. Zelfde opzet als `papiamento/`: leren, quiz, sterren en badges, app (PWA) en offline.
+
+- 42 woorden in 5 categorieën, elk met emoji, woord, Nederlands en uitspraakgids. Woorden aanpassen: `tools/talen.py` (en dan `python tools/maak_cursus.py duits --force`) of direct `js/words.js`.
+- **Geluid:** de stem van de browser of het apparaat (taalcode `de-DE`). Eigen mp3's gaan voor: `mp3/vrouw/<id>.mp3` (echte opname) of `mp3/mms/<id>.mp3` (computerstem).
+- Computerstem maken (Docker, zie `tools/Dockerfile`): model `facebook/mms-tts-deu`, licentie CC BY-NC 4.0. Controleer de licentie en pas `NOTICE.md` en de footer aan als je ze gebruikt.
+- Opslagsleutel in `localStorage`: `duits.v1`.
+- Eigen plaatjes: `img/<id>.png` (zie `img/LEESMIJ.md`). De ids zijn Nederlandse woorden (zon, maan, hond ...) en gelijk in alle cursussen.
+- De uitspraakgids is indicatief (Nederlandse klanken); laat hem nakijken door een moedertaalspreker.
+
+Hoofdpagina: `../index.html`. Hoe voeg je nog een taal toe: `../docs/NIEUWE-CURSUS.md`.
