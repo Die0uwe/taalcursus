@@ -1,0 +1,92 @@
+/* ============================================================
+   Taalcursus - sfeer (zon, wolken, ballonnen, sterren, vlaggetjes)  (sfeer.css)  v0.1.0
+   Created by DieOuwe · www.dieouwe.nl
+   Het vrolijke merk van "De wereld rond in 80 vragen". Wordt geladen door de hoofdpagina en de onderhoudspagina.
+   De elementen worden door sfeer.js gemaakt. Bij "minder beweging" staat alles stil.
+   ============================================================ */
+:root { --sun-top: 22px; }
+
+.sun {
+  position: fixed; top: var(--sun-top); right: 30px; width: 90px; height: 90px; border-radius: 50%; z-index: 0; pointer-events: none;
+  background: radial-gradient(circle, #fff176 0%, #ffd54f 60%, #ffb300 100%);
+  box-shadow: 0 0 50px 16px rgba(255, 213, 79, .6); animation: sunPulse 4s ease-in-out infinite;
+}
+@keyframes sunPulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.08); } }
+.sun .eye { position: absolute; top: 38%; width: 10px; height: 12px; background: #5d4037; border-radius: 50%; }
+.sun .eye.left { left: 26%; }
+.sun .eye.right { right: 26%; }
+.sun .eye::after { content: ''; position: absolute; top: 2px; left: 2px; width: 3px; height: 3px; background: #fff; border-radius: 50%; }
+.sun .mouth {
+  position: absolute; bottom: 26%; left: 50%; transform: translateX(-50%); width: 28px; height: 15px;
+  border: 2.5px solid #5d4037; border-top: none; border-radius: 0 0 28px 28px; background: rgba(255, 255, 255, .35);
+}
+
+.cloud { position: fixed; background: #fff; border-radius: 50%; opacity: .9; z-index: 0; pointer-events: none; filter: drop-shadow(0 6px 10px rgba(0, 0, 0, .08)); }
+.cloud::before, .cloud::after { content: ''; position: absolute; background: #fff; border-radius: 50%; }
+.cloud::before { width: 60%; height: 100%; top: -45%; left: 10%; }
+.cloud::after { width: 50%; height: 90%; top: -30%; right: 10%; }
+.cloud1 { width: 120px; height: 42px; top: 70px; left: -200px; animation: drift 40s linear infinite; }
+.cloud2 { width: 90px; height: 32px; top: 150px; left: -200px; animation: drift 55s linear infinite; animation-delay: -15s; }
+.cloud3 { width: 150px; height: 52px; top: 36px; left: -250px; animation: drift 70s linear infinite; animation-delay: -30s; }
+@keyframes drift { from { transform: translateX(0); } to { transform: translateX(120vw); } }
+
+.balloon {
+  position: fixed; bottom: -220px; width: 50px; height: 66px; border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%; z-index: 1; pointer-events: none;
+  animation: floatUp linear infinite; box-shadow: inset -8px -10px 0 rgba(0, 0, 0, .08);
+}
+.balloon::after { content: ''; position: absolute; bottom: -10px; left: 50%; width: 2px; height: 12px; background: #8d6e63; transform: translateX(-50%); }
+.balloon::before { content: ''; position: absolute; top: 10px; left: 12px; width: 12px; height: 17px; background: rgba(255, 255, 255, .55); border-radius: 50%; transform: rotate(-20deg); }
+@keyframes floatUp { from { transform: translateY(0) rotate(-3deg); } to { transform: translateY(-130vh) rotate(3deg); } }
+
+.star { position: fixed; font-size: 1.3rem; animation: twinkle 2s ease-in-out infinite; z-index: 1; pointer-events: none; }
+@keyframes twinkle { 0%, 100% { opacity: .3; transform: scale(.8) rotate(0deg); } 50% { opacity: 1; transform: scale(1.2) rotate(20deg); } }
+
+.road { position: fixed; bottom: 56px; left: 0; right: 0; height: 6px; background: repeating-linear-gradient(90deg, #555 0 26px, transparent 26px 52px); opacity: .35; z-index: 1; pointer-events: none; }
+.vehicle { position: fixed; bottom: 62px; font-size: 4.5rem; z-index: 2; pointer-events: none; filter: drop-shadow(0 8px 8px rgba(0, 0, 0, .25)); }
+.police { left: -200px; animation: driveRight 9s linear infinite; }
+.fire { right: -200px; animation: driveLeft 11s linear infinite; animation-delay: 2s; }
+@keyframes driveRight {
+  0% { transform: translateX(0) scaleX(-1) translateY(0); } 45% { transform: translateX(48vw) scaleX(-1) translateY(-3px); }
+  55% { transform: translateX(48vw) scaleX(-1) translateY(-3px); } 100% { transform: translateX(120vw) scaleX(-1) translateY(0); }
+}
+@keyframes driveLeft {
+  0% { transform: translateX(0) scaleX(1) translateY(0); } 45% { transform: translateX(-48vw) scaleX(1) translateY(-3px); }
+  55% { transform: translateX(-48vw) scaleX(1) translateY(-3px); } 100% { transform: translateX(-120vw) scaleX(1) translateY(0); }
+}
+.vehicle .light { position: absolute; top: -8px; left: 50%; transform: translateX(-50%); width: 20px; height: 20px; border-radius: 50%; animation: flash .5s steps(2) infinite; }
+.police .light { background: #2196f3; box-shadow: 0 0 22px 8px #2196f3; }
+.fire .light { background: #f44336; box-shadow: 0 0 22px 8px #f44336; }
+@keyframes flash { 0%, 100% { opacity: 1; } 50% { opacity: .15; } }
+
+.vlag-popup {
+  position: fixed; z-index: 5; pointer-events: none; display: flex; flex-direction: column; align-items: center; gap: 6px;
+  animation: popUp 5s cubic-bezier(.25, 1.2, .4, 1) forwards; filter: drop-shadow(0 10px 14px rgba(0, 0, 0, .25)); will-change: transform, opacity;
+}
+.vlag-popup .vlag-groot { font-size: 4rem; line-height: 1; animation: vlagWiggle 2.2s ease-in-out infinite; }
+.vlag-popup .naam {
+  padding: 5px 16px; font-size: 1rem; font-weight: 900; color: #fff; white-space: nowrap; border-radius: 99px; border: 3px solid #fff;
+  background: linear-gradient(90deg, #ff4081, #ffb300, #66bb6a, #42a5f5); background-size: 300% 100%;
+  box-shadow: 0 6px 0 rgba(0, 0, 0, .2); text-shadow: 2px 2px 0 rgba(0, 0, 0, .25); animation: regenboog 4s linear infinite;
+}
+@keyframes popUp {
+  0% { opacity: 0; scale: .4; rotate: -15deg; } 12% { opacity: 1; scale: 1.1; rotate: 5deg; } 22% { scale: 1; rotate: -3deg; }
+  35% { scale: 1.05; rotate: 3deg; } 50% { opacity: 1; scale: 1; rotate: 0deg; } 80% { opacity: 1; scale: 1; rotate: 0deg; }
+  100% { opacity: 0; scale: .5; rotate: 15deg; }
+}
+@keyframes vlagWiggle { 0%, 100% { transform: rotate(-6deg) scale(1); } 50% { transform: rotate(6deg) scale(1.08); } }
+@keyframes regenboog { 0% { background-position: 0% 50%; } 100% { background-position: 300% 50%; } }
+
+@media (max-width: 480px) {
+  .sun { width: 70px; height: 70px; right: 12px; }
+  .sun .eye { width: 8px; height: 10px; }
+  .sun .mouth { width: 22px; height: 12px; border-width: 2px; }
+  .vehicle { font-size: 3.4rem; bottom: 52px; }
+  .road { bottom: 46px; }
+  .vehicle .light { width: 15px; height: 15px; top: -6px; }
+  .vlag-popup .vlag-groot { font-size: 2.8rem; }
+  .vlag-popup .naam { font-size: .85rem; padding: 4px 12px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sun, .cloud, .balloon, .star, .vehicle, .vlag-popup, .vlag-popup .vlag-groot, .vlag-popup .naam, .vehicle .light { animation: none !important; }
+  .cloud1 { left: 8%; } .cloud2 { left: 55%; } .cloud3 { left: 30%; }
+}

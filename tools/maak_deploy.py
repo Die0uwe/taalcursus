@@ -6,7 +6,7 @@ Created by DieOuwe · www.dieouwe.nl
 Verzamelt ALLEEN wat online nodig is in de map _site/ (en met --zip ook als zipbestand),
 klaar om naar je subdomein (bijv. taal.dieouwe.nl) te uploaden.
 
-  Hoofdpagina (root): index.html, hub.css, hub.js, cursussen.js, pwa.js, sw.js, manifest, icons/,
+  Hoofdpagina (root): index.html, hub.css, hub.js, sfeer.*, onderhoud.*, cursussen.js, pwa.js, sw.js, manifest, icons/,
                       .htaccess, NOTICE.md, LICENSE
   Per cursusmap (elke map met een index.html, behalve tools/deploy/docs/...):
                       index.html, sw.js, manifest, NOTICE.md, css/, js/, icons/, mp3/ (alleen .mp3),
@@ -34,7 +34,8 @@ ROOT = Path(__file__).resolve().parent.parent
 UIT = ROOT / "_site"
 
 # Hoofdpagina
-ROOT_BESTANDEN = ["index.html", "hub.css", "hub.js", "cursussen.js", "pwa.js", "sw.js",
+ROOT_BESTANDEN = ["index.html", "hub.css", "hub.js", "sfeer.css", "sfeer.js", "cursussen.js", "pwa.js", "sw.js",
+                  "onderhoud.html", "onderhoud.css", "onderhoud.js",
                   "manifest.webmanifest", ".htaccess", "NOTICE.md", "LICENSE"]
 ROOT_MAPPEN = {"icons": {".png", ".svg", ".ico"}}
 

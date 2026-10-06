@@ -1,39 +1,69 @@
 <!DOCTYPE html>
-<!-- Taalcursus - onderhoudspagina (onderhoud.html) - v0.1.0 - Created by DieOuwe · www.dieouwe.nl
+<!-- Taalcursus - onderhoudspagina (onderhoud.html) - v0.2.0 - Created by DieOuwe · www.dieouwe.nl
      Staat deze pagina in de hoofdmap, dan toont de voorpagina (/) deze tekst (zie .htaccess, onderdeel 0).
-     Alleen nodig naast hub.css. De echte site blijft bereikbaar op /index.html. -->
+     Nodig naast deze pagina: onderhoud.css, onderhoud.js, sfeer.css, sfeer.js, logo.png en plak-mux2b7wy-7068c1.webp.
+     De stijl en scripts staan in aparte bestanden, want de beveiligingsregels (CSP) staan geen inline stijl of script toe. -->
 <html lang="nl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="robots" content="noindex">
-<meta name="theme-color" content="#ffffff">
-<title>🌍 Komt eraan! · De wereld rond in 80 vragen</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ctext y=%22.9em%22 font-size=%2290%22%3E🌍%3C/text%3E%3C/svg%3E">
-<link rel="stylesheet" href="hub.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>De wereld rond in 80 vragen — Komt eraan!</title>
+
+<link rel="icon" type="image/png" href="logo.png">
+<link rel="apple-touch-icon" href="logo.png">
+
+<!-- ===== SOCIAL / OG TAGS ===== -->
+<meta name="description" content="🌍 De wereld rond in 80 vragen — leer in je eigen tempo, op een leuke speelse manier! Binnenkort open op taal.scriptspace.nl">
+<link rel="canonical" href="https://taal.scriptspace.nl">
+
+<meta property="og:type"        content="website">
+<meta property="og:site_name"   content="De wereld rond in 80 vragen">
+<meta property="og:title"       content="🌍 De wereld rond in 80 vragen">
+<meta property="og:description" content="Leer in je eigen tempo en leer op een leuke speelse manier! Binnenkort open 🎉">
+<meta property="og:url"         content="https://taal.scriptspace.nl">
+<meta property="og:image"       content="https://taal.scriptspace.nl/plak-mux2b7wy-7068c1.webp">
+<meta property="og:image:width"  content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt"   content="Meisje met de tekst: De wereld rond in 80 vragen">
+<meta property="og:locale"      content="nl_NL">
+
+<meta name="twitter:card"        content="summary_large_image">
+<meta name="twitter:title"       content="🌍 De wereld rond in 80 vragen">
+<meta name="twitter:description" content="Leer in je eigen tempo en leer op een leuke speelse manier! Binnenkort open 🎉">
+<meta name="twitter:image"       content="https://taal.scriptspace.nl/plak-mux2b7wy-7068c1.webp">
+
+<meta name="theme-color" content="#ff4081">
+
+<link rel="stylesheet" href="sfeer.css">
+<link rel="stylesheet" href="onderhoud.css">
 </head>
-<body>
-<header class="topbar">
-  <div class="topbar-inner">
-    <div class="brand" aria-label="De wereld rond in 80 vragen">
-      <span class="brand-logo" aria-hidden="true">🌍</span>
-      <span class="brand-name">De wereld rond in <b>80 vragen</b></span>
+<body data-sfeer="vol">
+
+  <div class="card-wrap">
+    <img src="plak-mux2b7wy-7068c1.webp" alt="Meisje" class="girl">
+
+    <div class="card">
+      <h1>Komt eraaaaaaan!!!</h1>
+
+      <div class="tagline">🌍 De wereld rond in 80 vragen</div>
+
+      <p class="sub">
+        Leer in je eigen tempo en leer op een leuke speelse manier! 🎉<br>
+        Even wachten nog<span class="dots"></span> het wordt mega gaaf! 🌈✨
+      </p>
+
+      <div class="bar"><span></span></div>
+
+      <div class="badge">🚧 Binnenkort open — tot snel!</div>
     </div>
   </div>
-</header>
-<main class="container">
-  <div class="soon-page" data-color="blue">
-    <div class="soon-card">
-      <div class="stage"><span class="vlag" aria-hidden="true">🚧</span></div>
-      <h1>Komt eraan!!!</h1>
-      <div class="eigen">De wereld rond in 80 vragen</div>
-      <p>Leer in je eigen tempo en leer op een leuke, speelse manier! Even wachten nog, het wordt mega gaaf! 🌈✨</p>
-      <p><b>🚧 Binnenkort open, tot snel!</b></p>
-    </div>
+
+  <div class="footer">
+    Gemaakt met <a href="https://scriptspace.nl" target="_blank" rel="noopener">scriptspace.nl</a> web editor · copy by <a href="https://www.dieouwe.nl" target="_blank" rel="noopener">www.dieouwe.nl</a> 2026
   </div>
-</main>
-<footer>
-  <p class="credit">Gemaakt met <a href="https://scriptspace.nl" target="_blank" rel="noopener">scriptspace.nl</a> web editor · Created by DieOuwe · <a href="https://www.dieouwe.nl" target="_blank" rel="noopener">www.dieouwe.nl</a> 2026</p>
-</footer>
+
+<script src="cursussen.js"></script>
+<script src="sfeer.js"></script>
+<script src="onderhoud.js"></script>
 </body>
 </html>

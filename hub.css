@@ -1,5 +1,5 @@
 /* ============================================================
-   Taalcursus - stijl hoofdpagina  (hub.css)  v0.1.0
+   Taalcursus - stijl hoofdpagina  (hub.css)  v0.2.0
    Created by DieOuwe · www.dieouwe.nl
    Zelfde vormgeving en variabelen als de cursussen (papiamento/css/style.css),
    zodat alles één familie lijkt. Aanpassen? Pas eerst de variabelen in :root aan.
@@ -138,3 +138,41 @@ footer a { color: inherit; }
   .taal-tekst h2 { font-size: 1.35rem; }
 }
 @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+
+/* ============================================================
+   Merk "De wereld rond in 80 vragen" (v0.2.0): hemel, speelse letters, stippellijnen.
+   Staat achteraan, zodat het de standaardwaarden hierboven overschrijft. Zon, wolken en ballonnen: sfeer.css / sfeer.js.
+   ============================================================ */
+:root {
+  --ink: #3a2b1f; --muted: #6d4c41; --brand: #ff4081; --pink: #ff4081; --dash: #ff80ab;
+  --font: "Comic Sans MS", "Baloo 2", ui-rounded, "Segoe UI", system-ui, -apple-system, sans-serif;
+  --sun-top: 74px;
+}
+body { background-color: #b3e5fc; background-image: linear-gradient(180deg, #87ceeb 0%, #b3e5fc 45%, #fff8b0 100%); background-attachment: fixed; position: relative; }
+.container, footer { position: relative; z-index: 2; }
+.topbar { background: rgba(255, 255, 255, .85); border-bottom: 3px dashed var(--dash); }
+.brand-name b { color: var(--brand); }
+.install-btn { color: var(--brand); border-color: rgba(255, 64, 129, .45); }
+.top-btn:hover { border-color: var(--brand); }
+.stars-bar { background: #fff8d6; border-color: #ffb300; }
+
+.hero h1 { color: #ff4081; text-shadow: 3px 3px 0 #fff176, 6px 6px 0 rgba(255, 64, 129, .25); }
+.hero p { color: var(--muted); font-weight: 700; }
+
+.taal-card { background: rgba(255, 255, 255, .93); border: 4px dashed var(--dash); border-radius: 34px; box-shadow: 0 14px 34px rgba(0, 0, 0, .15); }
+.taal-card::before { display: none; }
+.taal-card:hover { transform: translateY(-5px) rotate(-.6deg); box-shadow: 0 20px 44px rgba(0, 0, 0, .2); }
+.taal-card.soon { background: rgba(255, 255, 255, .75); }
+.taal-tekst h2 { color: var(--ink); }
+.badge-go { background: linear-gradient(90deg, #ff4081, #ffb300); box-shadow: 0 4px 0 rgba(0, 0, 0, .15); }
+.badge-soon { background: rgba(58, 43, 31, .08); }
+.stat { background: #fff8d6; }
+
+.soon-card { border: 4px dashed var(--dash); border-radius: 34px; }
+.knop-terug { background: linear-gradient(90deg, #ff4081, #ffb300); box-shadow: 0 6px 0 rgba(0, 0, 0, .15); }
+.sheet-close { background: var(--brand); }
+.sheet { border: 4px dashed var(--dash); }
+
+footer { background: rgba(255, 255, 255, .75); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); border-top: 3px dashed var(--dash); margin-top: 10px; padding-top: 14px; color: var(--muted); font-weight: 700; }
+footer .foot-main { color: var(--brand); }
+footer a { color: var(--brand); }

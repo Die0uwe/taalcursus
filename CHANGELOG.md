@@ -4,6 +4,25 @@ Created by DieOuwe · www.dieouwe.nl
 
 Nieuwste bovenaan. De wijzigingen van de cursus zelf staan in `papiamento/CHANGELOG.md`.
 
+## [2026-10-06 22:20] — Merk "De wereld rond in 80 vragen": onderhoudspagina terug en nieuwe look hoofdpagina
+
+**Type:** UI Polish
+**Skill:** design-architect, webapp-dev (via wow-bigboss-orchestrator)
+**Bestanden:** `onderhoud.html|css|js`, `sfeer.css|js`, `hub.css`, `index.html`, `sw.js`, `tools/maak_deploy.py`
+**Versie:** hoofdpagina v0.2.0
+
+### Wijzigingen
+- De originele "Komt eraaaaaaan!!!"-pagina is terug (zon, wolken, ballonnen, politie- en brandweerauto, vlaggetjes, regenboogbalk), opgesplitst in `onderhoud.html`, `onderhoud.css`, `onderhoud.js`. Reden: de beveiligingsregels (CSP) blokkeren inline stijl en script, waardoor de pagina kaal was.
+- Het meisje-plaatje wordt verborgen als het bestand ontbreekt (geen kapot plaatje meer).
+- De hoofdpagina heeft nu hetzelfde merk: hemelkleuren, speelse letters, stippellijnen, zon, wolken, ballonnen en vlaggetjes met de taalnamen (`sfeer.css`, `sfeer.js`). Bij "minder beweging" staat alles stil.
+- Deploy-script neemt de nieuwe bestanden mee.
+
+### Open actiepunten
+- [ ] `logo.png` en `plak-mux2b7wy-7068c1.webp` (meisje) in de repo zetten zodra beschikbaar
+- [ ] Cursussen zelf ook in dit merk? (nu hebben ze nog hun eigen roze/paarse stijl)
+
+---
+
 ## [2026-10-06 22:00] — Cursussen Engels, Spaans, Duits, Frans en Oekraïens
 
 **Type:** Feature
