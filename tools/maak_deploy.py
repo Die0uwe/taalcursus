@@ -35,7 +35,7 @@ UIT = ROOT / "_site"
 
 # Hoofdpagina
 ROOT_BESTANDEN = ["index.html", "hub.css", "kleuren.css", "hub.js", "sfeer.css", "sfeer.js", "cursussen.js", "pwa.js", "sw.js",
-                  "onderhoud.html", "onderhoud.css", "onderhoud.js", "meisje.webp",
+                  "onderhoud.html", "onderhoud.css", "onderhoud.js", "meisje-boven.webp",
                   "manifest.webmanifest", ".htaccess", "NOTICE.md", "LICENSE"]
 ROOT_MAPPEN = {"icons": {".png", ".svg", ".ico"}}
 

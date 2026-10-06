@@ -4,10 +4,10 @@
    Bewaart alleen de hoofdpagina zelf voor offline gebruik. De cursussen (papiamento/ ...)
    hebben elk hun eigen service worker en worden hier met rust gelaten.
    ============================================================ */
-const VERSIE = 'hub-v0.5.0';
+const VERSIE = 'hub-v0.6.0';
 const VOORVOEGSEL = VERSIE.split('-')[0] + '-';
 const SCHIL = [
-  './', 'index.html', 'hub.css', 'kleuren.css', 'sfeer.css', 'sfeer.js', 'meisje.webp', 'hub.js', 'cursussen.js', 'pwa.js', 'manifest.webmanifest',
+  './', 'index.html', 'hub.css', 'kleuren.css', 'sfeer.css', 'sfeer.js', 'meisje-boven.webp', 'hub.js', 'cursussen.js', 'pwa.js', 'manifest.webmanifest',
   'icons/icon-192.png', 'icons/icon-512.png', 'icons/apple-touch-icon.png'
 ];
 const BEKEND = new Set(SCHIL.map((p) => new URL(p, self.registration.scope).href));

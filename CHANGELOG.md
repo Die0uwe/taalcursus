@@ -4,6 +4,19 @@ Created by DieOuwe · www.dieouwe.nl
 
 Nieuwste bovenaan. De wijzigingen van de cursus zelf staan in `papiamento/CHANGELOG.md`.
 
+## [2026-10-07 01:25] — Meisje-bestand hernoemd (oude plaatje bleef in de cache hangen)
+
+**Type:** Bugfix
+**Skill:** webapp-dev (via wow-bigboss-orchestrator)
+**Bestanden:** `meisje-boven.webp` (was `meisje.webp`), `papiamento/ui/meisje-boven.webp`, `index.html`, `onderhoud.html`, `sw.js`, `papiamento/sw.js`, `tools/maak_deploy.py`
+**Versie:** hoofdpagina v0.6.0, papiamento v0.12.0, overige cursussen v0.8.0
+
+### Wijzigingen
+- Het leunende meisje staat nu onder een nieuwe bestandsnaam. Op de live site kwam nog het oude cirkel-plaatje (duim omhoog) voor, omdat Cloudflare, de browser en de offline-cache het oude `meisje.webp` bleven tonen. Een nieuwe naam omzeilt dat.
+- Cache-versies verhoogd, zodat de service workers het nieuwe bestand binnenhalen.
+
+---
+
 ## [2026-10-07 01:10] — Poppetje voor de antwoordtekst; auto's en ballonnen ook op de hoofdpagina
 
 **Type:** Feature / UI Polish
