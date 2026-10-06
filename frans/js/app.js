@@ -68,6 +68,8 @@
   function updateSfx() {
     var s = G.state();
     A.setSfx(s.sfxAan, s.sfxVol);
+    A.setComputerStem(s.stemAan);
+    el('stemAan').checked = s.stemAan;
     el('sfxAan').checked = s.sfxAan;
     el('sfxVol').value = Math.round(s.sfxVol * 100);
     el('sfxVol').disabled = !s.sfxAan;
@@ -249,6 +251,7 @@
       if (lijst[index] !== w) return;                 // ondertussen naar ander woord
       var note = el('audioNote');
       if (res.via === 'tts') note.textContent = '🗣️ Dit is een computerstem. Een echte opname komt nog.';
+      else if (res.via === 'stemuit') note.textContent = '🔇 De computerstem staat uit. Zet hem aan via 🎚️.';
       else if (res.via === 'none') note.textContent = '🔇 Voor dit woord is nog geen geluid.';
       else if (res.via === 'blocked') note.textContent = '👆 Tik op "Zeg het" om het te horen.';
       else note.textContent = '';
@@ -463,7 +466,7 @@
   G.on(function (gebeurtenis, state, data) {
     if (gebeurtenis === 'stars') updateSterren(true);
     if (gebeurtenis === 'muted') updateMute();
-    if (gebeurtenis === 'sfx') updateSfx();
+    if (gebeurtenis === 'sfx' || gebeurtenis === 'stem') updateSfx();
     if (gebeurtenis === 'badge') badgePopup(data);
     if (gebeurtenis === 'dialect') {
       bouwDialectBalk();
@@ -476,6 +479,7 @@
   el('sfxPanel').addEventListener('click', function (e) { if (e.target === el('sfxPanel')) el('sfxPanel').hidden = true; });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') el('sfxPanel').hidden = true; });
   el('sfxAan').addEventListener('change', function () { G.setSfx(el('sfxAan').checked); if (el('sfxAan').checked) A.sfx('goed'); });
+  el('stemAan').addEventListener('change', function () { G.setStem(el('stemAan').checked); });
   el('sfxVol').addEventListener('input', function () { G.setSfx(true, el('sfxVol').value / 100); });
   el('sfxVol').addEventListener('change', function () { A.sfx('goed'); });   // laat even horen hoe hard het is
   el('muteBtn').addEventListener('click', function () { G.setMuted(!G.state().muted); });

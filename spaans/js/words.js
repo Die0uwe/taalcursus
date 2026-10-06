@@ -1,5 +1,5 @@
 /* ============================================================
-   Leer Spaans - woordenlijst  (js/words.js)  v0.8.0
+   Leer Spaans - woordenlijst  (js/words.js)  v0.9.0
    Created by DieOuwe · www.dieouwe.nl
    Gemaakt met tools/maak_cursus.py uit tools/talen.py (pas de woorden daar aan en maak de cursus opnieuw,
    of pas dit bestand direct aan).
@@ -15,7 +15,7 @@
    uitspraak: gids voor Nederlandstalige kinderen (indicatief)
    ============================================================ */
 window.PAP_DATA = {
-  "meta": {"versie": "0.8.0", "standaardDialect": "std", "taal": "Spaans", "kampioen": "Español-kampioen!", "opslag": "spaans.v1", "ttsTalen": ["es"], "ttsFallback": "es-ES"},
+  "meta": {"versie": "0.9.0", "standaardDialect": "std", "taal": "Spaans", "kampioen": "Español-kampioen!", "opslag": "spaans.v1", "ttsTalen": ["es"], "ttsFallback": "es-ES"},
   "dialecten": [ {"id": "std", "naam": "Spaans", "vlag": "🇪🇸"} ],
   "categorieen": [
     {"id": "basis", "naam": "Basiswoorden", "sub": "Kijk & luister", "icon": "📚", "kleur": "pink"},

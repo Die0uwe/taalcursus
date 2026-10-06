@@ -6,7 +6,7 @@
    - mp3/ en img/: worden bewaard zodra ze voor het eerst gebruikt zijn.
    - Verhoog VERSIE bij elke release, dan haalt de app de nieuwe bestanden op.
    ============================================================ */
-const VERSIE = 'pap-v0.12.0';
+const VERSIE = 'pap-v0.13.0';
 const VOORVOEGSEL = VERSIE.split('-')[0] + '-';   // elke cursus ruimt alleen zijn eigen oude caches op
 const SCHIL = [
   './', 'index.html', 'manifest.webmanifest',

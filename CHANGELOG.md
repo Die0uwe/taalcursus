@@ -4,6 +4,19 @@ Created by DieOuwe · www.dieouwe.nl
 
 Nieuwste bovenaan. De wijzigingen van de cursus zelf staan in `papiamento/CHANGELOG.md`.
 
+## [2026-10-07 02:00] — Schakelaar voor de computerstem
+
+**Type:** Feature
+**Skill:** webapp-dev (via wow-bigboss-orchestrator)
+**Bestanden:** `papiamento/js/{audio,game,app}.js`, `papiamento/index.html`, `papiamento/css/style.css`, `papiamento/sw.js`, `tools/maak_cursus.py`
+**Versie:** papiamento v0.13.0, overige cursussen v0.9.0
+
+### Wijzigingen
+- In het 🎚️-paneel staat nu "Computerstem aan". Uit betekent: geen browserstem en geen MMS-computerstem-mp3's; echte opnames (`mp3/vrouw/…` en losse `mp3/<id>.mp3`) blijven klinken. De keuze wordt bewaard per cursus; de melding onder het woord legt uit dat de stem uit staat.
+- Een uitklapbare uitleg in het paneel: de app kan alleen zijn eigen stem uitzetten. Praat het systeem zelf mee, dan staat dat in Windows (Verteller: Windows-toets + Ctrl + Enter, of Instellingen > Toegankelijkheid > Verteller) of Mac (Systeeminstellingen > Toegankelijkheid > Gesproken inhoud).
+
+---
+
 ## [2026-10-07 01:40] — Huisjes en bomen langs de weg
 
 **Type:** Feature / UI Polish

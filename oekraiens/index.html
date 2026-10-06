@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- Leer Oekraïens - index.html - v0.8.0 - Created by DieOuwe · www.dieouwe.nl -->
+<!-- Leer Oekraïens - index.html - v0.9.0 - Created by DieOuwe · www.dieouwe.nl -->
 <html lang="nl">
 <head>
 <meta charset="UTF-8">
@@ -118,13 +118,23 @@
 <!-- Geluidjes: aan/uit en volume -->
 <div class="overlay" id="sfxPanel" hidden>
   <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="sfxTitel">
-    <h2 id="sfxTitel">🎚️ Geluidjes</h2>
-    <p>De kleine geluidjes bij goed, fout en badges.</p>
+    <h2 id="sfxTitel">🎚️ Geluid</h2>
+    <label class="sfx-rij"><input type="checkbox" id="stemAan"> <span>Computerstem aan</span></label>
+    <p class="sfx-tip">De stem van de computer die de woorden uitspreekt. Echte opnames (als ze er zijn) blijven altijd klinken.</p>
+    <p>De kleine geluidjes bij goed, fout en badges:</p>
     <label class="sfx-rij"><input type="checkbox" id="sfxAan"> <span>Geluidjes aan</span></label>
     <label class="sfx-rij sfx-vol"><span aria-hidden="true">🔈</span>
       <input type="range" id="sfxVol" min="0" max="100" step="5" value="50" aria-label="Volume van de geluidjes">
       <span aria-hidden="true">🔊</span></label>
     <p class="sfx-tip">Het knopje 🔊 bovenin zet alle geluid uit, ook de stem.</p>
+    <details class="sfx-tip">
+      <summary>Praat je computer zelf mee?</summary>
+      <p>Deze app kan alleen zijn eigen stem uitzetten. Een stem van het systeem zelf zet je in je instellingen uit:</p>
+      <ul>
+        <li><b>Windows:</b> Verteller aan/uit met Windows-toets + Ctrl + Enter, of Instellingen &gt; Toegankelijkheid &gt; Verteller.</li>
+        <li><b>Mac:</b> Systeeminstellingen &gt; Toegankelijkheid &gt; Gesproken inhoud (zet "Spreek selectie uit" uit).</li>
+      </ul>
+    </details>
     <button type="button" class="sheet-close" id="sfxSluit">Klaar</button>
   </div>
 </div>

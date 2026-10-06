@@ -23,6 +23,7 @@
   var muted = false;
   var sfxAan = true;     // geluidjes (goed/fout/badge) los aan of uit te zetten
   var sfxVol = 0.5;      // 0 ... 1
+  var computerStem = true; // false: geen computerstem (browserstem en MMS-mp3's), echte opnames blijven
   var voices = [];
 
   function laadStemmen() {
@@ -41,6 +42,7 @@
   function kandidaten(w, dialect) {
     var lijst = [];
     STEMMEN.forEach(function (stem) {
+      if (stem === 'mms' && !computerStem) return;
       if (dialect && dialect !== STANDAARD) lijst.push({ url: 'mp3/' + stem + '/' + dialect + '/' + w.id + '.mp3', stem: stem });
       lijst.push({ url: 'mp3/' + stem + '/' + w.id + '.mp3', stem: stem });
     });
@@ -108,6 +110,7 @@
 
     function volgende() {
       if (i >= lijst.length) {
+        if (!computerStem) return Promise.resolve({ via: 'stemuit', stem: null });
         var via = spreek(tekst || woord.pap);
         return Promise.resolve({ via: via, stem: null });
       }
@@ -201,6 +204,7 @@
     sfx: sfx,
     setMuted: function (b) { muted = !!b; if (muted) stopAlles(); },
     setSfx: function (aan, vol) { sfxAan = !!aan; if (typeof vol === 'number') sfxVol = Math.min(1, Math.max(0, vol)); },
+    setComputerStem: function (b) { computerStem = !!b; if (!computerStem) stopAlles(); },
     isMuted: function () { return muted; }
   };
 })();
