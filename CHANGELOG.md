@@ -4,6 +4,20 @@ Created by DieOuwe · www.dieouwe.nl
 
 Nieuwste bovenaan. De wijzigingen van de cursus zelf staan in `papiamento/CHANGELOG.md`.
 
+## [2026-10-07 00:40] — Eén gedeeld kleurenbestand voor alle pagina's (kleuren van de onderhoudspagina)
+
+**Type:** UI Polish
+**Skill:** design-architect, webapp-dev (via wow-bigboss-orchestrator)
+**Bestanden:** `kleuren.css` (nieuw), `index.html`, `onderhoud.html`, `sw.js`, `papiamento/css/kleuren.css`, `papiamento/index.html`, `papiamento/sw.js`, `tools/maak_cursus.py`, `tools/maak_deploy.py`
+**Versie:** hoofdpagina v0.4.0, papiamento v0.10.0, overige cursussen v0.6.0
+
+### Wijzigingen
+- Nieuw `kleuren.css`: de lucht (blauw naar geel), roze/gele titels, roze stippelranden, bruine tekst en de roze/oranje/blauwe/groene knoppen van de onderhoudspagina. Het wordt als laatste stijlblad geladen door de hoofdpagina, de onderhoudspagina en elke cursus, dus één plek om kleuren te wijzigen.
+- De paarse accenten in de cursussen zijn nu merk-roze of blauw; de lichtere achtergrond is vervangen door dezelfde lucht als de onderhoudspagina.
+- `tools/maak_cursus.py` kopieert `kleuren.css` uit de hoofdmap naar het sjabloon en alle cursussen; de kopie staat ook in de offline-cache.
+
+---
+
 ## [2026-10-07 00:20] — Het echte meisje (leunend op de kaart) op alle startpagina's
 
 **Type:** UI Polish

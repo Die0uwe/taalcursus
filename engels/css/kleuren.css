@@ -1,0 +1,83 @@
+/* ============================================================
+   Taalcursus - gedeelde kleuren en achtergrond  (kleuren.css)  v0.1.0
+   Created by DieOuwe · www.dieouwe.nl
+   EEN bron voor het merk "De wereld rond in 80 vragen": dezelfde lucht, dezelfde
+   roze/gele/blauwe kleuren en dezelfde stippelranden als de onderhoudspagina.
+   Wordt als LAATSTE stijlblad geladen door de hoofdpagina, de onderhoudspagina en elke cursus.
+   (De kopie in papiamento/css/kleuren.css wordt door tools/maak_cursus.py bijgewerkt uit dit bestand.)
+   Aanpassen? Pas hier de variabelen aan, dan volgt alles.
+   ============================================================ */
+:root {
+  --ink: #3a2b1f;
+  --muted: #6d4c41;
+  --brand: #ff4081;
+  --brand-dark: #d81b60;
+  --pink: #ff4081;
+  --pink-dark: #d81b60;
+  --dash: #ff80ab;
+  --sun: #ffb300;
+  --geel: #fff176;
+  --sky: #42a5f5;
+  --sky-dark: #1e88e5;
+  --green: #66bb6a;
+  --purple: #ff4081;           /* oude "paarse" accenten zijn nu merk-roze */
+  --lucht: linear-gradient(180deg, #87ceeb 0%, #b3e5fc 45%, #fff8b0 100%);
+  --font: "Comic Sans MS", "Comic Sans", "Baloo 2", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+body {
+  font-family: var(--font);
+  color: var(--ink);
+  background-color: #b3e5fc;
+  background-image: var(--lucht);
+  background-attachment: fixed;
+}
+
+/* balk boven en voet onder: wit-doorzichtig met roze stippellijn */
+.topbar { background: rgba(255, 255, 255, .85); border-bottom: 3px dashed var(--dash); }
+footer { background: rgba(255, 255, 255, .75); border-top: 3px dashed var(--dash); color: var(--muted); }
+footer .foot-main { color: var(--pink); }
+
+/* titels: roze met gele schaduw */
+.hero h1 { color: var(--pink); text-shadow: 3px 3px 0 var(--geel), 6px 6px 0 rgba(255, 64, 129, .25); }
+.hero p { color: var(--muted); font-weight: 700; }
+.hero p b { color: var(--pink); }
+.learn-title { color: var(--pink); text-shadow: 2px 2px 0 var(--geel); }
+.menu-section > h3 { color: var(--muted); text-shadow: 1px 1px 0 #fff; }
+
+/* kaarten: licht doorzichtig wit */
+.learn-card, .question, .leerkaart, .sheet, .option, .badge-card.earned { background: rgba(255, 255, 255, .92); }
+.menu-card:not(.action) { background-color: var(--tint); }
+
+/* knoppen en keuzes: roze rand zoals het kader van de onderhoudspagina */
+.dialect-btn { color: var(--pink-dark); border-color: var(--dash); }
+.dialect-btn:hover { color: var(--pink); }
+.dialect-btn.on { background: var(--pink); border-color: var(--pink); color: #fff; }
+.back-btn, .round-btn, .top-btn { border-color: var(--dash); color: var(--pink-dark); }
+.top-btn:hover, .round-btn:hover { border-color: var(--pink); background: #fff0f5; }
+.install-btn { color: var(--pink-dark); }
+.stars-bar { background: #fff8d6; border-color: var(--sun); }
+.stars-bar .count { color: var(--pink); }
+.menu-card .cat-count, .menu-card.action .cat-count { color: var(--pink-dark); }
+.menu-card .sub, .menu-card.action .sub { color: var(--muted); }
+.learn-card .stage { border-bottom-color: var(--dash); }
+.learn-card .nl-word, .lk-nl { color: var(--sky-dark); }
+.question { color: var(--pink-dark); border-color: var(--sky); }
+.option { border-color: var(--dash); }
+.option:hover:not(:disabled) { border-color: var(--pink); }
+.leerkaart { border-color: var(--dash); }
+.progress .dot.now { background: var(--pink); }
+.progress .dot.seen { background: var(--green); }
+.progress-text, .audio-note, .quiz-top { color: var(--muted); }
+
+/* grote knoppen: de gradienten van de onderhoudspagina */
+.speak-btn, .nav-card .big-btn, .listen-btn { background: linear-gradient(90deg, #ff4081, #ffb300); box-shadow: 0 6px 0 rgba(0, 0, 0, .15); border: 3px solid #fff; }
+.quiz-next button, .nav-card .big-btn.alt { background: linear-gradient(90deg, #42a5f5, #66bb6a); box-shadow: 0 6px 0 rgba(0, 0, 0, .15); border: 3px solid #fff; }
+.menu-card.action[data-color="blue"] { background: #dcefff; --edge: var(--sky); }
+.menu-card.action[data-color="orange"] { background: #fff1c9; --edge: var(--sun); }
+.sheet-close { background: var(--pink); box-shadow: 0 5px 0 var(--pink-dark); }
+.sheet { border-color: var(--dash); }
+.meter { background: #fff; border: 2px solid var(--dash); }
+
+/* de lucht ook achter de hoofdpagina en cursussen, niet donkerder worden bij dark mode */
+html { background: #b3e5fc; }

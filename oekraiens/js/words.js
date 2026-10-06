@@ -1,5 +1,5 @@
 /* ============================================================
-   Leer Oekraïens - woordenlijst  (js/words.js)  v0.5.0
+   Leer Oekraïens - woordenlijst  (js/words.js)  v0.6.0
    Created by DieOuwe · www.dieouwe.nl
    Gemaakt met tools/maak_cursus.py uit tools/talen.py (pas de woorden daar aan en maak de cursus opnieuw,
    of pas dit bestand direct aan).
@@ -15,7 +15,7 @@
    uitspraak: gids voor Nederlandstalige kinderen (indicatief)
    ============================================================ */
 window.PAP_DATA = {
-  "meta": {"versie": "0.5.0", "standaardDialect": "std", "taal": "Oekraïens", "kampioen": "Oekraïens-kampioen!", "opslag": "oekraiens.v1", "ttsTalen": ["uk"], "ttsFallback": "uk-UA"},
+  "meta": {"versie": "0.6.0", "standaardDialect": "std", "taal": "Oekraïens", "kampioen": "Oekraïens-kampioen!", "opslag": "oekraiens.v1", "ttsTalen": ["uk"], "ttsFallback": "uk-UA"},
   "dialecten": [ {"id": "std", "naam": "Oekraïens", "vlag": "🇺🇦"} ],
   "categorieen": [
     {"id": "basis", "naam": "Basiswoorden", "sub": "Kijk & luister", "icon": "📚", "kleur": "pink"},
