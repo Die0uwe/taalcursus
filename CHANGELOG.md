@@ -4,6 +4,19 @@ Created by DieOuwe · www.dieouwe.nl
 
 Nieuwste bovenaan. De wijzigingen van de cursus zelf staan in `papiamento/CHANGELOG.md`.
 
+## [2026-10-07 00:55] — Groter meisje boven de rand (onderhoud) en boven de titel (hoofdpagina)
+
+**Type:** UI Polish
+**Skill:** design-architect (via wow-bigboss-orchestrator)
+**Bestanden:** `onderhoud.css`, `hub.css`, `index.html`
+**Versie:** hoofdpagina v0.4.0
+
+### Wijzigingen
+- Onderhoudspagina: het meisje is veel groter (tot 390 px) en leunt met haar handen op de bovenrand van de kaart. Ze staat nu in de pagina zelf in plaats van er los bovenop, dus de muts wordt nooit afgeknipt.
+- Hoofdpagina: meisje boven de titel, groter dan eerst (250 px, op telefoon 190 px), zoals bij de cursussen.
+
+---
+
 ## [2026-10-07 00:40] — Eén gedeeld kleurenbestand voor alle pagina's (kleuren van de onderhoudspagina)
 
 **Type:** UI Polish
