@@ -103,7 +103,8 @@
     w.style.left = zones[z].x + 'vw';
     w.style.top = zones[z].y + 'vh';
     w.style.translate = '-50% -50%';
-    var v = document.createElement('div'); v.className = 'vlag-groot'; v.textContent = taal.vlag;
+    var v = document.createElement('div'); v.className = 'vlag-groot';
+    if (window.Vlaggen) window.Vlaggen.vul(v, taal.vlag); else v.textContent = taal.vlag;
     var n = document.createElement('div'); n.className = 'naam'; n.textContent = taal.naam;
     w.appendChild(v); w.appendChild(n);
     setTimeout(function () { if (w.parentNode) w.parentNode.removeChild(w); }, 5100);

@@ -4,6 +4,20 @@ Created by DieOuwe · www.dieouwe.nl
 
 Nieuwste bovenaan. De wijzigingen van de cursus zelf staan in `papiamento/CHANGELOG.md`.
 
+## [2026-10-07 03:20] — Vlagplaatjes voor Windows, autootjes 5px lager op mobiel
+
+**Type:** Feature + UI Polish
+**Skill:** design-architect (via wow-bigboss-orchestrator)
+**Bestanden:** `vlaggen.js`, `vlaggen/*.svg` (nieuw), `papiamento/img/vlag-*.svg`, `hub.js`, `sfeer.js`, `sfeer.css`, `kleuren.css`, `sw.js`, `papiamento/js/app.js`, `onderhoud.html`, `tools/*`
+**Versie:** hoofdpagina v0.10.1
+
+### Wijzigingen
+- Windows heeft geen vlag-emoji (letters als "GB", "CW"). `vlaggen.js` test dat met een canvas en zet daar dan een klein vlagplaatje (SVG) voor: hoofdpagina, opduikende vlaggetjes en de eilandkeuze (Curaçao, Aruba, Bonaire). Op telefoon, Mac en Linux blijft de emoji staan.
+- Autootjes op mobiel (tot 480 px) 5 px lager (`bottom` 52 naar 47 px).
+- Generator: de eilandvlaggetjes staan alleen in de voorraadlijst van Papiamentu; in de andere cursussen liet dat de service worker niet installeren (opgevangen door de cursustest).
+- Getest met een nagebootste Windows (geen emoji-vlaggen): 6 plaatjes op de hoofdpagina, 3 bij de eilandkeuze, alles laadt; cursustest 72/72.
+- Let op: de vlag van Bonaire en de wapens in de Spaanse vlag zijn vereenvoudigd.
+
 ## [2026-10-07 03:00] — Deel-knop, huisjes en bomen goed zichtbaar in browsers
 
 **Type:** Feature + Bugfix

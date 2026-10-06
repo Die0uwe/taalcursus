@@ -142,7 +142,9 @@
     balk.hidden = D.dialecten.length < 2;     // één dialect (bijv. Engels): geen keuzebalk
     if (balk.hidden) return;
     D.dialecten.forEach(function (d) {
-      var b = maak('button', 'dialect-btn' + (d.id === G.dialect() ? ' on' : ''), d.vlag + ' ' + d.naam);
+      var b = maak('button', 'dialect-btn' + (d.id === G.dialect() ? ' on' : ''));
+      if (window.Vlaggen) window.Vlaggen.vul(b, d.vlag); else b.appendChild(document.createTextNode(d.vlag));
+      b.appendChild(document.createTextNode(' ' + d.naam));
       b.type = 'button';
       b.addEventListener('click', function () { G.setDialect(d.id); });
       balk.appendChild(b);

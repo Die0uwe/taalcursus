@@ -11,7 +11,7 @@ const VOORVOEGSEL = VERSIE.split('-')[0] + '-';   // elke cursus ruimt alleen zi
 const SCHIL = [
   './', 'index.html', 'manifest.webmanifest',
   'css/style.css', 'css/kleuren.css',
-  'js/words.js', 'js/game.js', 'js/audio.js', 'js/beeld.js', 'js/app.js', 'js/delen.js', 'js/pwa.js',
+  'js/words.js', 'js/game.js', 'js/audio.js', 'js/beeld.js', 'js/app.js', 'js/delen.js', 'js/vlaggen.js', 'img/vlag-cw.svg', 'img/vlag-aw.svg', 'img/vlag-bn.svg', 'js/pwa.js',
   'ui/meisje-boven.webp', 'ui/mascotte-goed.webp', 'ui/mascotte-fout.webp',
   'icons/icon-192.png', 'icons/icon-512.png', 'icons/apple-touch-icon.png'
 ];

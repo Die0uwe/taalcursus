@@ -36,6 +36,7 @@ taalcursus/
 ├── kleuren.css             gedeelde merkkleuren en achtergrond (ook als kopie in papiamento/css/)
 ├── sfeer.css  sfeer.js     zon, wolken, ballonnen, autootjes, huisjes en bomen
 ├── delen.js                Deel-knop (ook als kopie in papiamento/js/)
+├── vlaggen.js  vlaggen/    vlagplaatjes voor Windows (geen vlag-emoji); telefoon houdt de emoji
 ├── onderhoud.html .css .js onderhoudspagina "Komt eraan"
 ├── cursussen.js            de lijst met cursussen (hier komt een nieuwe taal bij)
 ├── pwa.js  sw.js  manifest.webmanifest   app-modus en offline voor de hoofdpagina

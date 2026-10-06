@@ -91,3 +91,9 @@ html { background: #b3e5fc; }
 .delen-status { min-height: 1.4em; margin-top: 10px; text-align: center; font-weight: 800; color: var(--pink-dark); }
 .delen-verborgen { position: fixed; left: -9999px; top: 0; }
 @media (max-width: 360px) { .delen-lijst { grid-template-columns: 1fr; } }
+
+/* Vlaggen als plaatje (alleen waar de emoji-vlag ontbreekt, bijv. Windows) */
+.vlag .vlag-img { display: block; width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+.vlag-groot .vlag-img { width: 4.2rem; height: 2.8rem; object-fit: cover; border-radius: 8px; box-shadow: 0 3px 8px rgba(0, 0, 0, .25); }
+.dialect-btn .vlag-img { width: 1.5em; height: 1em; object-fit: cover; border-radius: 3px; vertical-align: -.12em; }
+@media (max-width: 480px) { .vlag-groot .vlag-img { width: 3rem; height: 2rem; } }

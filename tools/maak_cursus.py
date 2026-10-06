@@ -127,6 +127,8 @@ def vervang_tekst(pad: Path, t: dict) -> None:
     elif naam == "sw.js":
         s = s.replace("Aprende Papiamentu", t["titel"]).replace("'pap-v0.14.0'", f"'{t['prefix']}-v{VERSIE}'")
         s = s.replace("v0.14.0", f"v{VERSIE}")
+        # de eilandvlaggetjes (img/vlag-*.svg) bestaan alleen bij Papiamentu; elders laat de voorraadlijst de installatie mislukken
+        s = s.replace("'img/vlag-cw.svg', 'img/vlag-aw.svg', 'img/vlag-bn.svg', ", "")
     elif naam == "pwa.js":
         s = s.replace("Aprende Papiamentu", t["titel"]).replace("Papiamentu", t["merk"])
     elif naam.endswith((".js", ".css", ".py", ".html", ".md", ".bat")) or naam == "Dockerfile":
@@ -243,6 +245,7 @@ def main() -> int:
     # één bron voor kleuren/achtergrond: de hoofdmap; het sjabloon krijgt een kopie
     shutil.copy2(ROOT / "kleuren.css", SJABLOON / "css" / "kleuren.css")
     shutil.copy2(ROOT / "delen.js", SJABLOON / "js" / "delen.js")
+    shutil.copy2(ROOT / "vlaggen.js", SJABLOON / "js" / "vlaggen.js")
     lijst = list(TALEN) if a.alle else a.talen
     if not lijst:
         ap.error("geef een taal of --alle")

@@ -87,7 +87,7 @@
   .sun { width: 70px; height: 70px; right: 12px; }
   .sun .eye { width: 8px; height: 10px; }
   .sun .mouth { width: 22px; height: 12px; border-width: 2px; }
-  .vehicle { font-size: 3.4rem; bottom: 52px; }
+  .vehicle { font-size: 3.4rem; bottom: 47px; }
   .road { bottom: 46px; }
   .vehicle .light { width: 15px; height: 15px; top: -6px; }
   .vlag-popup .vlag-groot { font-size: 2.8rem; }

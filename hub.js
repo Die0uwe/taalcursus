@@ -36,7 +36,9 @@
     a.setAttribute('data-color', c.kleur);
     a.setAttribute('data-cursus', c.id);
 
-    a.appendChild(maak('span', 'vlag', c.vlag));
+    var vlag = maak('span', 'vlag');
+    if (window.Vlaggen) window.Vlaggen.vul(vlag, c.vlag); else vlag.textContent = c.vlag;
+    a.appendChild(vlag);
     var tekst = maak('span', 'taal-tekst');
     tekst.appendChild(maak('h2', '', c.naam));
     tekst.appendChild(maak('span', 'eigen', c.eigen));
