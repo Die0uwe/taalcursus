@@ -1,12 +1,12 @@
 /* ============================================================
-   Aprende Papiamentu - service worker  (sw.js)  v0.5.0
+   Aprende Papiamentu - service worker  (sw.js)  v0.6.0
    Created by DieOuwe · www.dieouwe.nl
    Doel: de app werkt ook zonder internet nadat hij één keer geladen is.
    - App-bestanden (html, css, js, iconen): worden bij installatie bewaard.
    - mp3/ en img/: worden bewaard zodra ze voor het eerst gebruikt zijn.
    - Verhoog VERSIE bij elke release, dan haalt de app de nieuwe bestanden op.
    ============================================================ */
-const VERSIE = 'pap-v0.5.0';
+const VERSIE = 'pap-v0.6.0';
 const VOORVOEGSEL = VERSIE.split('-')[0] + '-';   // elke cursus ruimt alleen zijn eigen oude caches op
 const SCHIL = [
   './', 'index.html', 'manifest.webmanifest',

@@ -1,5 +1,5 @@
 /* ============================================================
-   Leer Spaans - stijl  (css/style.css)  v0.5.0
+   Leer Spaans - stijl  (css/style.css)  v0.6.0
    Created by DieOuwe · www.dieouwe.nl
    v0.4.0: nieuwe, strakkere opmaak met design-tokens (kleuren, ronding, schaduw),
            kaarten met voortgangsbalk, ronde knoppen, eigen plaatjes (.pic), installeer-uitleg.
@@ -8,15 +8,15 @@
 
 :root {
   /* merk */
-  --ink: #2a2447;
-  --muted: #7a7494;
-  --line: rgba(42, 36, 71, .10);
+  --ink: #3a2b1f;
+  --muted: #6d4c41;
+  --line: rgba(58, 43, 31, .12);
   --bg: #fffaf3;
   --card: #ffffff;
-  --brand: #6c4cf5;
-  --brand-dark: #5236d6;
-  --pink: #ff4f8b;
-  --pink-dark: #d93570;
+  --brand: #d81b60;
+  --brand-dark: #ad1457;
+  --pink: #ff4081;
+  --pink-dark: #c2185b;
   --sun: #ffc933;
   --good: #2fa84f;
   --good-bg: #d9f6df;
@@ -27,9 +27,11 @@
   --r-lg: 28px;
   --r-md: 20px;
   --r-sm: 14px;
-  --shadow-1: 0 1px 2px rgba(42, 36, 71, .06), 0 6px 18px rgba(42, 36, 71, .07);
-  --shadow-2: 0 2px 4px rgba(42, 36, 71, .06), 0 14px 34px rgba(42, 36, 71, .12);
-  --font: ui-rounded, "SF Pro Rounded", "Nunito", "Quicksand", "Segoe UI Variable Display", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --shadow-1: 0 1px 2px rgba(58, 43, 31, .06), 0 6px 18px rgba(58, 43, 31, .07);
+  --shadow-2: 0 2px 4px rgba(58, 43, 31, .06), 0 14px 34px rgba(58, 43, 31, .12);
+  --dash: #ff80ab;
+  --sky: #42a5f5;
+  --font: "Comic Sans MS", "Comic Sans", "Baloo 2", ui-rounded, "SF Pro Rounded", "Nunito", "Quicksand", "Segoe UI Variable Display", "Segoe UI", system-ui, -apple-system, sans-serif;
 
   /* kleuren per categorie (data-color) */
   --tint: #f1ecff;
@@ -79,7 +81,7 @@ button:focus-visible, a:focus-visible { outline: 4px solid var(--brand); outline
   display: flex; align-items: center; gap: 10px;
 }
 .brand { display: flex; align-items: center; gap: 8px; margin-right: auto; min-width: 0; text-decoration: none; color: inherit; border-radius: 12px; }
-.brand:hover .brand-logo { transform: rotate(-12deg) scale(1.1); }
+.brand:hover .brand-logo { transform: scale(1.05); }
 .brand-logo { transition: transform .2s; }
 .brand-logo { font-size: 1.7rem; line-height: 1; }
 .brand-name { font-size: 1.05rem; font-weight: 600; color: var(--ink); white-space: nowrap; }
@@ -94,7 +96,7 @@ button:focus-visible, a:focus-visible { outline: 4px solid var(--brand); outline
 .stars-bar .count { font-size: 1.25rem; font-weight: 800; color: #b26a00; min-width: 1.4em; text-align: center; font-variant-numeric: tabular-nums; }
 .stars-bar .label { font-size: .85rem; color: #a07a2b; font-weight: 600; }
 .stars-bar.pulse { animation: pulseStar .5s ease-out; }
-@keyframes pulseStar { 0% { transform: scale(1); } 50% { transform: scale(1.14); } 100% { transform: scale(1); } }
+@keyframes pulseStar { 0% { transform: scale(1); } 50% { transform: scale(1.06); } 100% { transform: scale(1); } }
 
 .top-btn {
   min-width: 44px; min-height: 44px; border-radius: 999px;
@@ -104,13 +106,13 @@ button:focus-visible, a:focus-visible { outline: 4px solid var(--brand); outline
 }
 .top-btn:hover { transform: translateY(-1px); border-color: var(--brand); }
 .top-btn:active { transform: scale(.94); }
-.install-btn { padding: 0 14px; font-weight: 700; font-size: .95rem; color: var(--brand); border-color: rgba(108, 76, 245, .35); }
+.install-btn { padding: 0 14px; font-weight: 700; font-size: .95rem; color: var(--brand); border-color: rgba(255, 64, 129, .35); }
 .install-btn .lbl { display: none; }
 
 /* ---------- schermen ---------- */
 .screen { display: none; padding: 18px 0 50px; }
 .screen.active { display: block; animation: fadeIn .35s ease-out; }
-@keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(3px); } to { opacity: 1; transform: none; } }
 
 .hero { text-align: center; padding: 14px 0 6px; }
 .hero h1 { font-size: clamp(2rem, 6vw, 3rem); font-weight: 800; letter-spacing: -.5px; color: var(--pink); }
@@ -125,7 +127,7 @@ button:focus-visible, a:focus-visible { outline: 4px solid var(--brand); outline
 .dialect-bar[hidden] { display: none; }
 .dialect-btn { min-height: 44px; padding: 8px 18px; border-radius: 999px; font-size: 1rem; font-weight: 700; color: var(--muted); transition: background .15s, color .15s; }
 .dialect-btn:hover { color: var(--brand); }
-.dialect-btn.on { background: var(--brand); color: #fff; box-shadow: 0 4px 12px rgba(108, 76, 245, .35); }
+.dialect-btn.on { background: var(--brand); color: #fff; box-shadow: 0 4px 12px rgba(255, 64, 129, .35); }
 
 /* ---------- menu ---------- */
 .menu-section { margin-bottom: 26px; }
@@ -139,7 +141,7 @@ button:focus-visible, a:focus-visible { outline: 4px solid var(--brand); outline
   padding: 20px 14px 16px; box-shadow: var(--shadow-1);
   transition: transform .18s, box-shadow .18s;
 }
-.menu-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-2); }
+.menu-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-2); }
 .menu-card:active { transform: scale(.98); }
 .menu-card .big-icon {
   display: grid; place-items: center; width: 76px; height: 76px; border-radius: 50%;
@@ -152,7 +154,7 @@ button:focus-visible, a:focus-visible { outline: 4px solid var(--brand); outline
 .menu-card .meter { margin-top: 6px; }
 
 /* voortgangsbalk */
-.meter { width: 100%; height: 8px; border-radius: 999px; background: rgba(42, 36, 71, .08); overflow: hidden; }
+.meter { width: 100%; height: 8px; border-radius: 999px; background: rgba(58, 43, 31, .08); overflow: hidden; }
 .meter > i { display: block; height: 100%; width: 0; border-radius: inherit; background: var(--edge); transition: width .4s ease; }
 
 /* grote actiekaarten: quiz en badges */
@@ -160,7 +162,7 @@ button:focus-visible, a:focus-visible { outline: 4px solid var(--brand); outline
   flex-direction: row; justify-content: flex-start; text-align: left; gap: 14px; padding: 18px 18px;
   color: #fff; border: 0; min-height: 96px;
 }
-.menu-card.action[data-color="blue"]   { background: linear-gradient(135deg, #5b7cff, #7a5cff); }
+.menu-card.action[data-color="blue"]   { background: linear-gradient(135deg, #42a5f5, #1e88e5); }
 .menu-card.action[data-color="orange"] { background: linear-gradient(135deg, #ff9a3c, #ff5f6d); }
 .menu-card.action .big-icon { width: 58px; height: 58px; font-size: 1.9rem; margin: 0; flex: none; background: rgba(255, 255, 255, .22); box-shadow: none; }
 .menu-card.action .txt { display: flex; flex-direction: column; min-width: 0; }
@@ -172,7 +174,7 @@ button:focus-visible, a:focus-visible { outline: 4px solid var(--brand); outline
 .screen-head { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
 .back-btn {
   min-height: 44px; padding: 8px 18px; border-radius: 999px; font-size: 1rem; font-weight: 700; color: var(--brand);
-  background: #fff; border: 2px solid rgba(108, 76, 245, .3); box-shadow: var(--shadow-1); transition: transform .15s;
+  background: #fff; border: 2px solid rgba(255, 64, 129, .3); box-shadow: var(--shadow-1); transition: transform .15s;
 }
 .back-btn:hover { transform: translateX(-2px); }
 .learn-title { font-size: 1.25rem; font-weight: 800; color: var(--ink); }
@@ -193,10 +195,10 @@ button:focus-visible, a:focus-visible { outline: 4px solid var(--brand); outline
   margin: 0 -22px 18px; padding: 26px 0 20px; background: var(--tint);
   display: flex; justify-content: center;
 }
-.learn-card .stage .pic { --pic: 8.5rem; animation: bounceEmoji 2.4s ease-in-out infinite; }
+.learn-card .stage .pic { --pic: 8.5rem;  }
 @keyframes bounceEmoji { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
 .learn-card.slide { animation: cardIn .3s ease-out; }
-@keyframes cardIn { from { opacity: 0; transform: translateX(16px); } to { opacity: 1; transform: none; } }
+@keyframes cardIn { from { opacity: 0; transform: translateX(6px); } to { opacity: 1; transform: none; } }
 .learn-card .pap-word { font-size: clamp(2.2rem, 9vw, 3rem); font-weight: 800; color: var(--pink); letter-spacing: -.5px; line-height: 1.1; }
 .learn-card .phonetic {
   display: inline-block; margin-top: 10px; padding: 5px 16px; border-radius: 999px;
@@ -210,9 +212,9 @@ button:focus-visible, a:focus-visible { outline: 4px solid var(--brand); outline
 .nav-card { display: flex; align-items: center; justify-content: center; gap: 14px; margin: 8px auto 0; }
 .round-btn {
   width: 60px; height: 60px; border-radius: 50%; font-size: 1.3rem; font-weight: 800; color: var(--brand);
-  background: #fff; border: 2px solid rgba(108, 76, 245, .3); box-shadow: var(--shadow-1); transition: transform .15s, background .15s;
+  background: #fff; border: 2px solid rgba(255, 64, 129, .3); box-shadow: var(--shadow-1); transition: transform .15s, background .15s;
 }
-.round-btn:hover { background: #f4f0ff; transform: translateY(-2px); }
+.round-btn:hover { background: #fff0f5; transform: translateY(-2px); }
 .round-btn:active { transform: scale(.94); }
 .speak-btn, .nav-card .big-btn {
   min-height: 60px; padding: 0 30px; border-radius: 999px; font-size: 1.2rem; font-weight: 800; color: #fff;
@@ -220,11 +222,11 @@ button:focus-visible, a:focus-visible { outline: 4px solid var(--brand); outline
 }
 .speak-btn:hover, .nav-card .big-btn:hover { transform: translateY(-2px); }
 .speak-btn:active, .nav-card .big-btn:active { transform: scale(.96); }
-.nav-card .big-btn.alt { background: linear-gradient(135deg, #6c4cf5, #8a6bff); box-shadow: 0 8px 20px rgba(108, 76, 245, .35); }
+.nav-card .big-btn.alt { background: linear-gradient(135deg, #42a5f5, #1e88e5); box-shadow: 0 8px 20px rgba(255, 64, 129, .35); }
 
 /* voortgang: gesegmenteerde balk */
 .progress { display: flex; flex-wrap: wrap; justify-content: center; gap: 5px; max-width: 520px; margin: 22px auto 0; }
-.progress .dot { flex: 1 1 0; min-width: 14px; height: 8px; border-radius: 999px; background: rgba(42, 36, 71, .10); }
+.progress .dot { flex: 1 1 0; min-width: 14px; height: 8px; border-radius: 999px; background: rgba(58, 43, 31, .10); }
 .progress .dot.seen { background: #8fd88f; }
 .progress .dot.now { background: var(--brand); transform: scaleY(1.5); }
 .progress-text { width: 100%; text-align: center; font-weight: 700; color: var(--muted); margin-top: 6px; font-size: .95rem; }
@@ -240,7 +242,7 @@ button:focus-visible, a:focus-visible { outline: 4px solid var(--brand); outline
   border-radius: var(--r-lg); padding: 20px 16px 18px; box-shadow: var(--shadow-1);
   font-size: clamp(1.15rem, 4vw, 1.5rem); font-weight: 800; color: var(--brand);
 }
-.question .pic { --pic: 8rem; margin-top: 8px; animation: bounceEmoji 2.4s ease-in-out infinite; }
+.question .pic { --pic: 8rem; margin-top: 8px;  }
 .listen-btn {
   display: inline-flex; align-items: center; gap: 8px; margin-top: 14px; min-height: 56px; padding: 0 28px; border-radius: 999px;
   font-size: 1.15rem; font-weight: 800; color: #fff; background: linear-gradient(135deg, var(--pink), #ff7a59); box-shadow: 0 8px 20px rgba(255, 79, 139, .35);
@@ -255,19 +257,19 @@ button:focus-visible, a:focus-visible { outline: 4px solid var(--brand); outline
 }
 .option .pic { --pic: 4.2rem; }
 .option.emoji-opt { min-height: 130px; }
-.option:hover:not(:disabled) { transform: translateY(-3px); border-color: var(--brand); }
+.option:hover:not(:disabled) { transform: translateY(-1px); border-color: var(--brand); }
 .option:active:not(:disabled) { transform: scale(.97); }
 .option:disabled { cursor: default; }
 .option.correct { background: var(--good-bg); border-color: var(--good); animation: correctPop .55s ease-out; }
 .option.wrong { background: var(--bad-bg); border-color: var(--bad); animation: wrongShake .45s ease-in-out; }
-@keyframes correctPop { 0% { transform: scale(1); } 50% { transform: scale(1.08); } 100% { transform: scale(1); } }
-@keyframes wrongShake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-8px); } 75% { transform: translateX(8px); } }
+@keyframes correctPop { 0% { transform: scale(1); } 50% { transform: scale(1.03); } 100% { transform: scale(1); } }
+@keyframes wrongShake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-3px); } 75% { transform: translateX(3px); } }
 
 .feedback { text-align: center; font-size: 1.35rem; margin-top: 18px; min-height: 36px; font-weight: 800; color: var(--pink); }
 .quiz-next { text-align: center; margin-top: 10px; min-height: 60px; }
 .quiz-next button {
   min-height: 56px; padding: 0 38px; border-radius: 999px; font-size: 1.15rem; font-weight: 800; color: #fff;
-  background: linear-gradient(135deg, #6c4cf5, #8a6bff); box-shadow: 0 8px 20px rgba(108, 76, 245, .35);
+  background: linear-gradient(135deg, #42a5f5, #1e88e5); box-shadow: 0 8px 20px rgba(255, 64, 129, .35);
 }
 .quiz-next button:active { transform: scale(.96); }
 
@@ -290,7 +292,7 @@ button:focus-visible, a:focus-visible { outline: 4px solid var(--brand); outline
 
 /* ---------- badges ---------- */
 .badges-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 14px; max-width: 860px; margin: 0 auto; }
-.badge-card { background: rgba(255, 255, 255, .6); border: 2px dashed rgba(42, 36, 71, .15); border-radius: var(--r-md); padding: 18px 10px; text-align: center; }
+.badge-card { background: rgba(255, 255, 255, .6); border: 2px dashed rgba(58, 43, 31, .15); border-radius: var(--r-md); padding: 18px 10px; text-align: center; }
 .badge-card.earned { background: #fff; border: 2px solid var(--sun); box-shadow: var(--shadow-1); }
 .badge-big { font-size: 2.6rem; }
 .badge-card:not(.earned) .badge-big { filter: grayscale(1); opacity: .5; }
@@ -301,12 +303,12 @@ button:focus-visible, a:focus-visible { outline: 4px solid var(--brand); outline
 /* ---------- popup, confetti, uitleg-overlay ---------- */
 .badge-popup {
   position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0); background: #fff; border: 4px solid var(--sun);
-  border-radius: 30px; padding: 28px 38px; text-align: center; z-index: 1000; box-shadow: 0 24px 60px rgba(42, 36, 71, .3);
-  animation: badgeIn .5s ease-out forwards; max-width: 90vw; pointer-events: none;
+  border-radius: 30px; padding: 28px 38px; text-align: center; z-index: 1000; box-shadow: 0 24px 60px rgba(58, 43, 31, .3);
+  animation: badgeIn .4s ease-out forwards; max-width: 90vw; pointer-events: none;
 }
 @keyframes badgeIn {
-  0% { transform: translate(-50%, -50%) scale(0) rotate(-20deg); }
-  70% { transform: translate(-50%, -50%) scale(1.08) rotate(4deg); }
+  0% { transform: translate(-50%, -50%) scale(0) rotate(0); }
+  70% { transform: translate(-50%, -50%) scale(1.03) rotate(0); }
   100% { transform: translate(-50%, -50%) scale(1) rotate(0); }
 }
 .badge-popup .badge-icon { font-size: 4.6rem; display: block; }
@@ -316,7 +318,7 @@ button:focus-visible, a:focus-visible { outline: 4px solid var(--brand); outline
 .confetti { position: fixed; width: 11px; height: 15px; pointer-events: none; z-index: 999; animation: confetti-fall 1.4s ease-out forwards; }
 @keyframes confetti-fall { 0% { transform: translate(0, 0) rotate(0); opacity: 1; } 100% { transform: translate(var(--dx), var(--dy)) rotate(720deg); opacity: 0; } }
 
-.overlay { position: fixed; inset: 0; z-index: 1100; display: grid; place-items: center; padding: 16px; background: rgba(42, 36, 71, .55); -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); }
+.overlay { position: fixed; inset: 0; z-index: 1100; display: grid; place-items: center; padding: 16px; background: rgba(58, 43, 31, .55); -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); }
 .sheet { width: min(480px, 100%); max-height: 90vh; overflow: auto; background: #fff; border-radius: var(--r-lg); padding: 24px 22px 20px; box-shadow: var(--shadow-2); animation: fadeIn .25s ease-out; }
 .sheet h2 { font-size: 1.3rem; font-weight: 800; color: var(--ink); margin-bottom: 10px; }
 .sheet p, .sheet li { color: var(--ink); line-height: 1.5; font-size: 1rem; }
@@ -363,4 +365,64 @@ footer a { color: inherit; }
 
 @media (prefers-reduced-motion: reduce) {
   * { animation: none !important; transition: none !important; }
+}
+
+
+/* ============================================================
+   v0.6.0 MERKSTIJL - dezelfde vrolijke look als de hoofdpagina
+   (lucht, Comic Sans, stippelranden, roze/gele koppen) maar RUSTIG:
+   zon en wolken staan (bijna) stil, geen stuiterende plaatjes.
+   Alles is pure CSS, werkt dus ook offline en onder de strikte CSP.
+   ============================================================ */
+body {
+  background-color: #b3e5fc;
+  background-image: linear-gradient(180deg, #87ceeb 0%, #b3e5fc 45%, #fff8b0 100%);
+  background-attachment: fixed;
+}
+/* zon: stilstaand, rechtsboven achter de inhoud */
+body::before {
+  content: ""; position: fixed; top: 74px; right: 26px; width: 84px; height: 84px; border-radius: 50%; z-index: 0; pointer-events: none;
+  background: radial-gradient(circle, #fff176 0%, #ffd54f 60%, #ffb300 100%); box-shadow: 0 0 46px 14px rgba(255, 213, 79, .55);
+}
+/* wolk: een enkele, heel langzame */
+body::after {
+  content: ""; position: fixed; top: 96px; left: -220px; width: 110px; height: 36px; border-radius: 50%; z-index: 0; pointer-events: none;
+  background: #fff; opacity: .85; animation: wolkDrift 160s linear infinite;
+  box-shadow: 34px -16px 0 8px #fff, 70px -4px 0 2px #fff;
+}
+@keyframes wolkDrift { from { transform: translateX(0); } to { transform: translateX(calc(100vw + 440px)); } }
+.container, footer { position: relative; z-index: 1; }
+
+.topbar { background: rgba(255, 255, 255, .78); border-bottom: 3px dashed var(--dash); }
+.brand-name { font-weight: 700; }
+.top-btn { border: 3px dashed var(--dash); }
+.stars-bar { border: 3px dashed var(--sun); }
+
+.hero h1 { color: var(--pink); text-shadow: 3px 3px 0 #fff176, 6px 6px 0 rgba(255, 64, 129, .22); letter-spacing: 0; }
+.hero p { color: var(--ink); font-weight: 700; }
+.menu-section > h3 { color: var(--ink); text-shadow: 1px 1px 0 #fff; }
+
+.menu-card, .learn-card, .question, .leerkaart, .sheet, .badge-card.earned {
+  border: 4px dashed var(--dash); background: rgba(255, 255, 255, .92);
+}
+.menu-card { border-radius: 30px; }
+.learn-card { border-radius: 34px; }
+.learn-card .stage { border-bottom: 3px dashed var(--dash); }
+.menu-card.action { border: 4px dashed #fff; }
+.option { border: 3px dashed var(--dash); }
+.option.correct { border: 3px solid var(--good); }
+.option.wrong { border: 3px solid var(--bad); }
+.dialect-bar { border: 3px dashed var(--dash); }
+.back-btn { border: 3px dashed var(--dash); color: var(--brand); }
+.round-btn { border: 3px dashed var(--dash); color: var(--brand); }
+.learn-card .nl-word, .question { color: var(--brand); }
+.learn-title { color: var(--pink); text-shadow: 2px 2px 0 #fff176; font-size: 1.4rem; }
+.badge-popup { border: 5px dashed var(--sun); }
+.overlay { background: rgba(58, 43, 31, .45); }
+footer { background: rgba(255, 255, 255, .7); border-top: 3px dashed var(--dash); padding-top: 14px; }
+footer .foot-main { color: var(--pink); }
+
+@media (max-width: 480px) {
+  body::before { width: 62px; height: 62px; right: 10px; top: 64px; }
+  .menu-card, .learn-card, .question, .leerkaart, .sheet { border-width: 3px; }
 }

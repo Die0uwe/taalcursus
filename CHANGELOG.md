@@ -4,6 +4,24 @@ Created by DieOuwe · www.dieouwe.nl
 
 Nieuwste bovenaan. De wijzigingen van de cursus zelf staan in `papiamento/CHANGELOG.md`.
 
+## [2026-10-06 22:35] — Alle cursussen in de merkstijl, maar rustiger
+
+**Type:** UI Polish
+**Skill:** design-architect, webapp-dev (via wow-bigboss-orchestrator)
+**Bestanden:** `papiamento/css/style.css`, `papiamento/sw.js`, `tools/maak_cursus.py`, alle gegenereerde cursussen
+**Versie:** papiamento v0.6.0, overige cursussen v0.2.0
+
+### Wijzigingen
+- Alle zes de cursussen hebben nu de look van de hoofdpagina: luchtverloop, Comic Sans-achtig lettertype, stippelranden, roze/gele koppen, zon en een wolk.
+- Rustiger: stuiterende plaatjes weg, kleinere hover-, schud- en pop-effecten, zon staat stil en er is één heel langzame wolk (160 s). Geen ballonnen, sterren, vlaggetjes of voertuigen in de leeromgeving.
+- Alles is pure CSS (geen extra bestanden, werkt offline en onder de strikte CSP). Bij "minder beweging" staat alles stil.
+- Cursussen opnieuw gegenereerd met `maak_cursus.py --alle --force` (iconen, mp3 en eigen plaatjes blijven staan).
+
+### Gecontroleerd
+- cursustest 72/72 OK, geen CSP-fouten, geen horizontale scroll op 375/390/820/1280 px in alle zes cursussen.
+
+---
+
 ## [2026-10-06 22:20] — Merk "De wereld rond in 80 vragen": onderhoudspagina terug en nieuwe look hoofdpagina
 
 **Type:** UI Polish
@@ -19,7 +37,7 @@ Nieuwste bovenaan. De wijzigingen van de cursus zelf staan in `papiamento/CHANGE
 
 ### Open actiepunten
 - [ ] `logo.png` en `plak-mux2b7wy-7068c1.webp` (meisje) in de repo zetten zodra beschikbaar
-- [ ] Cursussen zelf ook in dit merk? (nu hebben ze nog hun eigen roze/paarse stijl)
+- [x] Cursussen zelf ook in dit merk (zie 22:35)
 
 ---
 

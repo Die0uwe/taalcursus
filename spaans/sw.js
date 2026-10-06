@@ -1,12 +1,12 @@
 /* ============================================================
-   Leer Spaans - service worker  (sw.js)  v0.1.0
+   Leer Spaans - service worker  (sw.js)  v0.2.0
    Created by DieOuwe · www.dieouwe.nl
    Doel: de app werkt ook zonder internet nadat hij één keer geladen is.
    - App-bestanden (html, css, js, iconen): worden bij installatie bewaard.
    - mp3/ en img/: worden bewaard zodra ze voor het eerst gebruikt zijn.
    - Verhoog VERSIE bij elke release, dan haalt de app de nieuwe bestanden op.
    ============================================================ */
-const VERSIE = 'spa-v0.1.0';
+const VERSIE = 'spa-v0.2.0';
 const VOORVOEGSEL = VERSIE.split('-')[0] + '-';   // elke cursus ruimt alleen zijn eigen oude caches op
 const SCHIL = [
   './', 'index.html', 'manifest.webmanifest',

@@ -1,5 +1,5 @@
 /* ============================================================
-   Leer Duits - woordenlijst  (js/words.js)  v0.1.0
+   Leer Duits - woordenlijst  (js/words.js)  v0.2.0
    Created by DieOuwe · www.dieouwe.nl
    Gemaakt met tools/maak_cursus.py uit tools/talen.py (pas de woorden daar aan en maak de cursus opnieuw,
    of pas dit bestand direct aan).
@@ -15,7 +15,7 @@
    uitspraak: gids voor Nederlandstalige kinderen (indicatief)
    ============================================================ */
 window.PAP_DATA = {
-  "meta": {"versie": "0.1.0", "standaardDialect": "std", "taal": "Duits", "kampioen": "Deutsch-kampioen!", "opslag": "duits.v1", "ttsTalen": ["de"], "ttsFallback": "de-DE"},
+  "meta": {"versie": "0.2.0", "standaardDialect": "std", "taal": "Duits", "kampioen": "Deutsch-kampioen!", "opslag": "duits.v1", "ttsTalen": ["de"], "ttsFallback": "de-DE"},
   "dialecten": [ {"id": "std", "naam": "Duits", "vlag": "🇩🇪"} ],
   "categorieen": [
     {"id": "basis", "naam": "Basiswoorden", "sub": "Kijk & luister", "icon": "📚", "kleur": "pink"},
