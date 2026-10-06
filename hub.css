@@ -178,7 +178,7 @@ footer .foot-main { color: var(--brand); }
 footer a { color: var(--brand); }
 
 /* meisje op de hoofdpagina (zelfde figuurtje als bij goed/fout in de cursussen) */
-.hero-meisje { display: block; margin: 0 auto 4px; width: 120px; height: 120px; object-fit: contain; filter: drop-shadow(0 8px 10px rgba(58, 43, 31, .22)); animation: meisjeZacht 5s ease-in-out infinite; }
+.hero-meisje { display: block; margin: 0 auto -6px; width: 200px; height: auto; filter: drop-shadow(0 8px 10px rgba(58, 43, 31, .22)); animation: meisjeZacht 5s ease-in-out infinite; }
 @keyframes meisjeZacht { 0%, 100% { transform: translateY(0) rotate(-2deg); } 50% { transform: translateY(-5px) rotate(2deg); } }
-@media (max-width: 480px) { .hero-meisje { width: 96px; height: 96px; } }
+@media (max-width: 480px) { .hero-meisje { width: 150px; } }
 @media (prefers-reduced-motion: reduce) { .hero-meisje { animation: none; } }

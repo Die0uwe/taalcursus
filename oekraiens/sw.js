@@ -1,18 +1,18 @@
 /* ============================================================
-   Leer Oekraïens - service worker  (sw.js)  v0.4.0
+   Leer Oekraïens - service worker  (sw.js)  v0.8.0
    Created by DieOuwe · www.dieouwe.nl
    Doel: de app werkt ook zonder internet nadat hij één keer geladen is.
    - App-bestanden (html, css, js, iconen): worden bij installatie bewaard.
    - mp3/ en img/: worden bewaard zodra ze voor het eerst gebruikt zijn.
    - Verhoog VERSIE bij elke release, dan haalt de app de nieuwe bestanden op.
    ============================================================ */
-const VERSIE = 'ukr-v0.4.0';
+const VERSIE = 'ukr-v0.5.0';
 const VOORVOEGSEL = VERSIE.split('-')[0] + '-';   // elke cursus ruimt alleen zijn eigen oude caches op
 const SCHIL = [
   './', 'index.html', 'manifest.webmanifest',
   'css/style.css',
   'js/words.js', 'js/game.js', 'js/audio.js', 'js/beeld.js', 'js/app.js', 'js/pwa.js',
-  'ui/mascotte-goed.webp', 'ui/mascotte-fout.webp',
+  'ui/meisje.webp', 'ui/mascotte-goed.webp', 'ui/mascotte-fout.webp',
   'icons/icon-192.png', 'icons/icon-512.png', 'icons/apple-touch-icon.png'
 ];
 

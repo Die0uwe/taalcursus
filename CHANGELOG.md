@@ -4,6 +4,20 @@ Created by DieOuwe · www.dieouwe.nl
 
 Nieuwste bovenaan. De wijzigingen van de cursus zelf staan in `papiamento/CHANGELOG.md`.
 
+## [2026-10-07 00:20] — Het echte meisje (leunend op de kaart) op alle startpagina's
+
+**Type:** UI Polish
+**Skill:** design-architect, webapp-dev (via wow-bigboss-orchestrator)
+**Bestanden:** `meisje.webp`, `papiamento/ui/meisje.webp`, `onderhoud.css`, `index.html`, `hub.css`, `papiamento/index.html`, `papiamento/css/style.css`, `papiamento/sw.js`, `tools/maak_deploy.py`
+**Versie:** papiamento v0.9.0, overige cursussen v0.5.0
+
+### Wijzigingen
+- Het meisje dat met haar handen op de rand leunt is nu `meisje.webp`: op de onderhoudspagina kijkt ze over de kaart, op de hoofdpagina staat ze boven de titel, en in elke cursus staat ze boven "Aprende Papiamentu" (andere talen: eigen titel).
+- De twee cirkel-plaatjes (duim omhoog en nadenkend) worden weer alleen voor goed en fout in de quiz gebruikt (`ui/mascotte-goed.webp`, `ui/mascotte-fout.webp`). `meisje-denken.webp` is weggehaald.
+- Cursussen hebben `ui/meisje.webp` ook in de offline-cache.
+
+---
+
 ## [2026-10-06 23:55] — Meisje terug op de voorpagina en de onderhoudspagina
 
 **Type:** Bugfix
