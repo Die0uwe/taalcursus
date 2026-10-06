@@ -26,7 +26,7 @@ from talen import CATEGORIEEN, CONCEPTEN, TALEN  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 SJABLOON = ROOT / "papiamento"
-VERSIE = "0.2.0"
+VERSIE = "0.4.0"
 
 # woord-id's van het Papiamentu-sjabloon -> neutrale (Nederlandse) id's die alle andere cursussen gebruiken
 ID_MAP = {
@@ -112,21 +112,21 @@ def vervang_tekst(pad: Path, t: dict) -> None:
     if naam == "index.html":
         s = s.replace("<title>🌸 Aprende Papiamentu! 🌸</title>", f"<title>{t['vlag']} {t['titel']}! {t['vlag']}</title>")
         s = s.replace('<span class="brand-name">Aprende <b>Papiamentu</b></span>', f'<span class="brand-name">Leer <b>{t["merk"]}</b></span>')
-        s = s.replace("<h1>Bon bini! <span", f"<h1>{t['groet']} <span")
-        s = s.replace("<p>Leer Papiamentu spelenderwijs. Kies een eiland en begin!</p>", f"<p>{t['intro']}</p>")
+        s = s.replace("<p><b>Bon bini!</b>", f"<p><b>{t['groet']}</b>")
+        s = s.replace("Leer Papiamentu spelenderwijs. Kies een eiland en begin!", t['intro'])
         s = s.replace('aria-label="Kies je eiland"', 'aria-label="Kies je variant"')
         s = s.replace('<p class="foot-main">Bon bini na Papiamentu! 🌺</p>', f'<p class="foot-main">{t["footer"]}</p>')
         s = s.replace('<p class="credit">Computerstem: Meta MMS-TTS (CC BY-NC 4.0), alleen voor niet-commercieel gebruik.</p>',
                       '<p class="credit">Geluid: de computerstem van je eigen apparaat.</p>')
         s = s.replace("Leer Papiamentu spelenderwijs: woorden", f"Leer {t['naam']} spelenderwijs: woorden")
         s = s.replace("Aprende Papiamentu", t["titel"]).replace("🌸", t["vlag"]).replace("Papiamentu", t["merk"])
-        s = re.sub(r"v0\.7\.0", f"v{VERSIE}", s)
+        s = re.sub(r"v0\.8\.0", f"v{VERSIE}", s)
     elif naam == "manifest.webmanifest":
         s = s.replace("Aprende Papiamentu!", f"{t['titel']}!").replace('"Papiamentu"', f'"{t["merk"]}"')
         s = s.replace("Leer Papiamentu spelenderwijs", f"Leer {t['naam']} spelenderwijs")
     elif naam == "sw.js":
-        s = s.replace("Aprende Papiamentu", t["titel"]).replace("'pap-v0.7.0'", f"'{t['prefix']}-v{VERSIE}'")
-        s = s.replace("v0.7.0", f"v{VERSIE}")
+        s = s.replace("Aprende Papiamentu", t["titel"]).replace("'pap-v0.8.0'", f"'{t['prefix']}-v{VERSIE}'")
+        s = s.replace("v0.8.0", f"v{VERSIE}")
     elif naam == "pwa.js":
         s = s.replace("Aprende Papiamentu", t["titel"]).replace("Papiamentu", t["merk"])
     elif naam.endswith((".js", ".css", ".py", ".html", ".md", ".bat")) or naam == "Dockerfile":

@@ -4,6 +4,22 @@ Created by DieOuwe · www.dieouwe.nl
 
 Nieuwste bovenaan. De wijzigingen van de cursus zelf staan in `papiamento/CHANGELOG.md`.
 
+## [2026-10-06 23:10] — Kinderlook: pastelkaarten met dikke randen, samen met de nieuwe lucht
+
+**Type:** UI Polish
+**Skill:** design-architect, webapp-dev (via wow-bigboss-orchestrator)
+**Bestanden:** `papiamento/css/style.css`, `papiamento/index.html`, `papiamento/sw.js`, `tools/maak_cursus.py`, alle gegenereerde cursussen
+**Versie:** papiamento v0.8.0, overige cursussen v0.4.0
+
+### Wijzigingen
+- Kaarten zoals de eerste versie: pastelkleur per categorie, dikke gekleurde rand, harde schaduw, grote emoji zonder cirkel, cursief ondertitel, paarse voortgangstekst.
+- Quiz en Badges zijn nu ook pastelkaarten (blauw, oranje) in plaats van felle verlopen.
+- Grote titel met bloemetjes (bij andere talen met de vlag) en de groet in de ondertitel.
+- Eilandkeuze en knoppen als paarse bolletjes met harde schaduw; sterrenbalk als witte pil met gele rand.
+- Leerkaart, quizvraag en antwoorden met dikke randen. Blijft behouden: lucht, zon, wolk, stippellijnen bij balk en voet, rustige animaties.
+
+---
+
 ## [2026-10-06 22:58] — Poppetje bij goed/fout en geluidjes-knop met volume
 
 **Type:** Feature

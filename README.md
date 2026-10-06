@@ -7,12 +7,12 @@ Versie **0.2.0** (hoofdpagina). Gewone HTML, CSS en JavaScript, geen bouwstap no
 
 | Taal | Map | Status |
 |---|---|---|
-| 🇨🇼 Papiamentu | `papiamento/` | beschikbaar (v0.7.0) |
-| 🇬🇧 Engels | `engels/` | beschikbaar (v0.3.0, stem van de browser) |
-| 🇪🇸 Spaans | `spaans/` | beschikbaar (v0.3.0, stem van de browser) |
-| 🇩🇪 Duits | `duits/` | beschikbaar (v0.3.0, stem van de browser) |
-| 🇫🇷 Frans | `frans/` | beschikbaar (v0.3.0, stem van de browser) |
-| 🇺🇦 Oekraïens | `oekraiens/` | beschikbaar (v0.3.0, stem van de browser) |
+| 🇨🇼 Papiamentu | `papiamento/` | beschikbaar (v0.8.0) |
+| 🇬🇧 Engels | `engels/` | beschikbaar (v0.4.0, stem van de browser) |
+| 🇪🇸 Spaans | `spaans/` | beschikbaar (v0.4.0, stem van de browser) |
+| 🇩🇪 Duits | `duits/` | beschikbaar (v0.4.0, stem van de browser) |
+| 🇫🇷 Frans | `frans/` | beschikbaar (v0.4.0, stem van de browser) |
+| 🇺🇦 Oekraïens | `oekraiens/` | beschikbaar (v0.4.0, stem van de browser) |
 
 ## Snel starten
 
