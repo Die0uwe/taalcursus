@@ -1,6 +1,13 @@
-# Taalcursus - .htaccess (Apache / LiteSpeed) - v0.5.0 - Created by DieOuwe · www.dieouwe.nl
+# Taalcursus - .htaccess (Apache / LiteSpeed) - v0.6.0 - Created by DieOuwe · www.dieouwe.nl
 # Zet dit bestand in de hoofdmap van het subdomein (bijv. taal.dieouwe.nl). Het geldt ook voor alle cursus-mappen daaronder.
 # Het doet drie dingen: privé-mappen afschermen, juiste bestandstypes en cache, en beveiligingsheaders.
+
+# 0. ONDERHOUDSMODUS (voorpagina wisselen zonder iets te verwijderen)
+# Bestaat `onderhoud.html` in deze map, dan toont de voorpagina (/) die pagina: bezoekers zien "binnenkort".
+# De echte site blijft bereikbaar om te testen op /index.html (en /papiamento/index.html enz.).
+# LIVE zetten: hernoem onderhoud.html naar onderhoud-uit.html (bestaat het niet meer, dan toont / de echte site).
+# Weer onderhoud: hernoem terug naar onderhoud.html. Daarna eventueel de Cloudflare-cache wissen.
+DirectoryIndex onderhoud.html index.html
 
 # 1. Nooit publiek: git, ruwe opnames, gereedschap, deploy-bestanden, scripts en werkdocumenten
 RedirectMatch 404 (?i)/\.git

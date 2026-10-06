@@ -82,3 +82,12 @@ taal.dieouwe.nl/            (doelmap)
 ## 7. Alternatief zonder FTP
 
 GitHub Pages: *Settings → Pages → Source: GitHub Actions*; bij elke push naar `main` wordt alles automatisch gepubliceerd op `https://die0uwe.github.io/taalcursus/`.
+
+## 8. Onderhoudspagina houden en wisselen
+
+Staat er al een pagina op het subdomein die je als onderhoudspagina wilt houden?
+1. Hernoem die `index.html` op de server naar **`onderhoud.html`** (laat de bijbehorende plaatjes staan).
+2. Upload de zip-inhoud. `.htaccess` bevat de regel `DirectoryIndex onderhoud.html index.html`: zolang `onderhoud.html` bestaat, ziet iedereen op `/` die pagina.
+3. Test de echte site op `/index.html` (bijvoorbeeld `https://taal.scriptspace.nl/index.html`).
+4. **Live zetten:** hernoem `onderhoud.html` naar `onderhoud-uit.html`. **Weer onderhoud:** hernoem terug.
+5. Cloudflare: wis de cache na elke wissel (*Caching → Configuration → Purge Everything*).
