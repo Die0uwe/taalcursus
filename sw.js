@@ -1,13 +1,13 @@
 /* ============================================================
-   Taalcursus - service worker hoofdpagina  (sw.js)  v0.1.0
+   Taalcursus - service worker hoofdpagina  (sw.js)  v0.2.0
    Created by DieOuwe · www.dieouwe.nl
    Bewaart alleen de hoofdpagina zelf voor offline gebruik. De cursussen (papiamento/ ...)
    hebben elk hun eigen service worker en worden hier met rust gelaten.
    ============================================================ */
-const VERSIE = 'hub-v0.8.0';
+const VERSIE = 'hub-v0.9.0';
 const VOORVOEGSEL = VERSIE.split('-')[0] + '-';
 const SCHIL = [
-  './', 'index.html', 'hub.css', 'kleuren.css', 'sfeer.css', 'sfeer.js', 'meisje-boven.webp', 'hub.js', 'cursussen.js', 'pwa.js', 'manifest.webmanifest',
+  'index.html', 'hub.css', 'kleuren.css', 'sfeer.css', 'sfeer.js', 'meisje-boven.webp', 'hub.js', 'cursussen.js', 'pwa.js', 'manifest.webmanifest',
   'icons/icon-192.png', 'icons/icon-512.png', 'icons/apple-touch-icon.png'
 ];
 const BEKEND = new Set(SCHIL.map((p) => new URL(p, self.registration.scope).href));
@@ -31,9 +31,24 @@ async function schil(req) {
   return bewaard || (await net) || Response.error();   // eerst bewaard (snel), ondertussen verversen
 }
 
+// Paginawissel: de voorpagina (/) is op de server soms de onderhoudspagina en soms de echte site.
+// Daarom nooit uit de cache voorrang geven: eerst het netwerk, de bewaarde index.html alleen als je offline bent.
+async function pagina(req) {
+  try {
+    return await fetch(req, { cache: 'no-store' });
+  } catch (_) {
+    const cache = await caches.open(VERSIE);
+    return (await cache.match('index.html')) || Response.error();
+  }
+}
+
 self.addEventListener('fetch', (e) => {
   const req = e.request;
   if (req.method !== 'GET') return;
+  if (req.mode === 'navigate') {
+    const u = new URL(req.url);
+    if (u.origin === self.location.origin && u.pathname === new URL(self.registration.scope).pathname) { e.respondWith(pagina(req)); return; }
+  }
   const url = new URL(req.url);
   url.search = ''; url.hash = '';
   if (!BEKEND.has(url.href)) return;     // alles anders (cursussen, geluid, plaatjes): niet onze zaak

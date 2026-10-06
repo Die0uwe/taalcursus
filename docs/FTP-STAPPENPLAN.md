@@ -91,3 +91,4 @@ Staat er al een pagina op het subdomein die je als onderhoudspagina wilt houden?
 3. Test de echte site op `/index.html` (bijvoorbeeld `https://taal.scriptspace.nl/index.html`).
 4. **Live zetten:** hernoem `onderhoud.html` naar `onderhoud-uit.html`. **Weer onderhoud:** hernoem terug.
 5. Cloudflare: wis de cache na elke wissel (*Caching → Configuration → Purge Everything*).
+6. Browser die de oude kopie nog heeft (service worker)? Na de nieuwste upload 1-2 keer herladen (Ctrl+F5), daarna wisselt de voorpagina direct mee.

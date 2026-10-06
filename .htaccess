@@ -36,7 +36,7 @@ Options -Indexes
 </IfModule>
 <IfModule mod_headers.c>
   # De service worker en de pagina zelf mogen nooit lang in de cache staan, anders komen updates niet aan
-  <FilesMatch "^(sw\.js|index\.html|manifest\.webmanifest)$">
+  <FilesMatch "^(sw\.js|index\.html|onderhoud\.html|manifest\.webmanifest)$">
     Header set Cache-Control "no-cache"
   </FilesMatch>
 

@@ -4,6 +4,19 @@ Created by DieOuwe · www.dieouwe.nl
 
 Nieuwste bovenaan. De wijzigingen van de cursus zelf staan in `papiamento/CHANGELOG.md`.
 
+## [2026-10-07 02:35] — Onderhoud-uit werkt: voorpagina nooit meer uit oude cache
+
+**Type:** Bugfix
+**Skill:** design-architect (via wow-bigboss-orchestrator)
+**Bestanden:** `sw.js`, `.htaccess`, `docs/FTP-STAPPENPLAN.md`
+**Versie:** hoofdpagina v0.9.0
+
+### Wijzigingen
+- Oorzaak: de service worker bewaarde `/` toen dat nog de onderhoudspagina was en bleef die oude kopie tonen, ook na hernoemen naar `onderhoud-uit.html` (gereproduceerd met een Apache-simulatie).
+- Nu: `/` komt altijd eerst van het netwerk; de bewaarde `index.html` dient alleen offline. `/` staat niet meer in de voorraad.
+- `.htaccess`: `onderhoud.html` krijgt ook `no-cache`.
+- Getest: onderhoud aan, uit, weer aan: wisselt direct.
+
 ## [2026-10-07 02:20] — Huisjes zichtbaar op de hoofdpagina (voet viel er overheen)
 
 **Type:** Bugfix
