@@ -26,7 +26,7 @@ from talen import CATEGORIEEN, CONCEPTEN, TALEN  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 SJABLOON = ROOT / "papiamento"
-VERSIE = "0.10.0"
+VERSIE = "0.10.1"
 
 # woord-id's van het Papiamentu-sjabloon -> neutrale (Nederlandse) id's die alle andere cursussen gebruiken
 ID_MAP = {
@@ -125,8 +125,8 @@ def vervang_tekst(pad: Path, t: dict) -> None:
         s = s.replace("Aprende Papiamentu!", f"{t['titel']}!").replace('"Papiamentu"', f'"{t["merk"]}"')
         s = s.replace("Leer Papiamentu spelenderwijs", f"Leer {t['naam']} spelenderwijs")
     elif naam == "sw.js":
-        s = s.replace("Aprende Papiamentu", t["titel"]).replace("'pap-v0.14.0'", f"'{t['prefix']}-v{VERSIE}'")
-        s = s.replace("v0.14.0", f"v{VERSIE}")
+        s = s.replace("Aprende Papiamentu", t["titel"]).replace("'pap-v0.14.1'", f"'{t['prefix']}-v{VERSIE}'")
+        s = s.replace("v0.14.1", f"v{VERSIE}")
         # de eilandvlaggetjes (img/vlag-*.svg) bestaan alleen bij Papiamentu; elders laat de voorraadlijst de installatie mislukken
         s = s.replace("'img/vlag-cw.svg', 'img/vlag-aw.svg', 'img/vlag-bn.svg', ", "")
     elif naam == "pwa.js":

@@ -11,21 +11,26 @@
   var map = (document.currentScript && document.currentScript.getAttribute('data-map')) || 'vlaggen/';
   var BESTAND = { '🇬🇧': 'gb', '🇪🇸': 'es', '🇩🇪': 'de', '🇫🇷': 'fr', '🇺🇦': 'ua', '🇨🇼': 'cw', '🇦🇼': 'aw', '🇧🇶': 'bn' };
 
-  // Test: tekent een vlag-emoji en kijkt of er kleur te zien is. Zonder vlag-emoji worden het zwarte letters.
+  // Test: een echte vlag-emoji ziet er anders uit dan dezelfde twee tekens los van elkaar (dan zijn het gewoon letters).
   function emojiVlaggen() {
     try {
-      var c = document.createElement('canvas');
-      c.width = 64; c.height = 32;
-      var x = c.getContext('2d', { willReadFrequently: true });
-      if (!x) return true;
-      x.textBaseline = 'top';
-      x.font = '28px "Segoe UI Emoji","Apple Color Emoji","Noto Color Emoji",sans-serif';
-      x.fillStyle = '#000';
-      x.fillText('🇫🇷', 0, 0);
-      var d = x.getImageData(0, 0, 64, 32).data;
-      for (var i = 0; i < d.length; i += 4) {
-        if (d[i + 3] > 200 && (Math.abs(d[i] - d[i + 1]) > 40 || Math.abs(d[i + 1] - d[i + 2]) > 40)) return true;
+      var ua = navigator.userAgent || '';
+      if (/Windows/.test(ua)) return false;                       // Windows tekent geen vlag-emoji, altijd plaatjes
+      if (/[?&]vlaggen=plaatje/.test(location.search)) return false;   // om te testen
+      function teken(tekst) {
+        var c = document.createElement('canvas');
+        c.width = 80; c.height = 40;
+        var x = c.getContext('2d', { willReadFrequently: true });
+        if (!x) return null;
+        x.textBaseline = 'top';
+        x.font = '32px "Segoe UI Emoji","Apple Color Emoji","Noto Color Emoji",sans-serif';
+        x.fillText(tekst, 0, 2);
+        return x.getImageData(0, 0, 80, 40).data;
       }
+      var vlag = teken('\u{1F1EB}\u{1F1F7}');
+      var los = teken('\u{1F1EB}\u200B\u{1F1F7}');
+      if (!vlag || !los) return true;
+      for (var i = 0; i < vlag.length; i++) if (vlag[i] !== los[i]) return true;   // verschil: het is echt een vlag
       return false;
     } catch (e) { return true; }
   }

@@ -4,7 +4,7 @@
    Bewaart alleen de hoofdpagina zelf voor offline gebruik. De cursussen (papiamento/ ...)
    hebben elk hun eigen service worker en worden hier met rust gelaten.
    ============================================================ */
-const VERSIE = 'hub-v0.10.1';
+const VERSIE = 'hub-v0.10.2';
 const VOORVOEGSEL = VERSIE.split('-')[0] + '-';
 const SCHIL = [
   'index.html', 'hub.css', 'kleuren.css', 'sfeer.css', 'sfeer.js', 'delen.js', 'vlaggen.js', 'vlaggen/gb.svg', 'vlaggen/es.svg', 'vlaggen/de.svg', 'vlaggen/fr.svg', 'vlaggen/ua.svg', 'vlaggen/cw.svg', 'meisje-boven.webp', 'hub.js', 'cursussen.js', 'pwa.js', 'manifest.webmanifest',
@@ -25,10 +25,15 @@ self.addEventListener('activate', (e) => {
 });
 
 async function schil(req) {
+  // Eerst het netwerk, zodat een nieuwe upload meteen aankomt (geen "twee keer herladen"). Offline: de bewaarde kopie.
   const cache = await caches.open(VERSIE);
-  const bewaard = await cache.match(req, { ignoreSearch: true });
-  const net = fetch(req).then((r) => { if (r && r.ok) cache.put(req, r.clone()); return r; }).catch(() => null);
-  return bewaard || (await net) || Response.error();   // eerst bewaard (snel), ondertussen verversen
+  try {
+    const r = await fetch(req, { cache: 'no-cache' });
+    if (r && r.ok) cache.put(req, r.clone());
+    return r;
+  } catch (_) {
+    return (await cache.match(req, { ignoreSearch: true })) || Response.error();
+  }
 }
 
 // Paginawissel: de voorpagina (/) is op de server soms de onderhoudspagina en soms de echte site.

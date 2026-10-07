@@ -1,5 +1,5 @@
 /* ============================================================
-   Leer Engels - woordenlijst  (js/words.js)  v0.10.0
+   Leer Engels - woordenlijst  (js/words.js)  v0.10.1
    Created by DieOuwe · www.dieouwe.nl
    Gemaakt met tools/maak_cursus.py uit tools/talen.py (pas de woorden daar aan en maak de cursus opnieuw,
    of pas dit bestand direct aan).
@@ -15,7 +15,7 @@
    uitspraak: gids voor Nederlandstalige kinderen (indicatief)
    ============================================================ */
 window.PAP_DATA = {
-  "meta": {"versie": "0.10.0", "standaardDialect": "std", "taal": "Engels", "kampioen": "English-kampioen!", "opslag": "engels.v1", "ttsTalen": ["en"], "ttsFallback": "en-GB"},
+  "meta": {"versie": "0.10.1", "standaardDialect": "std", "taal": "Engels", "kampioen": "English-kampioen!", "opslag": "engels.v1", "ttsTalen": ["en"], "ttsFallback": "en-GB"},
   "dialecten": [ {"id": "std", "naam": "Engels", "vlag": "🇬🇧"} ],
   "categorieen": [
     {"id": "basis", "naam": "Basiswoorden", "sub": "Kijk & luister", "icon": "📚", "kleur": "pink"},

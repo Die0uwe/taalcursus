@@ -22,6 +22,15 @@
   }
 
   var zon = maak('sun');
+  // Heeft de pagina een bovenbalk, dan zet de zon zich eronder, zodat hij nooit half erachter verdwijnt
+  function zonPlek() {
+    var tb = document.querySelector('.topbar');
+    var onder = tb ? Math.round(tb.getBoundingClientRect().bottom) : 0;
+    zon.style.top = Math.max(22, onder + 10) + 'px';
+  }
+  zonPlek();
+  window.addEventListener('resize', zonPlek);
+  window.addEventListener('load', zonPlek);
   ['eye left', 'eye right', 'mouth'].forEach(function (k) {
     var d = document.createElement('div'); d.className = k; zon.appendChild(d);
   });

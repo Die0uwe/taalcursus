@@ -6,7 +6,7 @@
    - mp3/ en img/: worden bewaard zodra ze voor het eerst gebruikt zijn.
    - Verhoog VERSIE bij elke release, dan haalt de app de nieuwe bestanden op.
    ============================================================ */
-const VERSIE = 'fra-v0.10.0';
+const VERSIE = 'fra-v0.10.1';
 const VOORVOEGSEL = VERSIE.split('-')[0] + '-';   // elke cursus ruimt alleen zijn eigen oude caches op
 const SCHIL = [
   './', 'index.html', 'manifest.webmanifest',
@@ -62,10 +62,15 @@ async function media(req) {
 }
 
 async function schil(req) {
+  // Eerst het netwerk, zodat een nieuwe upload meteen aankomt (geen "twee keer herladen"). Offline: de bewaarde kopie.
   const cache = await caches.open(VERSIE);
-  const bewaard = await cache.match(req, { ignoreSearch: true });
-  const net = fetch(req).then((r) => { if (r && r.ok) cache.put(req, r.clone()); return r; }).catch(() => null);
-  return bewaard || (await net) || Response.error();   // eerst bewaard (snel), ondertussen verversen
+  try {
+    const r = await fetch(req, { cache: 'no-cache' });
+    if (r && r.ok) cache.put(req, r.clone());
+    return r;
+  } catch (_) {
+    return (await cache.match(req, { ignoreSearch: true })) || Response.error();
+  }
 }
 
 self.addEventListener('fetch', (e) => {

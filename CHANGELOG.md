@@ -4,6 +4,19 @@ Created by DieOuwe · www.dieouwe.nl
 
 Nieuwste bovenaan. De wijzigingen van de cursus zelf staan in `papiamento/CHANGELOG.md`.
 
+## [2026-10-07 03:50] — Zon altijd in beeld, vlaggen op Windows, service workers eerst netwerk
+
+**Type:** Bugfix
+**Skill:** design-architect (via wow-bigboss-orchestrator)
+**Bestanden:** `sfeer.js`, `vlaggen.js`, `sw.js`, `papiamento/sw.js` (en daaruit alle cursussen), `tools/maak_cursus.py`
+**Versie:** hoofdpagina v0.10.2, papiamento v0.14.1, overige cursussen v0.10.1
+
+### Wijzigingen
+- Zonnetje op de hoofdpagina zet zich onder de bovenbalk en blijft volledig in beeld (stond half erachter).
+- Vlaggen: Windows krijgt altijd de vlagplaatjes. De test voor andere toestellen vergelijkt nu een echte vlag met dezelfde twee tekens los van elkaar (de oude kleurtest kon Windows-letters voor een vlag aanzien). Testen kan met `?vlaggen=plaatje` achter de link.
+- Service workers (hoofdpagina en alle cursussen): eerst het netwerk, de bewaarde kopie alleen offline. Een nieuwe upload komt daardoor meteen aan en oude cachekopieën (bijv. een cursus zonder de nieuwste plaatjes) blijven niet hangen.
+- Getest: zon in beeld op 390 en 1280 px, vlag-detectie, cursustest 72/72 (inclusief offline).
+
 ## [2026-10-07 03:20] — Vlagplaatjes voor Windows, autootjes 5px lager op mobiel
 
 **Type:** Feature + UI Polish
